@@ -1,10 +1,22 @@
 import assert from "node:assert/strict";
 import test from "node:test";
-import { applyChoice, applyPlan, availableActivities, calculateAchievements, calculateEnding, chooseEarly, continueAfterReport, createState, earnedCredits, finishSignup, startSignup, planCost, retakeOptions, takeLeave } from "./game.ts";
+import { applyChoice, applyPlan, availableActivities, calculateAchievements, calculateEnding, chooseEarly, continueAfterReport, createState, earnedCredits, finishSignup, startSignup, planCost, retakeOptions, signupTier, takeLeave } from "./game.ts";
 import type { GameState } from "./game.ts";
 
 function playRandomGame(seed: number, policy: "random" | "study" | "network" | "career" | "startup" = "random") {
-  const state = createState(seed, (["cse", "ice", "ais"] as const)[seed % 3], "network");
+  const styles = ["scholar", "social", "romantic"] as const;
+  const focuses = {
+    random: [["study", "network"], ["study", "mental"], ["study", "romance"], ["network", "mental"], ["network", "romance"], ["mental", "romance"]],
+    study: [["study", "mental"]],
+    network: [["network", "mental"]],
+    career: [["study", "mental"]],
+    startup: [["network", "romance"]],
+  } as const;
+  const choices = focuses[policy];
+  const department = (["cse", "ice", "ais"] as const)[seed % 3];
+  const style = styles[Math.floor(seed / 3) % styles.length];
+  const focus = choices[Math.floor(seed / 9) % choices.length];
+  const state = createState(seed, department, "network", style, [...focus]);
   let dice = seed;
   const random = (n: number) => { dice = (dice * 1664525 + 1013904223) >>> 0; return dice % n; };
   const preferred: Record<string, string[]> = {
@@ -15,13 +27,13 @@ function playRandomGame(seed: number, policy: "random" | "study" | "network" | "
   };
   for (let guard = 0; guard < 240 && state.phase !== "done"; guard++) {
     if (state.phase === "plan") {
+      if (!state.signup?.tier) {
+        const signup = startSignup(state, 0);
+        finishSignup(state, signup.delayMs + (policy === "study" || random(2) ? 300 : 800));
+      }
       const options = availableActivities(state).filter((item) => !item.locked);
       let activity = options[random(options.length)].id;
       for (const want of preferred[policy]) if (options.some((item) => item.id === want) && (want !== "english" || !state.flags.includes("english-cert"))) { activity = want; break; }
-      if (!state.signup?.tier) {
-        const signup = startSignup(state, 0);
-        finishSignup(state, signup.delayMs + (policy === "study" || random(3) ? 300 : 800));
-      }
       const retake = retakeOptions(state);
       const plan = {
         retakeCourseId: retake.length && (policy === "study" || random(2)) ? retake[0].id : null,
@@ -64,10 +76,19 @@ test("지금 학년 단계가 아니면 계획을 거부한다", () => {
   assert.throws(() => applyPlan(state, plan, true));
 });
 
-test("수강신청 반응 시간으로 결과가 갈리고 먼저 누르면 우주공강이다", () => {
-  const cases: [number, string][] = [[300, "allClear"], [800, "partial"], [1500, "spaceGap"], [-200, "spaceGap"]];
-  for (const [reaction, tier] of cases) {
+test("수강신청은 학기가 지날수록 판정 구간이 좁아지고 먼저 누르면 우주공강이다", () => {
+  const cases: [number, number, string][] = [
+    [1, 350, "allClear"], [1, 700, "partial"], [1, 900, "spaceGap"],
+    [4, 300, "allClear"], [4, 650, "partial"], [4, 750, "spaceGap"],
+    [6, 250, "allClear"], [6, 550, "partial"], [6, 650, "spaceGap"],
+    [8, 210, "allClear"], [8, 450, "partial"], [8, 550, "spaceGap"],
+    [1, -200, "spaceGap"],
+  ];
+  for (const [semester, reaction, tier] of cases) {
+    assert.equal(signupTier(reaction, semester), tier);
     const state = createState(5, "cse", "study");
+    state.semester = semester;
+    state.year = Math.ceil(semester / 2);
     const signup = startSignup(state, 1000);
     finishSignup(state, 1000 + signup.delayMs + reaction);
     assert.equal(signup.tier, tier);
@@ -129,7 +150,7 @@ test("재수강 성적은 A0를 넘지 않고 F면 학점이 빠진다", () => {
   }
 });
 
-test("엔딩이 고르게 나오고 전설도 도달 가능하다", () => {
+test("무작위 엔딩 분포가 목표 범위이고 전설도 도달 가능하다", () => {
   const groups = { random: 3000, study: 500, network: 500, career: 500, startup: 500 } as const;
   const all: Record<string, Record<string, number>> = {};
   for (const [policy, count] of Object.entries(groups)) {
@@ -137,7 +158,9 @@ test("엔딩이 고르게 나오고 전설도 도달 가능하다", () => {
     all[policy] = distribution(states, (state) => calculateEnding(state));
   }
   console.log(JSON.stringify(all));
-  assert.ok((all.random.overtime ?? 0) < 3000 * 0.5, "무작위 플레이의 초과 학기가 절반을 넘으면 안 된다");
+  const legendary = ["bigCompany", "startup", "topStudent", "president"].reduce((sum, ending) => sum + (all.random[ending] ?? 0), 0);
+  assert.ok(legendary >= 3000 * 0.08 && legendary <= 3000 * 0.12, "무작위 플레이의 전설 엔딩은 10% 안팎이어야 한다");
+  assert.ok((all.random.overtime ?? 0) >= 3000 * 0.15 && (all.random.overtime ?? 0) <= 3000 * 0.25, "무작위 플레이의 초과 학기는 15~25%여야 한다");
   assert.ok((all.network.president ?? 0) > 0, "학생회장 도달 가능");
   assert.ok((all.career.bigCompany ?? 0) > 0, "대기업 도달 가능");
   assert.ok((all.study.topStudent ?? 0) + (all.study.early ?? 0) > 0, "과 수석이나 조기 졸업 도달 가능");

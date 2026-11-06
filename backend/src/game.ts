@@ -191,9 +191,11 @@ export function startSignup(state: GameState, now: number) {
   return state.signup;
 }
 
-export function signupTier(reactionMs: number): SignupTier {
-  if (reactionMs < 0 || reactionMs > 1000) return "spaceGap";
-  return reactionMs <= 500 ? "allClear" : "partial";
+export function signupTier(reactionMs: number, semester = 1): SignupTier {
+  const windows = semester <= 2 ? [400, 850] : semester <= 4 ? [320, 700] : semester <= 6 ? [260, 600] : [220, 500];
+  const [allClear, partial] = windows;
+  if (reactionMs < 0 || reactionMs > partial) return "spaceGap";
+  return reactionMs <= allClear ? "allClear" : "partial";
 }
 
 export function finishSignup(state: GameState, now: number) {
@@ -201,7 +203,7 @@ export function finishSignup(state: GameState, now: number) {
   if (state.phase !== "plan" || !signup || signup.tier) throw new GameError("수강신청을 먼저 시작해 주세요.");
   // 버튼이 열리기 전 클릭은 음수가 되어 우주공강으로 처리된다. 시간은 서버 기준이다.
   const reactionMs = now - signup.startedAt - signup.delayMs;
-  const tier = signupTier(reactionMs);
+  const tier = signupTier(reactionMs, state.semester);
   const options = creditOptions(state);
   signup.tier = tier;
   signup.reactionMs = reactionMs;
@@ -414,10 +416,10 @@ export function calculateEnding(state: GameState): EndingId {
   const gpa = calculateGpa(state);
   const { reputation, network, career, romance, luck } = state.stats;
   if (earnedCredits(state) < GRADUATION_CREDITS || !hasFlag(state, "english-cert")) return "overtime";
-  if ((hasFlag(state, "dream") || hasFlag(state, "council")) && reputation >= 80 && network >= 70) return "president";
-  if (hasFlag(state, "startup") && network >= 60 && luck >= 60) return "startup";
-  if (gpa >= 3.7 && career >= 85) return "bigCompany";
-  if (gpa >= 4.35) return "topStudent";
+  if ((hasFlag(state, "dream") || hasFlag(state, "council")) && reputation >= 85 && network >= 80) return "president";
+  if (hasFlag(state, "startup") && network >= 85 && luck >= 75) return "startup";
+  if (gpa >= 4.0 && career >= 95) return "bigCompany";
+  if (gpa >= 4.5) return "topStudent";
   if (state.earlyGraduated) return "early";
   if (state.labCount >= 2 && gpa >= 3.8) return "gradSchool";
   if (romance >= 90) return "romantic";

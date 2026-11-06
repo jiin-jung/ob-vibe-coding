@@ -33,17 +33,26 @@ function ProfileHead({ run }: { run: RunView }) {
 }
 
 function SignupGame({ run, onDone }: { run: RunView; onDone: (run: RunView, result: SignupResult) => void }) {
-  const [state, setState] = useState<"ready" | "waiting" | "open" | "sending">("ready");
+  const [state, setState] = useState<"ready" | "login" | "cart" | "waiting" | "open" | "sending">("ready");
   const [error, setError] = useState("");
-  const timer = useRef<ReturnType<typeof setTimeout> | undefined>(undefined);
-  useEffect(() => () => clearTimeout(timer.current), []);
+  const timers = useRef<ReturnType<typeof setTimeout>[]>([]);
+  const clearTimers = () => { timers.current.forEach(clearTimeout); timers.current = []; };
+  useEffect(() => clearTimers, []);
+
+  const difficulty = run.semester <= 2 ? "적응" : run.semester <= 4 ? "혼잡" : run.semester <= 6 ? "전쟁" : "졸업반";
+  const stage = state === "login" ? 1 : state === "cart" ? 2 : state === "waiting" ? 3 : state === "open" || state === "sending" ? 4 : 0;
 
   async function start() {
     setError("");
     try {
       const { delayMs } = await api<{ delayMs: number }>(`/runs/${run.id}/signup/start`, { body: {}, runId: run.id });
-      setState("waiting");
-      timer.current = setTimeout(() => setState("open"), delayMs);
+      clearTimers();
+      setState("login");
+      timers.current = [
+        setTimeout(() => setState("cart"), Math.min(500, delayMs * 0.2)),
+        setTimeout(() => setState("waiting"), Math.min(1000, delayMs * 0.5)),
+        setTimeout(() => setState("open"), delayMs),
+      ];
     } catch (err) {
       setError(err instanceof ApiError ? err.message : "수강신청 서버에 접속하지 못했습니다.");
     }
@@ -51,7 +60,7 @@ function SignupGame({ run, onDone }: { run: RunView; onDone: (run: RunView, resu
 
   async function click() {
     if (state === "sending") return;
-    clearTimeout(timer.current);
+    clearTimers();
     setState("sending");
     try {
       const result = await api<SignupResult & { run: RunView }>(`/runs/${run.id}/signup/click`, { body: {}, runId: run.id });
@@ -64,18 +73,23 @@ function SignupGame({ run, onDone }: { run: RunView; onDone: (run: RunView, resu
   return (
     <section className="signup">
       <span className="notice-tag">{run.year}학년 {run.term}학기 수강신청</span>
+      <div className="signup-level"><span>난이도</span><b>{difficulty}</b></div>
       {state === "ready" ? (
         <>
           <h2>10시 정각에 시작합니다</h2>
-          <p className="doc-body">버튼이 빨갛게 바뀌면 바로 누르십시오. 너무 일찍 누르면 신청이 실패합니다.</p>
+          <p className="doc-body">로그인, 장바구니 확인, 서버 대기를 통과합니다. 버튼이 빨갛게 바뀌면 바로 누르십시오.</p>
           <button className="btn" onClick={start}>수강신청 사이트 접속</button>
         </>
       ) : (
         <>
-          <h2>{state === "waiting" ? "접속 대기 중입니다" : state === "open" ? "지금입니다" : "처리 중입니다"}</h2>
+          <div className="signup-progress" aria-label={`수강신청 4단계 중 ${stage}단계`}>
+            {["로그인", "장바구니", "서버 대기", "신청"].map((label, index) => <span key={label} className={index < stage ? "on" : ""}><i />{label}</span>)}
+          </div>
+          <h2>{state === "login" ? "로그인 확인 중입니다" : state === "cart" ? "장바구니를 불러옵니다" : state === "waiting" ? "서버 응답을 기다립니다" : state === "open" ? "지금입니다" : "처리 중입니다"}</h2>
           <button className={`signup-button ${state === "open" ? "open" : ""}`} onPointerDown={click} disabled={state === "sending"}>
-            {state === "open" ? "신청" : "대기"}
+            {state === "open" ? "신청" : state === "sending" ? "처리" : "대기"}
           </button>
+          {state !== "open" && state !== "sending" && <p className="hint center-text">빨간색이 되기 전에 누르면 실패합니다.</p>}
         </>
       )}
       {error && <p className="hint hint-error" role="alert">{error}</p>}
@@ -106,6 +120,15 @@ function HomeTab({ run, plan, busy, onStartYear, onLeave, onSignup }: { run: Run
   const [item, setItem] = useState<string | null>(null);
   const [sheet, setSheet] = useState<Sheet>(null);
   const [agree, setAgree] = useState(false);
+
+  useEffect(() => {
+    const selected = plan.activities.find((entry) => entry.id === activity);
+    if (activity && (!selected || selected.locked)) {
+      setActivity("");
+      setLabId(null);
+      localStorage.removeItem(`activity:${run.id}`);
+    }
+  }, [activity, plan.activities, run.id]);
 
   const cost = useMemo(() => {
     const income = (plan.activities.find((entry) => entry.id === activity)?.income ?? 0) + plan.allowance;

@@ -27,9 +27,24 @@ export default function AuthPanel({ onDone }: { onDone: () => void }) {
   return (
     <div className="auth">
       <label className="field">
-        <span>인천대 메일</span>
-        <input type="email" inputMode="email" autoComplete="email" value={email} onChange={(event) => setEmail(event.target.value)} placeholder="학번@inu.ac.kr" disabled={sent} />
+        <span>학교 이메일 계정</span>
+        <input
+          type="email"
+          inputMode="email"
+          autoComplete="email"
+          value={email}
+          onChange={(event) => {
+            setEmail(event.target.value);
+            if (sent) {
+              setSent(false);
+              setCode("");
+              setError("");
+            }
+          }}
+          placeholder="아이디@inu.ac.kr"
+        />
       </label>
+      <p className="hint">인천대학교에서 사용하는 이메일 계정을 입력해 주세요.</p>
       {email && !validEmail && <p className="hint hint-error">@inu.ac.kr 메일만 사용할 수 있어요.</p>}
       {!sent ? (
         <button className="btn btn-secondary" disabled={!validEmail || busy} onClick={requestCode}>{busy ? "보내는 중" : "인증 코드 받기"}</button>
