@@ -1,0 +1,31 @@
+{
+  "name": "jaesugang-backend",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "node --test src/*.test.ts",
+    "dev": "node --watch --env-file-if-exists=../.local/.env src/index.ts",
+    "start": "node --env-file-if-exists=../.local/.env src/index.ts"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "dependencies": {
+    "@anthropic-ai/sdk": "^1.6.0",
+    "@aws-sdk/client-s3": "^3.1163.0",
+    "@aws-sdk/s3-request-presigner": "^3.1163.0",
+    "@hono/node-server": "^2.1.6",
+    "hono": "^4.13.16",
+    "nodemailer": "^10.3.1",
+    "sharp": "^0.35.5",
+    "zod": "^4.6.7"
+  },
+  "devDependencies": {
+    "@types/node": "^26.6.6",
+    "@types/nodemailer": "^8.0.2",
+    "typescript": "^7.0.2"
+  },
+  "private": true
+}
