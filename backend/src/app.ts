@@ -13,7 +13,7 @@ import { db, newId } from "./db.ts";
 import { isInuEmail, normalizeEmail } from "./email.ts";
 import {
   applyChoice, applyPlan, availableActivities, availableLabs, calculateAchievements, calculateEnding, calculateGpa, calculateScore, chooseEarly, continueAfterReport,
-  createState, creditOptions, earnedCredits, GameError, GRADUATION_CREDITS, isEligibleEarly, LIVING_COST, planCost, resolveQuest, retakeOptions, shopItems, statGrade, takeLeave, TUITION, YEARLY_LOAN_LIMIT, DEBT_LIMIT,
+  canTakeLeave, createState, creditOptions, earnedCredits, GameError, GRADUATION_CREDITS, isEligibleEarly, LIVING_COST, planCost, resolveQuest, retakeOptions, shopItems, statGrade, takeLeave, TUITION, YEARLY_LOAN_LIMIT, DEBT_LIMIT,
 } from "./game.ts";
 import type { GameState } from "./game.ts";
 import { sendMail } from "./mail.ts";
@@ -26,6 +26,7 @@ const CODE_TTL = 10 * 60_000;
 const RESEND_GAP = 60_000;
 const MAX_ATTEMPTS = 5;
 const PHOTO_TTL = 7 * 24 * 60 * 60_000;
+const SESSION_TTL = 30 * 24 * 60 * 60_000;
 const MAX_PHOTO = 10 * 1024 * 1024;
 const RUNS_PER_HOUR = 30;
 const RANKED_PER_HOUR = 20;
@@ -47,7 +48,7 @@ app.get("/health", (c) => c.json({ ok: true }));
 function currentUser(c: Context) {
   const token = getCookie(c, "session");
   if (!token) return undefined;
-  return db.prepare("SELECT u.id, u.email FROM sessions s JOIN users u ON u.id = s.user_id WHERE s.token_hash = ?").get(sha(token)) as Row | undefined;
+  return db.prepare("SELECT u.id, u.email FROM sessions s JOIN users u ON u.id = s.user_id WHERE s.token_hash = ? AND s.created_at > ?").get(sha(token), Date.now() - SESSION_TTL) as Row | undefined;
 }
 
 app.get("/me", (c) => {
@@ -150,6 +151,7 @@ function toRunView(run: Row, state: GameState) {
     allowance: 30,
     yearlyLoanLimit: YEARLY_LOAN_LIMIT,
     debtRoom: DEBT_LIMIT - state.debt,
+    leaveActivities: availableActivities(state).filter((item) => canTakeLeave(state, item.id)).map((item) => item.id),
   } : null;
   const event = state.phase === "event" ? state.events[state.eventIndex] : null;
   return {
@@ -204,7 +206,7 @@ app.post("/runs", async (c) => {
   const user = currentUser(c);
   const previous = body.previousRunId ? db.prepare("SELECT round FROM runs WHERE id = ?").get(body.previousRunId) as Row | undefined : undefined;
   db.prepare(`INSERT INTO runs (id, token_hash, user_id, nickname, department, avatar, regret, goal_text, notice, serious, goal_sample, round, state, created_at)
-    VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?)`).run(id, sha(token), user?.id ?? null, body.nickname, body.department, body.avatar, body.regret, goal.goalText, goal.notice,
+    VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?)`).run(id, sha(token), user?.id ?? null, body.nickname, body.department, body.avatar, "", goal.goalText, goal.notice,
     goal.serious ? 1 : 0, goal.isSample ? 1 : 0, (previous?.round ?? 0) + 1, JSON.stringify(state), Date.now());
   const run = db.prepare("SELECT * FROM runs WHERE id = ?").get(id) as Row;
   return c.json({ token, run: toRunView(run, state) });
@@ -253,7 +255,7 @@ function runAction(action: (state: GameState, body: any) => void, schema: z.ZodT
   };
 }
 
-app.post("/runs/:id/leave", runAction((state) => takeLeave(state)));
+app.post("/runs/:id/leave", runAction((state, body) => takeLeave(state, body.activity), z.object({ activity: z.string().max(20) })));
 app.post("/runs/:id/choice", runAction((state, body) => applyChoice(state, body.optionIndex), z.object({ optionIndex: z.number().int().min(0).max(3) })));
 app.post("/runs/:id/continue", runAction((state) => continueAfterReport(state)));
 app.post("/runs/:id/early", runAction((state, body) => chooseEarly(state, body.graduate), z.object({ graduate: z.boolean() })));
@@ -289,6 +291,8 @@ app.post("/runs/:id/quest", bodyLimit({
   db.prepare("INSERT INTO photos (id, run_id, storage_key, reason, created_at) VALUES (?,?,?,?,?)").run(photoId, run.id, key, verdict.reason, Date.now());
   resolveQuest(state, true);
   saveState(run.id, state);
+  // 결과를 본 뒤 인증했다면 통지서를 인증 내용에 맞춰 다시 쓴다.
+  db.prepare("UPDATE runs SET ending_text = NULL WHERE id = ?").run(run.id);
   updateRanking(run, state);
   return c.json({ ...verdict, passed: true, run: toRunView(run, state) });
 });
@@ -300,6 +304,15 @@ function updateRanking(run: Row, state: GameState) {
     .run(run.id, current.user_id, run.nickname, run.department, calculateScore(state), Date.now());
   db.prepare("DELETE FROM achievements WHERE run_id = ?").run(run.id);
   for (const id of calculateAchievements(state)) db.prepare("INSERT INTO achievements (run_id, achievement) VALUES (?,?)").run(run.id, id);
+}
+
+export async function purgeExpiredPhotos() {
+  const expired = db.prepare("SELECT id, storage_key FROM photos WHERE deleted_at IS NULL AND created_at <= ?").all(Date.now() - PHOTO_TTL) as Row[];
+  for (const photo of expired) {
+    await deletePhoto(photo.storage_key);
+    db.prepare("UPDATE photos SET deleted_at = ? WHERE id = ?").run(Date.now(), photo.id);
+  }
+  return expired.length;
 }
 
 const visiblePhoto = (runId: string) => db.prepare("SELECT * FROM photos WHERE run_id = ? AND deleted_at IS NULL AND created_at > ? ORDER BY created_at DESC LIMIT 1")
@@ -334,7 +347,7 @@ app.get("/runs/:id/result", async (c) => {
     grades: { 학업: statGrade(state.stats.study), 인맥: statGrade(state.stats.network), 멘탈: statGrade(state.stats.mental), 낭만: statGrade(state.stats.romance) },
     achievements: calculateAchievements(state).map((id) => ({ id, ...ACHIEVEMENTS[id] })),
     realWorld: state.questStatus === "passed",
-    photo: photo ? { id: photo.id, reason: photo.reason, url: await photoUrl(photo.id, photo.storage_key, c.req.header("x-run-token") ?? "", run.id) } : null,
+    photo: photo ? { id: photo.id, reason: photo.reason, url: await photoUrl(photo.id, photo.storage_key, run.id) } : null,
     registered,
   });
 });

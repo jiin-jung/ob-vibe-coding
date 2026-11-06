@@ -1,7 +1,7 @@
 import { toPng } from "html-to-image";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
-import { api, ApiError } from "../api";
+import { api, ApiError, runToken } from "../api";
 import type { ResultView } from "../api";
 import AuthPanel from "../components/AuthPanel";
 import Avatar from "../components/Avatar";
@@ -14,12 +14,26 @@ export default function ResultPage() {
   const [error, setError] = useState("");
   const [showAuth, setShowAuth] = useState(false);
   const [message, setMessage] = useState("");
+  const [photoUrl, setPhotoUrl] = useState("");
   const card = useRef<HTMLDivElement>(null);
 
   const load = useCallback(() => {
     api<ResultView>(`/runs/${id}/result`, { runId: id }).then(setResult).catch((err) => setError(err instanceof ApiError ? err.message : "결과를 불러오지 못했습니다."));
   }, [id]);
   useEffect(load, [load]);
+
+  // 로컬 저장 사진은 토큰을 주소에 넣지 않으려고 헤더로 받아서 보여준다.
+  const photoSource = result?.photo?.url;
+  useEffect(() => {
+    if (!photoSource) { setPhotoUrl(""); return; }
+    if (!photoSource.startsWith("/api/")) { setPhotoUrl(photoSource); return; }
+    let objectUrl = "";
+    fetch(photoSource, { headers: { "x-run-token": runToken(id) } })
+      .then((response) => response.ok ? response.blob() : Promise.reject(new Error("photo")))
+      .then((blob) => { objectUrl = URL.createObjectURL(blob); setPhotoUrl(objectUrl); })
+      .catch(() => setPhotoUrl(""));
+    return () => { if (objectUrl) URL.revokeObjectURL(objectUrl); };
+  }, [id, photoSource]);
 
   async function save() {
     if (!card.current) return;
@@ -131,7 +145,7 @@ export default function ResultPage() {
       {result.photo && (
         <section className="card">
           <h3>제출한 현실 과제</h3>
-          <img className="quest-photo" src={result.photo.url} alt="제출한 현실 과제 사진" />
+          {photoUrl && <img className="quest-photo" src={photoUrl} alt="제출한 현실 과제 사진" />}
           <p className="hint">{result.photo.reason} 사진은 일주일 뒤 자동 삭제됩니다.</p>
           <button className="link" onClick={removePhoto}>지금 삭제하기</button>
         </section>

@@ -36,6 +36,6 @@ for (let year = 1; year <= 2; year++) {
 const token = randomBytes(24).toString("hex");
 const id = newId();
 db.prepare(`INSERT INTO runs (id, token_hash, nickname, department, avatar, regret, goal_text, notice, serious, goal_sample, round, state, created_at)
-  VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?)`).run(id, createHash("sha256").update(token).digest("hex"), "시연학생", "cse", "m", regret, goal.goalText, goal.notice, 0, 1, 1, JSON.stringify(state), Date.now());
+  VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?)`).run(id, createHash("sha256").update(token).digest("hex"), "시연학생", "cse", "m", "", goal.goalText, goal.notice, 0, 1, 1, JSON.stringify(state), Date.now());
 console.log(`phase=${state.phase} year=${state.year}`);
 console.log(`시연 플레이: /play/${id}?token=${token}`);

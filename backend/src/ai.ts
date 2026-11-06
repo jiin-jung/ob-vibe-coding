@@ -6,7 +6,7 @@ import type { EndingId, GameEvent, GoalType } from "./content.ts";
 import { ENDINGS, GOAL_NAMES } from "./content.ts";
 
 const MODEL = "claude-opus-5-5";
-const client = process.env.ANTHROPIC_API_KEY ? new Anthropic({ maxRetries: 1 }) : null;
+const client = process.env.ANTHROPIC_API_KEY ? new Anthropic({ maxRetries: 0 }) : null;
 
 export const FACTS = `인천대 게임 자료 (이 내용만 사실로 쓴다):
 - 재수강은 C+ 이하만 가능, 성적 상한 A0, 재수강 성적만 인정, 재수강에서 F면 미이수.
@@ -108,8 +108,9 @@ export async function createGoal(department: string, regret: string) {
 - notice: "복귀 처리 통지서"에 넣을 2문장
 - serious: 자해, 극심한 고통, 위기 상황이 보이면 true. 이때 goalText와 notice는 농담 없이 차분하게 쓴다.
 <player>${JSON.stringify({ department, regret })}</player>`,
-    logInput: { department, regret },
-    timeout: 20_000,
+    // 후회 원문은 개인적인 내용이라 로그에 남기지 않는다.
+    logInput: { department, regretLength: regret.length },
+    timeout: 12_000,
     validate: (value) => isSafeText(value.goalText) && isSafeText(value.notice),
   });
   if (!result) return { ...local, isSample: true };
@@ -137,7 +138,7 @@ export async function rewriteEvents(context: { year: number; department: string;
 <player>${JSON.stringify(context)}</player>
 <events>${JSON.stringify(skeleton)}</events>`,
     logInput: { ...context, eventIds: events.map((event) => event.id) },
-    timeout: 25_000,
+    timeout: 15_000,
     validate: ({ events: rewritten }) => rewritten.length === events.length &&
       rewritten.every((event, index) => event.options.length === events[index].options.length &&
         [event.title, event.body, ...event.options.flatMap((option) => [option.label, option.result])].every(isSafeText)),
@@ -173,7 +174,7 @@ reason은 사진에서 본 것을 근거로 한 공문체 한 문장이다.
 과제: ${quest}` },
     ],
     logInput: { quest },
-    timeout: 30_000,
+    timeout: 20_000,
     validate: ({ reason }) => isSafeText(reason),
   });
   if (!result) return { judged: false, pass: false, reason: "AI 판정이 지금 어렵습니다. 다시 시도하거나 나중에 인증하십시오." };
@@ -200,7 +201,7 @@ export async function writeEnding(input: { department: string; goal: string; end
 - nextAction: 이 플레이어가 오늘 현실에서 해볼 작고 안전한 행동 한 문장.
 <player>${JSON.stringify({ ...input, endingName: ENDINGS[input.ending].name })}</player>`,
     logInput: input,
-    timeout: 25_000,
+    timeout: 12_000,
     validate: ({ title, ending, nextAction }) => titles.includes(title) && isSafeText(ending) && isSafeText(nextAction),
   });
   return result ? { ...result, isSample: false } : { ...sample, isSample: true };

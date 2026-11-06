@@ -5,7 +5,7 @@ import { getSignedUrl } from "@aws-sdk/s3-request-presigner";
 
 const bucket = process.env.S3_BUCKET;
 const client = bucket ? new S3Client({ region: process.env.AWS_REGION }) : null;
-// ponytail: S3 설정이 없을 때 쓰는 로컬 저장. 7일 자동 삭제는 S3 Lifecycle에서만 동작한다.
+// ponytail: S3 설정이 없을 때 쓰는 로컬 저장. 만료 삭제는 서버의 purgeExpiredPhotos가 맡는다.
 const localDir = new URL("../../.local/uploads/", import.meta.url).pathname;
 const localPath = (key: string) => join(localDir, key.replaceAll("/", "_"));
 
@@ -18,8 +18,8 @@ export async function savePhoto(key: string, body: Buffer) {
   writeFileSync(localPath(key), body);
 }
 
-export async function photoUrl(photoId: string, key: string, runToken: string, runId: string) {
-  if (!client) return `/api/runs/${runId}/photos/${photoId}?token=${runToken}`;
+export async function photoUrl(photoId: string, key: string, runId: string) {
+  if (!client) return `/api/runs/${runId}/photos/${photoId}`;
   return getSignedUrl(client, new GetObjectCommand({ Bucket: bucket, Key: key }), { expiresIn: 3600 });
 }
 

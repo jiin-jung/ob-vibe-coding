@@ -63,6 +63,23 @@ test("토큰 없이는 플레이를 볼 수 없고 숨은 값과 시드는 응�
   assert.equal(created.json.run.goalType, "인맥");
 });
 
+test("후회 원문은 저장하지 않는다", async () => {
+  const { db } = await import("./db.ts");
+  const regret = "저장되면 안 되는 문장입니다";
+  await call({}, "POST", "/runs", { ...newRun, regret });
+  const dump = JSON.stringify([db.prepare("SELECT * FROM runs").all(), db.prepare("SELECT * FROM ai_logs").all()]);
+  assert.ok(!dump.includes(regret));
+});
+
+test("일주일 지난 사진은 삭제 처리된다", async () => {
+  const { db } = await import("./db.ts");
+  const { purgeExpiredPhotos } = await import("./app.ts");
+  const created = await call({}, "POST", "/runs", newRun);
+  db.prepare("INSERT INTO photos (id, run_id, storage_key, reason, created_at) VALUES ('old', ?, 'runs/test/none.jpg', '', 0)").run(created.json.run.id);
+  assert.equal(await purgeExpiredPhotos(), 1);
+  assert.ok((db.prepare("SELECT deleted_at FROM photos WHERE id = 'old'").get() as any).deleted_at);
+});
+
 test("심각한 후회는 위기 표시가 켜진다", async () => {
   const created = await call({}, "POST", "/runs", { ...newRun, regret: "다 그만두고 죽고 싶었어요" });
   assert.equal(created.json.run.serious, true);
