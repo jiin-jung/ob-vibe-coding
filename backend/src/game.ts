@@ -1,14 +1,15 @@
 import {
-  ACHIEVEMENTS, ACTIVITIES, CHAINS, COURSES, ENDINGS, ENGLISH_EVENT, EVENTS, INCIDENTS, INTERVIEW_EVENT, ITEMS, LABS, START_CARDS,
+  ACHIEVEMENTS, ACTIVITIES, CHAINS, COURSES, ENDINGS, ENGLISH_EVENT, EVENTS, INCIDENTS, INTERVIEW_EVENT, ITEMS, LABS, REACTIONS, SIGNUP_RESULTS, START_CARDS, STYLES,
 } from "./content.ts";
-import type { AchievementId, Department, Effects, EndingId, EventOption, GameEvent, GoalType, StatKey } from "./content.ts";
+import type { AchievementId, Department, Effects, EndingId, EventOption, FocusStat, GameEvent, GoalType, StatKey } from "./content.ts";
 
 export const GRADUATION_CREDITS = 130;
-export const TUITION = 200;
-export const YEARLY_LOAN_LIMIT = 200;
+export const TOTAL_SEMESTERS = 8;
+export const TUITION = 100;
+export const SEMESTER_LOAN_LIMIT = 100;
 export const DEBT_LIMIT = 500;
-export const LIVING_COST = 50;
-const ALLOWANCE = 30;
+export const LIVING_COST = 25;
+export const ALLOWANCE = 15;
 const MAX_LEAVES = 2;
 
 const GRADE_POINTS = { "A+": 4.5, A0: 4.0, "B+": 3.5, B0: 3.0, "C+": 2.5, C0: 2.0, "D+": 1.5, D0: 1.0, F: 0 } as const;
@@ -30,10 +31,22 @@ export interface PlayerEvent extends GameEvent {
 }
 
 export interface YearReport {
-  year: number;
+  semester: number;
   semesterGpa: number;
   earned: number;
+  growth: Partial<Record<FocusStat, number>>;
   notices: { title: string; body: string }[];
+  reactions: string[];
+}
+
+export type SignupTier = keyof typeof SIGNUP_RESULTS;
+
+export interface SignupState {
+  startedAt: number;
+  delayMs: number;
+  tier: SignupTier | null;
+  reactionMs: number | null;
+  credits: number | null;
 }
 
 export interface GameState {
@@ -42,6 +55,7 @@ export interface GameState {
   department: Department;
   goalType: GoalType;
   year: number;
+  semester: number;
   phase: Phase;
   stats: Record<Exclude<StatKey, "money">, number>;
   money: number;
@@ -59,6 +73,10 @@ export interface GameState {
   lastResult: { title: string; result: string; changes: Effects; success: boolean } | null;
   report: YearReport | null;
   startCard: string;
+  style: string;
+  focus: FocusStat[];
+  signup: SignupState | null;
+  gaps: number;
   leaves: number;
   usedParttime: number;
   earlyGraduated: boolean;
@@ -71,6 +89,8 @@ export interface PlanInput {
   labId: string | null;
   items: string[];
 }
+
+export class GameError extends Error {}
 
 function roll(state: GameState) {
   state.rolls += 1;
@@ -89,12 +109,15 @@ export function applyEffects(state: GameState, effects: Effects) {
   }
 }
 
-export function createState(seed: number, department: Department, goalType: GoalType): GameState {
+export function createState(seed: number, department: Department, goalType: GoalType, styleId = "scholar", focus: FocusStat[] = ["study", "network"]): GameState {
+  const style = STYLES.find((item) => item.id === styleId);
+  if (!style) throw new GameError("없는 스타일입니다.");
   const state: GameState = {
-    seed, rolls: 0, department, goalType, year: 1, phase: "plan",
-    stats: { study: 50, network: 50, mental: 60, romance: 50, luck: 50, reputation: 40, career: 40 },
+    seed, rolls: 0, department, goalType, year: 1, semester: 1, phase: "plan",
+    stats: { ...style.stats, luck: 50, reputation: 40, career: 40 },
     money: 100, debt: 0, courses: [], flags: [], usedEvents: [], items: [], labId: null, labCount: 0, plan: null,
     buffs: { notes: false, energy: false }, events: [], eventIndex: 0, lastResult: null, report: null,
+    style: style.id, focus, signup: null, gaps: 0,
     startCard: "", leaves: 0, usedParttime: 0, earlyGraduated: false,
   };
   const card = pick(state, START_CARDS);
@@ -120,7 +143,8 @@ const addFlag = (state: GameState, flag?: string) => { if (flag && !hasFlag(stat
 
 export function creditOptions(state: GameState) {
   const gpa = calculateGpa(state);
-  return [34, 38, ...(gpa >= 3.5 ? [42] : []), ...(gpa >= 4.0 ? [48] : [])];
+  // 인천대 수강 기준: 학기 17~19학점, 직전 평점 3.5 이상 21학점, 4.0 이상 24학점 (docs/INU_FACTS.md).
+  return [17, 19, ...(gpa >= 3.5 ? [21] : []), ...(gpa >= 4.0 ? [24] : [])];
 }
 
 export function retakeOptions(state: GameState) {
@@ -157,14 +181,41 @@ export function planCost(state: GameState, plan: Pick<PlanInput, "activity" | "i
   const income = activityIncome(state, plan.activity);
   const need = TUITION + LIVING_COST + itemCost;
   const shortfall = Math.max(0, need - state.money - income);
-  return { income, tuition: TUITION, living: LIVING_COST, itemCost, shortfall, needsLoan: shortfall > 0, canLoan: shortfall <= YEARLY_LOAN_LIMIT && state.debt + shortfall <= DEBT_LIMIT };
+  return { income, tuition: TUITION, living: LIVING_COST, itemCost, shortfall, needsLoan: shortfall > 0, canLoan: shortfall <= SEMESTER_LOAN_LIMIT && state.debt + shortfall <= DEBT_LIMIT };
 }
 
-export class GameError extends Error {}
+export function startSignup(state: GameState, now: number) {
+  if (state.phase !== "plan") throw new GameError("지금은 수강신청 기간이 아닙니다.");
+  if (state.signup?.tier) throw new GameError("이번 학기 수강신청은 끝났습니다.");
+  state.signup = { startedAt: now, delayMs: 1500 + Math.floor(roll(state) * 3000), tier: null, reactionMs: null, credits: null };
+  return state.signup;
+}
 
-export function applyPlan(state: GameState, plan: PlanInput, takeLoan: boolean) {
-  if (state.phase !== "plan") throw new GameError("지금은 학년 계획 단계가 아닙니다.");
-  if (!creditOptions(state).includes(plan.credits)) throw new GameError("신청할 수 없는 학점입니다.");
+export function signupTier(reactionMs: number): SignupTier {
+  if (reactionMs < 0 || reactionMs > 1000) return "spaceGap";
+  return reactionMs <= 500 ? "allClear" : "partial";
+}
+
+export function finishSignup(state: GameState, now: number) {
+  const signup = state.signup;
+  if (state.phase !== "plan" || !signup || signup.tier) throw new GameError("수강신청을 먼저 시작해 주세요.");
+  // 버튼이 열리기 전 클릭은 음수가 되어 우주공강으로 처리된다. 시간은 서버 기준이다.
+  const reactionMs = now - signup.startedAt - signup.delayMs;
+  const tier = signupTier(reactionMs);
+  const options = creditOptions(state);
+  signup.tier = tier;
+  signup.reactionMs = reactionMs;
+  signup.credits = tier === "allClear" ? options[options.length - 1] : tier === "partial" ? 17 : 15;
+  if (tier === "spaceGap") state.gaps += 1;
+  applyEffects(state, SIGNUP_RESULTS[tier].effects);
+  return signup;
+}
+
+export function applyPlan(state: GameState, input: Omit<PlanInput, "credits">, takeLoan: boolean) {
+  if (state.phase !== "plan") throw new GameError("지금은 학기 계획 단계가 아닙니다.");
+  if (!state.signup?.credits) throw new GameError("수강신청을 먼저 해 주세요.");
+  const plan: PlanInput = { ...input, credits: state.signup.credits };
+  if (plan.items.length > 1) throw new GameError("상점에서는 학기마다 하나만 살 수 있습니다.");
   const activity = availableActivities(state).find((item) => item.id === plan.activity);
   if (!activity || activity.locked) throw new GameError("선택할 수 없는 활동입니다.");
   if (plan.activity === "lab" && !availableLabs(state).some((lab) => lab.id === plan.labId)) throw new GameError("연구실을 골라 주세요.");
@@ -179,7 +230,7 @@ export function applyPlan(state: GameState, plan: PlanInput, takeLoan: boolean) 
   }
   state.money = Math.max(0, state.money + cost.income - TUITION - LIVING_COST - cost.itemCost);
   if (plan.activity === "parttime") state.usedParttime += 1;
-  if (plan.activity === "contest" && roll(state) < 0.2 + state.stats.luck / 200) applyEffects(state, { money: 200, career: 8 });
+  if (plan.activity === "contest" && roll(state) < 0.2 + state.stats.luck / 200) applyEffects(state, { money: 100, career: 5 });
   if (plan.activity === "english" && roll(state) < 0.7) addFlag(state, "english-cert");
   if (plan.activity === "lab") { state.labCount += 1; state.labId = plan.labId; }
   if (plan.activity === "dream") addFlag(state, "dream");
@@ -192,9 +243,9 @@ export function applyPlan(state: GameState, plan: PlanInput, takeLoan: boolean) 
     if (id === "notes") state.buffs.notes = true;
     if (id === "energy") state.buffs.energy = true;
   }
-  if (hasFlag(state, "pass") || state.items.includes("pass")) applyEffects(state, { mental: 5 });
+  if (state.items.includes("pass")) applyEffects(state, { mental: 3 });
   const load = plan.credits + (plan.retakeCourseId ? 3 : 0);
-  const mentalCost = Math.max(0, (load - 34) * 0.8) + 5;
+  const mentalCost = Math.max(0, (load - 17) * 0.8) + 3;
   applyEffects(state, { mental: -Math.round(mentalCost * (state.buffs.energy ? 0.4 : 1)) });
   state.plan = plan;
   state.events = pickEvents(state);
@@ -212,21 +263,26 @@ export function takeLeave(state: GameState, activity: string) {
   if (!ACTIVITIES.some((item) => item.id === activity)) throw new GameError("활동을 골라 주세요.");
   if (!canTakeLeave(state, activity)) throw new GameError("휴학은 대출 한도를 넘을 때만, 두 번까지 가능합니다.");
   state.leaves += 1;
-  applyEffects(state, { money: 260, mental: 15, study: -5 });
-  state.report = { year: state.year, semesterGpa: 0, earned: 0, notices: [{ title: "휴학 처리", body: "휴학이 승인되었습니다. 귀하의 학년은 그대로입니다." }] };
+  applyEffects(state, { money: 130, mental: 10, study: -3 });
+  state.signup = null;
+  state.report = { semester: state.semester, semesterGpa: 0, earned: 0, growth: {}, notices: [{ title: "휴학 처리", body: "휴학이 승인되었습니다. 귀하의 학기는 그대로입니다." }], reactions: [] };
   state.phase = "report";
 }
 
 export function pickEvents(state: GameState): PlayerEvent[] {
-  const pool = EVENTS.filter((event) => event.year === state.year && !state.usedEvents.includes(event.id));
+  const unused = EVENTS.filter((event) => !state.usedEvents.includes(event.id));
+  const sameYear = unused.filter((event) => event.year === state.year);
+  const pool = sameYear.length ? sameYear : unused.filter((event) => event.year < state.year);
   const shuffled = [...pool];
   for (let i = shuffled.length - 1; i > 0; i--) {
     const j = Math.floor(roll(state) * (i + 1));
     [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
   }
-  let picked: GameEvent[] = shuffled.slice(0, 2);
-  if (state.year === 4 && !hasFlag(state, "english-cert")) picked = [ENGLISH_EVENT, ...picked.slice(0, 1)];
-  else if (state.year >= 3 && roll(state) < 0.35) picked = [picked[0], { ...INTERVIEW_EVENT, year: state.year }];
+  // 학기마다 전환점은 하나만 둔다.
+  let picked: GameEvent[] = shuffled.slice(0, 1);
+  if (state.semester >= 7 && !hasFlag(state, "english-cert")) picked = [ENGLISH_EVENT];
+  else if (state.semester >= 5 && !state.usedEvents.includes(INTERVIEW_EVENT.id) && roll(state) < 0.3) picked = [{ ...INTERVIEW_EVENT, year: state.year }];
+  if (!picked.length) picked = [structuredClone(EVENTS[Math.floor(roll(state) * EVENTS.length)])];
   const events = picked.map((event) => structuredClone(event)) as PlayerEvent[];
   state.usedEvents.push(...events.map((event) => event.id));
   return events;
@@ -249,7 +305,7 @@ export function applyChoice(state: GameState, optionIndex: number) {
 
 function rollGrade(state: GameState, load: number): Grade {
   const { study, mental, luck } = state.stats;
-  const score = 36 + study * 0.62 + mental * 0.12 + luck * 0.08 + (36 - load) * 0.35 + (state.buffs.notes ? 6 : 0) + (roll(state) - 0.5) * 18;
+  const score = 36 + study * 0.62 + mental * 0.12 + luck * 0.08 + (18 - load) * 0.7 + (state.buffs.notes ? 6 : 0) + (roll(state) - 0.5) * 18;
   if (score >= 90) return "A+";
   if (score >= 84) return "A0";
   if (score >= 77) return "B+";
@@ -268,51 +324,69 @@ function capRetake(grade: Grade): Grade {
 function finishYear(state: GameState) {
   const plan = state.plan!;
   const load = plan.credits + (plan.retakeCourseId ? 3 : 0);
-  const names = COURSES[state.department][state.year - 1];
+  const yearCourses = COURSES[state.department][state.year - 1];
+  const names = state.semester % 2 === 1 ? yearCourses.slice(0, 2) : yearCourses.slice(2);
   const before = earnedCredits(state);
   const notices: YearReport["notices"] = [];
   for (const [index, name] of names.entries()) {
-    state.courses.push({ id: `${state.year}-${index}`, name, year: state.year, credits: 3, grade: rollGrade(state, load), retaken: false });
+    state.courses.push({ id: `${state.semester}-${index}`, name, year: state.semester, credits: 3, grade: rollGrade(state, load), retaken: false });
   }
-  state.courses.push({ id: `${state.year}-etc`, name: "기타 이수", year: state.year, credits: plan.credits - 9, grade: rollGrade(state, load), retaken: false });
+  state.courses.push({ id: `${state.semester}-etc`, name: "기타 이수", year: state.semester, credits: plan.credits - names.length * 3, grade: rollGrade(state, load), retaken: false });
   if (plan.retakeCourseId) {
     const course = state.courses.find((item) => item.id === plan.retakeCourseId)!;
     course.grade = capRetake(rollGrade(state, load));
     // 재수강 성적은 재수강한 학년의 평점과 장학금에 반영한다.
-    course.year = state.year;
+    course.year = state.semester;
     course.retaken = true;
     addFlag(state, "retaker");
     notices.push({ title: "재수강 처리", body: `${course.name} 재수강 성적 ${course.grade}. 과거의 귀하는 삭제되었습니다.` });
   }
-  const gpa = calculateGpa(state, state.year);
+  const gpa = calculateGpa(state, state.semester);
   if (gpa >= 4.0) {
-    applyEffects(state, { money: 200 });
-    addFlag(state, "full-scholar");
-    notices.push({ title: "전액 장학금", body: "성적 장학금 200만 원이 지급되었습니다. 전산 오류가 아닙니다." });
-  } else if (gpa >= 3.5) {
     applyEffects(state, { money: 100 });
-    notices.push({ title: "성적 장학금", body: "성적 장학금 100만 원이 지급되었습니다." });
+    addFlag(state, "full-scholar");
+    notices.push({ title: "전액 장학금", body: "성적 장학금 100만 원이 지급되었습니다. 전산 오류가 아닙니다." });
+  } else if (gpa >= 3.5) {
+    applyEffects(state, { money: 50 });
+    notices.push({ title: "성적 장학금", body: "성적 장학금 50만 원이 지급되었습니다." });
   }
   if (gpa < 2.0) {
     addFlag(state, "warning");
     notices.push({ title: "학사경고", body: "귀하의 평점으로 학사경고 대상임을 통지합니다. 게임 기준이며 실제 기준이 아닙니다." });
   }
-  for (const chain of CHAINS.filter((item) => item.year === state.year && hasFlag(state, item.flag))) {
+  for (const chain of CHAINS.filter((item) => item.year === state.year && hasFlag(state, item.flag) && !hasFlag(state, `chain:${item.flag}`))) {
+    addFlag(state, `chain:${chain.flag}`);
     applyEffects(state, chain.effects);
     notices.push({ title: chain.title, body: chain.body });
   }
-  const incident = pick(state, INCIDENTS);
-  applyEffects(state, incident.effects);
-  notices.push({ title: incident.title, body: incident.body });
+  if (roll(state) < 0.6) {
+    const incident = pick(state, INCIDENTS);
+    applyEffects(state, incident.effects);
+    notices.push({ title: incident.title, body: incident.body });
+  }
   // 방학 동안 회복한다. 없으면 멘탈이 3학년쯤 바닥나 모든 판이 비슷해진다.
-  applyEffects(state, { mental: 12 });
+  applyEffects(state, { mental: 7 });
+  const growth: YearReport["growth"] = {};
+  for (const stat of ["study", "network", "mental", "romance"] as FocusStat[]) {
+    const before = state.stats[stat];
+    applyEffects(state, { [stat]: state.focus.includes(stat) ? 3 : 0 });
+    growth[stat] = state.stats[stat] - before;
+  }
+  const signupTierNow = state.signup?.tier;
+  const reactionPool = [
+    ...(gpa >= 3.7 ? REACTIONS.high : gpa < 2.5 ? REACTIONS.low : REACTIONS.normal),
+    ...(signupTierNow === "spaceGap" ? REACTIONS.spaceGap : signupTierNow === "allClear" ? REACTIONS.allClear : []),
+    ...(state.debt > 0 ? REACTIONS.debt : []),
+  ];
+  const reactions = [...reactionPool].sort(() => roll(state) - 0.5).slice(0, 3);
   state.buffs = { notes: false, energy: false };
-  state.report = { year: state.year, semesterGpa: gpa, earned: earnedCredits(state) - before, notices };
+  state.signup = null;
+  state.report = { semester: state.semester, semesterGpa: gpa, earned: earnedCredits(state) - before, growth, notices, reactions };
   state.phase = "report";
 }
 
 export const isEligibleEarly = (state: GameState) =>
-  state.year === 3 && earnedCredits(state) >= GRADUATION_CREDITS && calculateGpa(state) >= 4.0 && hasFlag(state, "english-cert");
+  state.semester === 6 && earnedCredits(state) >= GRADUATION_CREDITS && calculateGpa(state) >= 4.0 && hasFlag(state, "english-cert");
 
 export function continueAfterReport(state: GameState) {
   if (state.phase !== "report") throw new GameError("지금은 넘어갈 수 없습니다.");
@@ -324,8 +398,9 @@ export function continueAfterReport(state: GameState) {
 
 function advanceYear(state: GameState) {
   state.report = null;
-  if (state.year >= 4) { state.phase = "done"; return; }
-  state.year += 1;
+  if (state.semester >= TOTAL_SEMESTERS) { state.phase = "done"; return; }
+  state.semester += 1;
+  state.year = Math.ceil(state.semester / 2);
   state.phase = "plan";
 }
 
@@ -342,7 +417,7 @@ export function calculateEnding(state: GameState): EndingId {
   if ((hasFlag(state, "dream") || hasFlag(state, "council")) && reputation >= 80 && network >= 70) return "president";
   if (hasFlag(state, "startup") && network >= 60 && luck >= 60) return "startup";
   if (gpa >= 3.7 && career >= 85) return "bigCompany";
-  if (gpa >= 4.3) return "topStudent";
+  if (gpa >= 4.35) return "topStudent";
   if (state.earlyGraduated) return "early";
   if (state.labCount >= 2 && gpa >= 3.8) return "gradSchool";
   if (romance >= 90) return "romantic";
@@ -361,7 +436,8 @@ export function calculateAchievements(state: GameState): AchievementId[] {
   }
   if (hasFlag(state, "warning") || hasFlag(state, "warning-survive")) achievements.add("warning");
   if (hasFlag(state, "retaker")) achievements.add("retaker");
-  if (state.usedParttime >= 3) achievements.add("parttime");
+  if (state.gaps >= 2) achievements.add("spaceGap");
+  if (state.usedParttime >= 5) achievements.add("parttime");
   if (hasFlag(state, "exchange")) achievements.add("exchange");
   if (hasFlag(state, "full-scholar")) achievements.add("fullScholar");
   return [...achievements];

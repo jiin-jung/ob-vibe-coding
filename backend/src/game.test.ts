@@ -1,6 +1,6 @@
 import assert from "node:assert/strict";
 import test from "node:test";
-import { applyChoice, applyPlan, availableActivities, calculateAchievements, calculateEnding, chooseEarly, continueAfterReport, createState, creditOptions, earnedCredits, planCost, retakeOptions, takeLeave } from "./game.ts";
+import { applyChoice, applyPlan, availableActivities, calculateAchievements, calculateEnding, chooseEarly, continueAfterReport, createState, earnedCredits, finishSignup, startSignup, planCost, retakeOptions, takeLeave } from "./game.ts";
 import type { GameState } from "./game.ts";
 
 function playRandomGame(seed: number, policy: "random" | "study" | "network" | "career" | "startup" = "random") {
@@ -13,15 +13,17 @@ function playRandomGame(seed: number, policy: "random" | "study" | "network" | "
   const favoured: Record<string, RegExp> = {
     random: /$^/, study: /계절|본전공|밤샌|점검|평점|1교시|지나친|공부|투표|남는/, network: /지원|출마|참석|가입|커피|유지|교수님께/, career: /들어간|자기소개서|포트폴리오|복수|연구|계획|혼자|지원|지금/, startup: /도전|참석|가입|커피|출마|교수|자기|지금/,
   };
-  for (let guard = 0; guard < 80 && state.phase !== "done"; guard++) {
+  for (let guard = 0; guard < 240 && state.phase !== "done"; guard++) {
     if (state.phase === "plan") {
       const options = availableActivities(state).filter((item) => !item.locked);
       let activity = options[random(options.length)].id;
       for (const want of preferred[policy]) if (options.some((item) => item.id === want) && (want !== "english" || !state.flags.includes("english-cert"))) { activity = want; break; }
-      const credits = creditOptions(state);
+      if (!state.signup?.tier) {
+        const signup = startSignup(state, 0);
+        finishSignup(state, signup.delayMs + (policy === "study" || random(3) ? 300 : 800));
+      }
       const retake = retakeOptions(state);
       const plan = {
-        credits: credits[policy === "study" ? credits.length - 1 : 1],
         retakeCourseId: retake.length && (policy === "study" || random(2)) ? retake[0].id : null,
         activity,
         labId: activity === "lab" ? "gen-ai" : null,
@@ -54,15 +56,46 @@ test("같은 시드와 선택이면 결과가 같다", () => {
 
 test("지금 학년 단계가 아니면 계획을 거부한다", () => {
   const state = createState(1, "cse", "study");
-  applyPlan(state, { credits: 34, retakeCourseId: null, activity: "work", labId: null, items: [] }, true);
-  assert.throws(() => applyPlan(state, { credits: 34, retakeCourseId: null, activity: "work", labId: null, items: [] }, true));
+  const plan = { retakeCourseId: null, activity: "work", labId: null, items: [] };
+  assert.throws(() => applyPlan(state, plan, true), /수강신청/);
+  const signup = startSignup(state, 0);
+  finishSignup(state, signup.delayMs + 200);
+  applyPlan(state, plan, true);
+  assert.throws(() => applyPlan(state, plan, true));
+});
+
+test("수강신청 반응 시간으로 결과가 갈리고 먼저 누르면 우주공강이다", () => {
+  const cases: [number, string][] = [[300, "allClear"], [800, "partial"], [1500, "spaceGap"], [-200, "spaceGap"]];
+  for (const [reaction, tier] of cases) {
+    const state = createState(5, "cse", "study");
+    const signup = startSignup(state, 1000);
+    finishSignup(state, 1000 + signup.delayMs + reaction);
+    assert.equal(signup.tier, tier);
+    assert.throws(() => finishSignup(state, 9999));
+    assert.throws(() => startSignup(state, 9999));
+  }
+});
+
+test("8학기를 마치면 끝나고 학년은 학기에서 계산된다", () => {
+  for (let seed = 1; seed < 100; seed++) {
+    const state = playRandomGame(seed, "random");
+    assert.equal(state.semester, state.earlyGraduated ? 6 : 8);
+    assert.equal(state.year, Math.ceil(state.semester / 2));
+  }
+});
+
+test("상점은 학기마다 하나만 살 수 있다", () => {
+  const state = createState(6, "cse", "study");
+  const signup = startSignup(state, 0);
+  finishSignup(state, signup.delayMs + 200);
+  assert.throws(() => applyPlan(state, { retakeCourseId: null, activity: "parttime", labId: null, items: ["book", "charm"] }, true), /하나/);
 });
 
 test("휴학은 대출 한도를 넘을 때만 두 번까지 가능하다", () => {
   const state = createState(3, "cse", "study");
   assert.throws(() => takeLeave(state, "work"));
   state.money = 0;
-  state.debt = 400;
+  state.debt = 450;
   takeLeave(state, "club");
   continueAfterReport(state);
   state.money = 0;

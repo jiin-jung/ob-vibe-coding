@@ -1,5 +1,13 @@
+export interface SignupResult {
+  tier: "allClear" | "partial" | "spaceGap";
+  credits: number;
+  reactionMs: number;
+  title: string;
+  body: string;
+}
+
 export interface PlanOptions {
-  creditOptions: number[];
+  signup: SignupResult | null;
   retakeOptions: { id: string; name: string; grade: string; credits: number }[];
   activities: { id: string; name: string; income: number; description: string; locked: string | null }[];
   labs: { id: string; name: string; route: string }[];
@@ -7,7 +15,7 @@ export interface PlanOptions {
   tuition: number;
   living: number;
   allowance: number;
-  yearlyLoanLimit: number;
+  loanLimit: number;
   debtRoom: number;
   leaveActivities: string[];
 }
@@ -25,7 +33,13 @@ export interface RunView {
   serious: boolean;
   isGoalSample: boolean;
   startCard: { name: string; body: string };
+  style: string;
+  focus: string[];
+  courses: { id: string; name: string; year: number; credits: number; grade: string; retaken: boolean }[];
   year: number;
+  semester: number;
+  term: number;
+  totalSemesters: number;
   phase: "plan" | "event" | "report" | "early" | "done";
   stats: { study: number; network: number; mental: number; romance: number };
   money: number;
@@ -37,7 +51,7 @@ export interface RunView {
   plan: PlanOptions | null;
   event: { title: string; body: string; isSample: boolean; options: { label: string; chance: number | null; changes: Record<string, number> }[] } | null;
   lastResult: { title: string; result: string; changes: Record<string, number>; success: boolean } | null;
-  report: { year: number; semesterGpa: number; earned: number; notices: { title: string; body: string }[] } | null;
+  report: { semester: number; semesterGpa: number; earned: number; growth: Record<string, number>; notices: { title: string; body: string }[]; reactions: string[] } | null;
   canEarly: boolean;
 }
 

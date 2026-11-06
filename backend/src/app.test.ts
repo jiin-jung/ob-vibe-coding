@@ -2,7 +2,7 @@ import assert from "node:assert/strict";
 import test from "node:test";
 
 process.env.DB_PATH = ":memory:";
-delete process.env.ANTHROPIC_API_KEY;
+delete process.env.GEMINI_API_KEY;
 const logs: string[] = [];
 const realLog = console.log;
 console.log = (...args: unknown[]) => { logs.push(args.join(" ")); };
@@ -32,7 +32,7 @@ async function login(client: Client, email: string) {
   assert.equal((await call(client, "POST", "/auth/verify", { email, code })).status, 200);
 }
 
-const newRun = { nickname: "재수생", department: "cse", avatar: "m", regret: "다른 과 친구를 못 사귀었어요" };
+const newRun = { nickname: "재수생", department: "cse", avatar: "m", regret: "다른 과 친구를 못 사귀었어요", style: "social", focus: ["network", "study"] };
 
 test("메일 도메인 위장을 막는다", async () => {
   for (const good of ["a@inu.ac.kr", " A@INU.AC.KR "]) assert.ok(isInuEmail(good));
@@ -81,10 +81,13 @@ test("끝까지 플레이하고 결과에 후회 없이 랭킹에 오른다", as
   client.token = created.json.token;
   const id = created.json.run.id;
   let run = created.json.run;
-  for (let guard = 0; guard < 40 && run.phase !== "done"; guard++) {
+  for (let guard = 0; guard < 120 && run.phase !== "done"; guard++) {
     if (run.phase === "plan") {
       const activity = run.plan.activities.find((item: any) => !item.locked && item.id === "work").id;
-      const result = await call(client, "POST", `/runs/${id}/plan`, { credits: run.plan.creditOptions[1], retakeCourseId: null, activity, labId: null, items: [], takeLoan: true });
+      await call(client, "POST", `/runs/${id}/signup/start`);
+      const clicked = await call(client, "POST", `/runs/${id}/signup/click`);
+      assert.equal(clicked.json.tier, "spaceGap", "버튼이 열리기 전 클릭은 실패");
+      const result = await call(client, "POST", `/runs/${id}/plan`, { retakeCourseId: null, activity, labId: null, items: [], takeLoan: true });
       assert.equal(result.status, 200, JSON.stringify(result.json));
       run = result.json;
     } else if (run.phase === "event") {

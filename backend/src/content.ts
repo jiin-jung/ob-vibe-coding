@@ -46,14 +46,14 @@ export interface Activity {
 }
 
 export const ACTIVITIES: Activity[] = [
-  { id: "work", name: "국가근로", income: 180, effects: { mental: -3 }, description: "안정적인 수입. 직전 평점 C0 이상" },
-  { id: "parttime", name: "알바", income: 260, effects: { mental: -14, network: 2 }, description: "많이 벌지만 멘탈이 깎임" },
-  { id: "dream", name: "홍보대사 드림이", income: 120, effects: { reputation: 15, network: 10, mental: -6 }, description: "2학년부터. 평판과 인맥 상승" },
-  { id: "lab", name: "연구실", income: 80, effects: { career: 18, study: 5, mental: -8 }, description: "3학년부터. 가상 연구실" },
-  { id: "club", name: "동아리", income: 0, effects: { romance: 15, network: 12, study: -3 }, description: "돈은 없지만 낭만이 있음" },
-  { id: "tutor", name: "과외", income: 220, effects: { mental: -6, study: 3 }, description: "직전 평점 3.5 이상" },
-  { id: "contest", name: "공모전", income: 40, effects: { career: 8, mental: -6 }, description: "운이 좋으면 상금" },
-  { id: "english", name: "영어 공부", income: 0, effects: { study: 3, mental: -4 }, description: "영어졸업인증 준비" },
+  { id: "work", name: "국가근로", income: 90, effects: { mental: -3 }, description: "안정적인 수입. 직전 평점 C0 이상" },
+  { id: "parttime", name: "알바", income: 130, effects: { mental: -8, network: 1 }, description: "많이 벌지만 멘탈이 깎임" },
+  { id: "dream", name: "홍보대사 드림이", income: 60, effects: { reputation: 8, network: 5, mental: -3 }, description: "2학년부터. 평판과 인맥 상승" },
+  { id: "lab", name: "연구실", income: 40, effects: { career: 10, study: 3, mental: -4 }, description: "3학년부터. 가상 연구실" },
+  { id: "club", name: "동아리", income: 0, effects: { romance: 8, network: 6, study: -2 }, description: "돈은 없지만 낭만이 있음" },
+  { id: "tutor", name: "과외", income: 110, effects: { mental: -3, study: 2 }, description: "직전 평점 3.5 이상" },
+  { id: "contest", name: "공모전", income: 20, effects: { career: 4, mental: -3 }, description: "운이 좋으면 상금" },
+  { id: "english", name: "영어 공부", income: 0, effects: { study: 2, mental: -2 }, description: "영어졸업인증 준비" },
 ];
 
 export interface Item {
@@ -64,10 +64,10 @@ export interface Item {
 }
 
 export const ITEMS: Item[] = [
-  { id: "energy", name: "에너지 음료", price: 10, description: "이번 학년 멘탈 소모 감소" },
-  { id: "notes", name: "선배의 필기 노트", price: 25, description: "이번 학년 성적 상승" },
+  { id: "energy", name: "에너지 음료", price: 10, description: "이번 학기 멘탈 소모 감소" },
+  { id: "notes", name: "선배의 필기 노트", price: 25, description: "이번 학기 성적 상승" },
   { id: "book", name: "중고 전공책", price: 20, description: "학업 소폭 상승" },
-  { id: "pass", name: "통학 패스", price: 30, description: "매 학년 멘탈 회복" },
+  { id: "pass", name: "통학 패스", price: 30, description: "매 학기 멘탈 회복" },
   { id: "suit", name: "면접 정장", price: 40, description: "진로 상승" },
   { id: "charm", name: "부적", price: 15, description: "운 상승" },
 ];
@@ -187,7 +187,7 @@ export const CHAINS: { year: number; flag: string; title: string; body: string; 
 ];
 
 export const INCIDENTS: { id: string; title: string; body: string; effects: Effects }[] = [
-  { id: "scholarship", title: "장학금 당첨", body: "장학금 대상자로 선정되었습니다. 전산 오류가 아님을 재차 확인했습니다.", effects: { money: 30 } },
+  { id: "scholarship", title: "장학금 당첨", body: "장학금 대상자로 선정되었습니다. 전산 오류가 아님을 재차 확인했습니다.", effects: { money: 20 } },
   { id: "festival", title: "대동제", body: "대동제 기간입니다. 귀하의 과제 제출 기한은 연장되지 않습니다.", effects: { romance: 10, study: -4 } },
   { id: "shuttle", title: "셔틀 놓침", body: "셔틀버스가 귀하 없이 출발했습니다. 1교시는 귀하를 기다리지 않습니다.", effects: { mental: -5, study: -3 } },
   { id: "laptop", title: "노트북 고장", body: "귀하의 노트북이 응답하지 않습니다. 과제 파일의 안부를 확인할 수 없습니다.", effects: { money: -20, mental: -5 } },
@@ -207,6 +207,7 @@ export const ACHIEVEMENTS = {
   warning: { name: "학사경고 생존", rarity: "일반", points: 10 },
   retaker: { name: "재수강 장인", rarity: "일반", points: 10 },
   fossil: { name: "화석 선배", rarity: "일반", points: 10 },
+  spaceGap: { name: "우주공강 수집가", rarity: "일반", points: 10 },
   parttime: { name: "알바의 신", rarity: "일반", points: 10 },
   exchange: { name: "교환학생", rarity: "고급", points: 30 },
   fullScholar: { name: "전액 장학금", rarity: "고급", points: 30 },
@@ -234,3 +235,26 @@ export const ENDINGS = {
 } as const;
 
 export type EndingId = keyof typeof ENDINGS;
+
+export type FocusStat = "study" | "network" | "mental" | "romance";
+
+export const STYLES: { id: string; name: string; description: string; stats: Record<FocusStat, number> }[] = [
+  { id: "scholar", name: "도서관 정착형", description: "학업 위주. 평점으로 승부합니다.", stats: { study: 65, network: 40, mental: 55, romance: 40 } },
+  { id: "social", name: "과방 상주형", description: "인맥 위주. 아는 선배가 많습니다.", stats: { study: 40, network: 65, mental: 50, romance: 45 } },
+  { id: "romantic", name: "캠퍼스 낭만형", description: "낭만 위주. 오늘의 하늘을 확인합니다.", stats: { study: 45, network: 45, mental: 50, romance: 60 } },
+];
+
+export const SIGNUP_RESULTS = {
+  allClear: { title: "수강신청 올클", body: "수강신청 올클 처리되었습니다. 귀하의 손가락이 학사 시스템에 기록되었습니다.", effects: { mental: 8, luck: 3 } as Effects },
+  partial: { title: "일부 성공", body: "일부 과목만 신청되었습니다. 나머지는 정정 기간의 귀하에게 이관합니다.", effects: { mental: -2 } as Effects },
+  spaceGap: { title: "우주공강 발생", body: "큰일났습니다. 귀하의 시간표에 우주공강이 생성되었습니다. 복구는 불가능합니다.", effects: { mental: -8, study: -2 } as Effects },
+};
+
+export const REACTIONS = {
+  high: ["이번 학기 평점 올라온 거 봄? 사람이 아니던데", "저 정도면 교수님이 이름 외웠을 듯", "같은 수업 들었는데 왜 결과가 다르죠"],
+  low: ["이번 시험 그거 나만 어려웠던 거 아니지", "재수강 동지 구합니다", "성적 조회 버튼 누르기 전에 심호흡 필수"],
+  normal: ["평범하게 사는 게 제일 어렵다", "이번 학기도 살아남았으면 된 거다", "학식 메뉴 공지가 성적 공지보다 궁금함"],
+  spaceGap: ["우주공강 생긴 사람 손. 같이 학식이나 먹자", "4시간 공강 동안 도서관 지박령 됨"],
+  allClear: ["수강신청 올클이라니 전생에 나라를 구했나", "서버 터지기 전에 들어가는 손가락이 있다던데"],
+  debt: ["졸업하고 갚으면 되지. 일단 오늘 학식부터", "등록금 고지서는 왜 이렇게 빨리 오는 걸까"],
+};

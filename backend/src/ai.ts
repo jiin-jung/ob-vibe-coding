@@ -1,12 +1,11 @@
-import Anthropic from "@anthropic-ai/sdk";
-import { zodOutputFormat } from "@anthropic-ai/sdk/helpers/zod";
+import { GoogleGenAI } from "@google/genai";
 import { z } from "zod";
 import { db, newId } from "./db.ts";
 import type { EndingId, GameEvent, GoalType } from "./content.ts";
 import { ENDINGS, GOAL_NAMES } from "./content.ts";
 
-const MODEL = "claude-opus-5-5";
-const client = process.env.ANTHROPIC_API_KEY ? new Anthropic({ maxRetries: 0 }) : null;
+const MODEL = process.env.GEMINI_MODEL || "gemini-3.5-flash-lite";
+const client = process.env.GEMINI_API_KEY ? new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY }) : null;
 
 export const FACTS = `인천대 게임 자료 (이 내용만 사실로 쓴다):
 - 재수강은 C+ 이하만 가능, 성적 상한 A0, 재수강 성적만 인정, 재수강에서 F면 미이수.
@@ -36,7 +35,7 @@ async function callAi<S extends z.ZodType>(opts: {
   feature: string;
   version: string;
   schema: S;
-  content: Anthropic.MessageParam["content"];
+  content: string;
   logInput: unknown;
   timeout: number;
   validate: (value: z.infer<S>) => boolean;
@@ -47,20 +46,25 @@ async function callAi<S extends z.ZodType>(opts: {
     return null;
   }
   try {
-    const params = {
-      model: MODEL,
-      max_tokens: 8000,
-      system: SYSTEM,
-      messages: [{ role: "user" as const, content: opts.content }],
-      output_config: { effort: "low" as const, format: zodOutputFormat(opts.schema) },
-      fallbacks: "default",
-    };
-    const response = await client.messages.parse(params, {
-      timeout: opts.timeout,
-      headers: { "anthropic-beta": "server-side-fallback-2026-07-01" },
-    });
-    const parsed = response.parsed_output as z.infer<S> | null;
-    if (response.stop_reason === "refusal" || !parsed) throw new Error(`no_output:${response.stop_reason}`);
+    const jsonSchema = z.toJSONSchema(opts.schema) as Record<string, unknown>;
+    delete jsonSchema.$schema;
+    const timer = new AbortController();
+    const timeout = setTimeout(() => timer.abort(), opts.timeout);
+    let outputText: string | undefined;
+    try {
+      const interaction = await client.interactions.create({
+        model: MODEL,
+        system_instruction: SYSTEM,
+        input: opts.content,
+        store: false,
+        response_format: { type: "text", mime_type: "application/json", schema: jsonSchema },
+      }, { signal: timer.signal, maxRetries: 0 });
+      outputText = interaction.output_text;
+    } finally {
+      clearTimeout(timeout);
+    }
+    if (!outputText) throw new Error("no_output");
+    const parsed = opts.schema.parse(JSON.parse(outputText)) as z.infer<S>;
     if (!opts.validate(parsed)) {
       log(feature, version, logInput, parsed, false, true, "validation_failed");
       return null;
@@ -68,7 +72,8 @@ async function callAi<S extends z.ZodType>(opts: {
     log(feature, version, logInput, parsed, true, false);
     return parsed;
   } catch (error) {
-    const message = error instanceof Anthropic.APIError ? `api_${error.status}` : (error as Error).message;
+    const status = (error as { status?: number }).status;
+    const message = status ? `api_${status}` : (error as Error).name === "AbortError" ? "timeout" : (error as Error).name;
     console.error(`[ai:${feature}]`, message);
     log(feature, version, logInput, null, false, true, message);
     return null;
@@ -117,7 +122,7 @@ export async function createGoal(department: string, regret: string) {
   return { ...result, serious: result.serious || local.serious, isSample: false };
 }
 
-export async function rewriteEvents(context: { year: number; department: string; goal: string; flags: string[] }, events: GameEvent[]) {
+export async function rewriteEvents(context: { year: number; semester: number; department: string; goal: string; flags: string[] }, events: GameEvent[]) {
   const schema = z.object({
     events: z.array(z.object({
       title: z.string(),
@@ -176,7 +181,7 @@ export async function writeEnding(input: { department: string; goal: string; end
     content: `코드가 정한 엔딩을 졸업 통지서로 써라.
 - title: 칭호 후보 중 하나를 그대로 고른다. 후보: ${JSON.stringify(titles)}
 - ending: 3문장 이내. 주어진 기록에 없는 사건을 지어내지 않는다.
-- nextAction: 이 플레이어가 오늘 현실에서 해볼 작고 안전한 행동 한 문장.
+- nextAction: 이 플레이어가 오늘 현실에서 해볼 작고 안전한 행동 한 문장. 수면이나 건강 지시는 쓰지 않는다. 숫자는 아라비아 숫자로 쓴다.
 <player>${JSON.stringify({ ...input, endingName: ENDINGS[input.ending].name })}</player>`,
     logInput: input,
     timeout: 12_000,

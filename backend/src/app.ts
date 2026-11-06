@@ -5,13 +5,13 @@ import type { Context } from "hono";
 import { deleteCookie, getCookie, setCookie } from "hono/cookie";
 import { z } from "zod";
 import { createGoal, rewriteEvents, writeEnding } from "./ai.ts";
-import { ACHIEVEMENTS, DEPARTMENTS, ENDINGS, GOAL_NAMES, START_CARDS } from "./content.ts";
-import type { AchievementId, Department, Effects } from "./content.ts";
+import { ACHIEVEMENTS, DEPARTMENTS, ENDINGS, GOAL_NAMES, SIGNUP_RESULTS, START_CARDS, STYLES } from "./content.ts";
+import type { AchievementId, Department, Effects, FocusStat } from "./content.ts";
 import { db, newId } from "./db.ts";
 import { isInuEmail, normalizeEmail } from "./email.ts";
 import {
   applyChoice, applyPlan, availableActivities, availableLabs, calculateAchievements, calculateEnding, calculateGpa, calculateScore, chooseEarly, continueAfterReport,
-  canTakeLeave, createState, creditOptions, earnedCredits, GameError, GRADUATION_CREDITS, isEligibleEarly, LIVING_COST, planCost, retakeOptions, shopItems, statGrade, takeLeave, TUITION, YEARLY_LOAN_LIMIT, DEBT_LIMIT,
+  canTakeLeave, createState, earnedCredits, finishSignup, startSignup, GameError, GRADUATION_CREDITS, isEligibleEarly, LIVING_COST, planCost, retakeOptions, shopItems, statGrade, takeLeave, TOTAL_SEMESTERS, TUITION, SEMESTER_LOAN_LIMIT, DEBT_LIMIT, ALLOWANCE,
 } from "./game.ts";
 import type { GameState } from "./game.ts";
 import { sendMail } from "./mail.ts";
@@ -132,15 +132,15 @@ function publicChanges(effects: Effects) {
 function toRunView(run: Row, state: GameState) {
   const card = START_CARDS.find((item) => item.id === state.startCard)!;
   const plan = state.phase === "plan" ? {
-    creditOptions: creditOptions(state),
     retakeOptions: retakeOptions(state).map(({ id, name, grade, credits }) => ({ id, name, grade, credits })),
     activities: availableActivities(state).map(({ id, name, income, description, locked }) => ({ id, name, income, description, locked })),
     labs: availableLabs(state),
     items: shopItems(state),
     tuition: TUITION,
     living: LIVING_COST,
-    allowance: 30,
-    yearlyLoanLimit: YEARLY_LOAN_LIMIT,
+    allowance: ALLOWANCE,
+    signup: state.signup?.tier ? { tier: state.signup.tier, credits: state.signup.credits, reactionMs: state.signup.reactionMs, ...SIGNUP_RESULTS[state.signup.tier] } : null,
+    loanLimit: SEMESTER_LOAN_LIMIT,
     debtRoom: DEBT_LIMIT - state.debt,
     leaveActivities: availableActivities(state).filter((item) => canTakeLeave(state, item.id)).map((item) => item.id),
   } : null;
@@ -158,7 +158,13 @@ function toRunView(run: Row, state: GameState) {
     serious: Boolean(run.serious),
     isGoalSample: Boolean(run.goal_sample),
     startCard: { name: card.name, body: card.body },
+    style: STYLES.find((item) => item.id === state.style)?.name,
+    focus: state.focus,
+    courses: state.courses.map(({ id, name, year, credits, grade, retaken }) => ({ id, name, year, credits, grade, retaken })),
     year: state.year,
+    semester: state.semester,
+    term: state.semester % 2 === 1 ? 1 : 2,
+    totalSemesters: TOTAL_SEMESTERS,
     phase: state.phase,
     stats: { study: state.stats.study, network: state.stats.network, mental: state.stats.mental, romance: state.stats.romance },
     money: state.money,
@@ -187,12 +193,14 @@ app.post("/runs", async (c) => {
     department: z.enum(["cse", "ice", "ais"]),
     avatar: z.enum(["m", "f"]),
     regret: z.string().trim().min(1).max(300),
+    style: z.enum(["scholar", "social", "romantic"]),
+    focus: z.array(z.enum(["study", "network", "mental", "romance"])).min(1).max(2),
     previousRunId: z.string().max(64).optional(),
   }).parse(await c.req.json());
   const goal = await createGoal(DEPARTMENTS[body.department].name, body.regret);
   const token = randomBytes(24).toString("hex");
   const id = newId();
-  const state = createState(randomInt(1, 2 ** 31), body.department, goal.goalType);
+  const state = createState(randomInt(1, 2 ** 31), body.department, goal.goalType, body.style, [...new Set(body.focus)] as FocusStat[]);
   const user = currentUser(c);
   const previous = body.previousRunId ? db.prepare("SELECT round FROM runs WHERE id = ?").get(body.previousRunId) as Row | undefined : undefined;
   db.prepare(`INSERT INTO runs (id, token_hash, user_id, nickname, department, avatar, regret, goal_text, notice, serious, goal_sample, round, state, created_at)
@@ -212,7 +220,6 @@ app.post("/runs/:id/plan", async (c) => {
   const { run, state, error } = loadRun(c);
   if (error) return error;
   const body = z.object({
-    credits: z.number().int(),
     retakeCourseId: z.string().max(10).nullable(),
     activity: z.string().max(20),
     labId: z.string().max(20).nullable(),
@@ -221,10 +228,26 @@ app.post("/runs/:id/plan", async (c) => {
   }).parse(await c.req.json());
   const { takeLoan, ...plan } = body;
   applyPlan(state, plan, takeLoan);
-  const rewritten = await rewriteEvents({ year: state.year, department: DEPARTMENTS[run.department as Department].name, goal: run.goal_text, flags: state.flags }, state.events);
+  const rewritten = await rewriteEvents({ year: state.year, semester: state.semester, department: DEPARTMENTS[run.department as Department].name, goal: run.goal_text, flags: state.flags }, state.events);
   state.events = rewritten.events.map((event) => ({ ...event, isSample: rewritten.isSample }));
   saveState(run.id, state);
   return c.json(toRunView(run, state));
+});
+
+app.post("/runs/:id/signup/start", (c) => {
+  const { run, state, error } = loadRun(c);
+  if (error) return error;
+  const signup = startSignup(state, Date.now());
+  saveState(run.id, state);
+  return c.json({ delayMs: signup.delayMs });
+});
+
+app.post("/runs/:id/signup/click", (c) => {
+  const { run, state, error } = loadRun(c);
+  if (error) return error;
+  const signup = finishSignup(state, Date.now());
+  saveState(run.id, state);
+  return c.json({ run: toRunView(run, state), reactionMs: signup.reactionMs, tier: signup.tier, credits: signup.credits, ...SIGNUP_RESULTS[signup.tier!] });
 });
 
 app.post("/runs/:id/cost", async (c) => {
