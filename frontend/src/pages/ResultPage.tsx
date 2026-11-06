@@ -65,7 +65,7 @@ export default function ResultPage() {
     }
   }
 
-  if (error) return <main className="page"><p className="hint hint-error" role="alert">{error}</p><Link className="link" to="/">처음으로</Link></main>;
+  if (error) return <main className="page"><p className="hint hint-error" role="alert">{error}</p><Link className="link" to="/home">메인으로</Link></main>;
   if (!result) return <main className="page"><p className="processing">학사 시스템이 졸업 사정을 진행 중입니다.</p></main>;
   const { run } = result;
   const overtime = result.endingId === "overtime";

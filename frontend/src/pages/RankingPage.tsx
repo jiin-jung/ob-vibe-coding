@@ -20,7 +20,7 @@ export default function RankingPage() {
   return (
     <main className="page">
       <header className="topbar">
-        <Link className="logo logo-small" to="/">재수강</Link>
+        <Link className="logo logo-small" to="/home">재수강</Link>
         <span className="hint">10초마다 갱신</span>
       </header>
       <h2 className="wizard-title">졸업생 랭킹</h2>
