@@ -15,7 +15,14 @@
 
 ## 실행
 
-앱 구현 후 추가한다.
+필요 환경: Node.js 22.13 이상
+
+```bash
+cd backend && npm install && npm run dev      # API, http://localhost:8787
+cd frontend && npm install && npm run dev     # 화면, http://localhost:5173
+```
+
+비밀 값은 `.local/.env`에 둔다.
 
 ## 참고 코드와 라이브러리 출처
 
@@ -23,3 +30,5 @@
 
 | 이름 | 용도 | 링크 |
 | --- | --- | --- |
+| Vite, React | 프론트엔드 | https://vite.dev, https://react.dev |
+| Hono | 백엔드 | https://hono.dev |
