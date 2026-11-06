@@ -350,7 +350,7 @@ export default function PlayPage() {
 
   const stopTicking = useCallback(() => setTicking(false), []);
 
-  if (!run) return <main className="page">{error ? <><p className="hint hint-error" role="alert">{error}</p><Link className="link" to="/">처음으로</Link></> : <p className="processing">학사 시스템에 접속 중입니다.</p>}</main>;
+  if (!run) return <main className="page">{error ? <><p className="hint hint-error" role="alert">{error}</p><Link className="link" to="/home">메인으로</Link></> : <p className="processing">학사 시스템에 접속 중입니다.</p>}</main>;
 
   if (!goalSeen) {
     return (

@@ -68,7 +68,7 @@ export default function StartPage() {
   return (
     <main className="page has-cta">
       <header className="wizard-head">
-        <button className="back" aria-label="뒤로" onClick={() => (step === 0 ? navigate("/") : setStep(step - 1))}>
+        <button className="back" aria-label="뒤로" onClick={() => (step === 0 ? navigate("/home") : setStep(step - 1))}>
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M15 18l-6-6 6-6" /></svg>
         </button>
         <div className="dots" aria-label={`${step + 1}/5 단계`}>{[0, 1, 2, 3, 4].map((index) => <i key={index} className={index === step ? "on" : ""} />)}</div>
