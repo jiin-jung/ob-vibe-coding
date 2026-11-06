@@ -9,6 +9,7 @@ export interface PlanOptions {
   allowance: number;
   yearlyLoanLimit: number;
   debtRoom: number;
+  leaveActivities: string[];
 }
 
 export interface RunView {

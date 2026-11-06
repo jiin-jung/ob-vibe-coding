@@ -29,7 +29,7 @@ function playRandomGame(seed: number, policy: "random" | "study" | "network" | "
       };
       if (state.department !== "cse" && plan.labId) plan.labId = state.department === "ice" ? "iot" : "robot";
       const cost = planCost(state, plan);
-      if (cost.needsLoan && !cost.canLoan) { takeLeave(state); continue; }
+      if (cost.needsLoan && !cost.canLoan) { plan.activity = "parttime"; plan.labId = null; }
       applyPlan(state, plan, true);
     } else if (state.phase === "event") {
       const options = state.events[state.eventIndex].options;
@@ -57,6 +57,29 @@ test("지금 학년 단계가 아니면 계획을 거부한다", () => {
   const state = createState(1, "cse", "study");
   applyPlan(state, { credits: 34, retakeCourseId: null, activity: "work", labId: null, items: [] }, true);
   assert.throws(() => applyPlan(state, { credits: 34, retakeCourseId: null, activity: "work", labId: null, items: [] }, true));
+});
+
+test("휴학은 대출 한도를 넘을 때만 두 번까지 가능하다", () => {
+  const state = createState(3, "cse", "study");
+  assert.throws(() => takeLeave(state, "work"));
+  state.money = 0;
+  state.debt = 400;
+  takeLeave(state, "club");
+  continueAfterReport(state);
+  state.money = 0;
+  takeLeave(state, "club");
+  continueAfterReport(state);
+  state.money = 0;
+  assert.throws(() => takeLeave(state, "club"));
+});
+
+test("재수강 성적은 재수강한 학년에 반영된다", () => {
+  for (let seed = 1; seed < 200; seed++) {
+    const state = playRandomGame(seed, "random");
+    for (const course of state.courses.filter((item) => item.retaken)) {
+      assert.ok(course.year > Number(course.id.split("-")[0]));
+    }
+  }
 });
 
 test("학점과 영어졸업인증을 못 채우면 초과 학기다", () => {

@@ -9,6 +9,7 @@ export const YEARLY_LOAN_LIMIT = 200;
 export const DEBT_LIMIT = 500;
 export const LIVING_COST = 50;
 const ALLOWANCE = 30;
+const MAX_LEAVES = 2;
 
 const GRADE_POINTS = { "A+": 4.5, A0: 4.0, "B+": 3.5, B0: 3.0, "C+": 2.5, C0: 2.0, "D+": 1.5, D0: 1.0, F: 0 } as const;
 export type Grade = keyof typeof GRADE_POINTS;
@@ -205,8 +206,14 @@ export function applyPlan(state: GameState, plan: PlanInput, takeLoan: boolean) 
   state.phase = "event";
 }
 
-export function takeLeave(state: GameState) {
+export function canTakeLeave(state: GameState, activity: string) {
+  return state.phase === "plan" && state.leaves < MAX_LEAVES && !planCost(state, { activity, items: [] }).canLoan;
+}
+
+export function takeLeave(state: GameState, activity: string) {
   if (state.phase !== "plan") throw new GameError("지금은 휴학할 수 없습니다.");
+  if (!ACTIVITIES.some((item) => item.id === activity)) throw new GameError("활동을 골라 주세요.");
+  if (!canTakeLeave(state, activity)) throw new GameError("휴학은 대출 한도를 넘을 때만, 두 번까지 가능합니다.");
   state.leaves += 1;
   applyEffects(state, { money: 260, mental: 15, study: -5 });
   state.report = { year: state.year, semesterGpa: 0, earned: 0, notices: [{ title: "휴학 처리", body: "휴학이 승인되었습니다. 귀하의 학년은 그대로입니다." }] };
@@ -275,6 +282,8 @@ function finishYear(state: GameState) {
   if (plan.retakeCourseId) {
     const course = state.courses.find((item) => item.id === plan.retakeCourseId)!;
     course.grade = capRetake(rollGrade(state, load));
+    // 재수강 성적은 재수강한 학년의 평점과 장학금에 반영한다.
+    course.year = state.year;
     course.retaken = true;
     addFlag(state, "retaker");
     notices.push({ title: "재수강 처리", body: `${course.name} 재수강 성적 ${course.grade}. 과거의 귀하는 삭제되었습니다.` });

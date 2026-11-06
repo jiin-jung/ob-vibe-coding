@@ -48,7 +48,7 @@ function StatusBar({ run }: { run: RunView }) {
   );
 }
 
-function PlanStep({ run, plan, onSubmit, onLeave, busy }: { run: RunView; plan: PlanOptions; onSubmit: (body: unknown) => void; onLeave: () => void; busy: boolean }) {
+function PlanStep({ run, plan, onSubmit, onLeave, busy }: { run: RunView; plan: PlanOptions; onSubmit: (body: unknown) => void; onLeave: (activity: string) => void; busy: boolean }) {
   const [credits, setCredits] = useState(plan.creditOptions[Math.min(1, plan.creditOptions.length - 1)]);
   const [retake, setRetake] = useState<string | null>(null);
   const [activity, setActivity] = useState("");
@@ -88,8 +88,8 @@ function PlanStep({ run, plan, onSubmit, onLeave, busy }: { run: RunView; plan: 
           </label>
         ) : (
           <>
-            <p className="hint hint-error">대출 한도를 넘습니다. 활동을 바꾸거나 휴학할 수 있습니다.</p>
-            <button className="btn btn-secondary" disabled={busy} onClick={onLeave}>이번 학년 휴학하기</button>
+            <p className="hint hint-error">대출 한도를 넘습니다. 활동이나 상점 구매를 바꿔 주세요.</p>
+            {plan.leaveActivities.includes(activity) && <button className="btn btn-secondary" disabled={busy} onClick={() => onLeave(activity)}>이번 학년 휴학하기</button>}
           </>
         ))}
       </section>
@@ -239,7 +239,7 @@ export default function PlayPage() {
           <button className="btn" onClick={() => setResult(null)}>확인</button>
         </section>
       ) : run.phase === "plan" && run.plan ? (
-        <PlanStep key={run.year} run={run} plan={run.plan} busy={busy} onLeave={() => act("/leave")} onSubmit={(body) => act("/plan", body)} />
+        <PlanStep key={run.year} run={run} plan={run.plan} busy={busy} onLeave={(activity) => act("/leave", { activity })} onSubmit={(body) => act("/plan", body)} />
       ) : run.phase === "event" && run.event ? (
         <>
           <section className="card notice" key={run.event.title}>
