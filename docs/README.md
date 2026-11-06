@@ -2,6 +2,7 @@
 
 | 문서 | 내용 |
 | --- | --- |
+| [HANDOFF.md](HANDOFF.md) | 인수인계와 남은 일. 먼저 읽기 |
 | [TOPIC.md](TOPIC.md) | 대회 주제 |
 | [RULES.md](RULES.md) | 대회 규칙 |
 | [JUDGING_CRITERIA.md](JUDGING_CRITERIA.md) | 심사 기준과 적합도 |
