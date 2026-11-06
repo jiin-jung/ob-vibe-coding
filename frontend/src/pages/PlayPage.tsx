@@ -3,7 +3,6 @@ import { Link, useNavigate, useParams, useSearchParams } from "react-router-dom"
 import { api, ApiError, runToken, saveRunToken } from "../api";
 import type { PlanOptions, RunView } from "../api";
 import Avatar from "../components/Avatar";
-import QuestPanel from "../components/QuestPanel";
 
 const STAT_LABELS = { study: "학업", network: "인맥", mental: "멘탈", romance: "낭만" } as const;
 const CHANGE_LABELS: Record<string, string> = { ...STAT_LABELS, money: "돈" };
@@ -249,8 +248,7 @@ export default function PlayPage() {
           </section>
           <div className="options">
             {run.event.options.map((option, index) => (
-              <button key={option.label} className={`option ${option.hidden ? "hidden-option" : ""}`} disabled={busy} onClick={() => act("/choice", { optionIndex: index })}>
-                {option.hidden && <small>현실 이수로 열린 선택지</small>}
+              <button key={option.label} className="option" disabled={busy} onClick={() => act("/choice", { optionIndex: index })}>
                 <strong>{option.label}</strong>
                 <span className="option-meta">
                   {option.chance !== null && <b className="chance num">성공 확률 {Math.round(option.chance * 100)}%</b>}
@@ -274,8 +272,6 @@ export default function PlayPage() {
           </ul>
           <button className="btn" disabled={busy} onClick={() => act("/continue")}>다음</button>
         </section>
-      ) : run.phase === "quest" ? (
-        <QuestPanel run={run} onPassed={setRun} onLater={() => act("/quest/later")} />
       ) : run.phase === "early" ? (
         <section className="card notice">
           <span className="notice-tag">조기 졸업 안내</span>

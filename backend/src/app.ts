@@ -1,23 +1,20 @@
 import { createHash, randomBytes, randomInt, timingSafeEqual } from "node:crypto";
 import { getConnInfo } from "@hono/node-server/conninfo";
 import { Hono } from "hono";
-import { bodyLimit } from "hono/body-limit";
 import type { Context } from "hono";
 import { deleteCookie, getCookie, setCookie } from "hono/cookie";
-import sharp from "sharp";
 import { z } from "zod";
-import { createGoal, judgeQuestPhoto, rewriteEvents, writeEnding } from "./ai.ts";
-import { ACHIEVEMENTS, DEPARTMENTS, ENDINGS, GOAL_NAMES, QUEST_IDS, START_CARDS } from "./content.ts";
+import { createGoal, rewriteEvents, writeEnding } from "./ai.ts";
+import { ACHIEVEMENTS, DEPARTMENTS, ENDINGS, GOAL_NAMES, START_CARDS } from "./content.ts";
 import type { AchievementId, Department, Effects } from "./content.ts";
 import { db, newId } from "./db.ts";
 import { isInuEmail, normalizeEmail } from "./email.ts";
 import {
   applyChoice, applyPlan, availableActivities, availableLabs, calculateAchievements, calculateEnding, calculateGpa, calculateScore, chooseEarly, continueAfterReport,
-  canTakeLeave, createState, creditOptions, earnedCredits, GameError, GRADUATION_CREDITS, isEligibleEarly, LIVING_COST, planCost, resolveQuest, retakeOptions, shopItems, statGrade, takeLeave, TUITION, YEARLY_LOAN_LIMIT, DEBT_LIMIT,
+  canTakeLeave, createState, creditOptions, earnedCredits, GameError, GRADUATION_CREDITS, isEligibleEarly, LIVING_COST, planCost, retakeOptions, shopItems, statGrade, takeLeave, TUITION, YEARLY_LOAN_LIMIT, DEBT_LIMIT,
 } from "./game.ts";
 import type { GameState } from "./game.ts";
 import { sendMail } from "./mail.ts";
-import { deletePhoto, photoUrl, readLocalPhoto, savePhoto } from "./s3.ts";
 
 type Row = Record<string, any>;
 const sha = (value: string) => createHash("sha256").update(value).digest("hex");
@@ -25,15 +22,13 @@ const sha = (value: string) => createHash("sha256").update(value).digest("hex");
 const CODE_TTL = 10 * 60_000;
 const RESEND_GAP = 60_000;
 const MAX_ATTEMPTS = 5;
-const PHOTO_TTL = 7 * 24 * 60 * 60_000;
 const SESSION_TTL = 30 * 24 * 60 * 60_000;
-const MAX_PHOTO = 10 * 1024 * 1024;
 const RUNS_PER_HOUR = 30;
 const RANKED_PER_HOUR = 20;
 
 export const app = new Hono().basePath("/api");
 
-const fail = (status: 400 | 401 | 403 | 404 | 409 | 413 | 429 | 503, error: string, message: string) =>
+const fail = (status: 400 | 401 | 403 | 404 | 409 | 429 | 503, error: string, message: string) =>
   new Response(JSON.stringify({ error, message }), { status, headers: { "content-type": "application/json" } });
 
 app.onError((error, c) => {
@@ -134,10 +129,6 @@ function publicChanges(effects: Effects) {
   return Object.fromEntries(PUBLIC_STATS.filter((key) => effects[key]).map((key) => [key, effects[key]]));
 }
 
-function questText(state: GameState) {
-  return QUEST_IDS.find((quest) => quest.id === state.questId)!.text;
-}
-
 function toRunView(run: Row, state: GameState) {
   const card = START_CARDS.find((item) => item.id === state.startCard)!;
   const plan = state.phase === "plan" ? {
@@ -181,11 +172,10 @@ function toRunView(run: Row, state: GameState) {
       title: event.title,
       body: event.body,
       isSample: Boolean(event.isSample),
-      options: event.options.map((option) => ({ label: option.label, chance: option.chance ?? null, changes: publicChanges(option.effects), hidden: option.tag === "outside-class" })),
+      options: event.options.map((option) => ({ label: option.label, chance: option.chance ?? null, changes: publicChanges(option.effects) })),
     } : null,
     lastResult: state.lastResult ? { ...state.lastResult, changes: publicChanges(state.lastResult.changes) } : null,
     report: state.report,
-    quest: { text: questText(state), status: state.questStatus },
     canEarly: isEligibleEarly(state),
   };
 }
@@ -259,43 +249,6 @@ app.post("/runs/:id/leave", runAction((state, body) => takeLeave(state, body.act
 app.post("/runs/:id/choice", runAction((state, body) => applyChoice(state, body.optionIndex), z.object({ optionIndex: z.number().int().min(0).max(3) })));
 app.post("/runs/:id/continue", runAction((state) => continueAfterReport(state)));
 app.post("/runs/:id/early", runAction((state, body) => chooseEarly(state, body.graduate), z.object({ graduate: z.boolean() })));
-app.post("/runs/:id/quest/later", runAction((state) => resolveQuest(state, false)));
-
-app.post("/runs/:id/quest", bodyLimit({
-  maxSize: MAX_PHOTO + 1024 * 1024,
-  onError: () => fail(413, "too_large", "사진은 10MB까지 올릴 수 있어요."),
-}), async (c) => {
-  const { run, state, error } = loadRun(c);
-  if (error) return error;
-  if (!["quest", "done"].includes(state.phase) || state.questStatus === "passed") return fail(409, "bad_state", "지금은 현실 과제를 제출할 수 없어요.");
-  const form = await c.req.parseBody();
-  if (form.consent !== "true") return fail(400, "consent_required", "얼굴이 나오지 않았는지 확인해 주세요.");
-  const file = form.photo;
-  if (!(file instanceof File)) return fail(400, "photo_required", "사진을 올려 주세요.");
-  if (file.size > MAX_PHOTO) return fail(413, "too_large", "사진은 10MB까지 올릴 수 있어요.");
-  let jpeg: Buffer;
-  try {
-    const input = Buffer.from(await file.arrayBuffer());
-    const { format } = await sharp(input).metadata();
-    if (!format || !["jpeg", "png", "webp"].includes(format)) return fail(400, "bad_format", "JPG나 PNG 사진만 올릴 수 있어요.");
-    // 다시 인코딩하면 EXIF 위치 정보가 사라진다.
-    jpeg = await sharp(input).rotate().resize({ width: 1280, height: 1280, fit: "inside", withoutEnlargement: true }).jpeg({ quality: 80 }).toBuffer();
-  } catch {
-    return fail(400, "bad_format", "사진 파일을 읽을 수 없어요.");
-  }
-  const verdict = await judgeQuestPhoto(questText(state), jpeg);
-  if (!verdict.pass) return c.json({ ...verdict, passed: false, run: toRunView(run, state) });
-  const photoId = newId();
-  const key = `runs/${run.id}/${photoId}.jpg`;
-  await savePhoto(key, jpeg);
-  db.prepare("INSERT INTO photos (id, run_id, storage_key, reason, created_at) VALUES (?,?,?,?,?)").run(photoId, run.id, key, verdict.reason, Date.now());
-  resolveQuest(state, true);
-  saveState(run.id, state);
-  // 결과를 본 뒤 인증했다면 통지서를 인증 내용에 맞춰 다시 쓴다.
-  db.prepare("UPDATE runs SET ending_text = NULL WHERE id = ?").run(run.id);
-  updateRanking(run, state);
-  return c.json({ ...verdict, passed: true, run: toRunView(run, state) });
-});
 
 function updateRanking(run: Row, state: GameState) {
   const current = db.prepare("SELECT user_id FROM runs WHERE id = ?").get(run.id) as Row;
@@ -306,18 +259,6 @@ function updateRanking(run: Row, state: GameState) {
   for (const id of calculateAchievements(state)) db.prepare("INSERT INTO achievements (run_id, achievement) VALUES (?,?)").run(run.id, id);
 }
 
-export async function purgeExpiredPhotos() {
-  const expired = db.prepare("SELECT id, storage_key FROM photos WHERE deleted_at IS NULL AND created_at <= ?").all(Date.now() - PHOTO_TTL) as Row[];
-  for (const photo of expired) {
-    await deletePhoto(photo.storage_key);
-    db.prepare("UPDATE photos SET deleted_at = ? WHERE id = ?").run(Date.now(), photo.id);
-  }
-  return expired.length;
-}
-
-const visiblePhoto = (runId: string) => db.prepare("SELECT * FROM photos WHERE run_id = ? AND deleted_at IS NULL AND created_at > ? ORDER BY created_at DESC LIMIT 1")
-  .get(runId, Date.now() - PHOTO_TTL) as Row | undefined;
-
 app.get("/runs/:id/result", async (c) => {
   const { run, state, error } = loadRun(c);
   if (error) return error;
@@ -327,13 +268,12 @@ app.get("/runs/:id/result", async (c) => {
     const achievementIds = calculateAchievements(state);
     const written = await writeEnding({
       department: DEPARTMENTS[run.department as Department].name, goal: run.goal_text, ending, achievements: achievementIds.map((id) => ACHIEVEMENTS[id].name),
-      gpa: calculateGpa(state), flags: state.flags, questPassed: state.questStatus === "passed", round: run.round,
+      gpa: calculateGpa(state), flags: state.flags, round: run.round,
     });
     db.prepare("UPDATE runs SET ending_title = ?, ending_text = ?, next_action = ?, ending_sample = ? WHERE id = ?").run(written.title, written.ending, written.nextAction, written.isSample ? 1 : 0, run.id);
     Object.assign(run, { ending_title: written.title, ending_text: written.ending, next_action: written.nextAction, ending_sample: written.isSample ? 1 : 0 });
     updateRanking(run, state);
   }
-  const photo = visiblePhoto(run.id);
   const registered = Boolean(db.prepare("SELECT 1 FROM ranking_entries WHERE run_id = ?").get(run.id));
   return c.json({
     run: toRunView(run, state),
@@ -346,28 +286,8 @@ app.get("/runs/:id/result", async (c) => {
     score: calculateScore(state),
     grades: { 학업: statGrade(state.stats.study), 인맥: statGrade(state.stats.network), 멘탈: statGrade(state.stats.mental), 낭만: statGrade(state.stats.romance) },
     achievements: calculateAchievements(state).map((id) => ({ id, ...ACHIEVEMENTS[id] })),
-    realWorld: state.questStatus === "passed",
-    photo: photo ? { id: photo.id, reason: photo.reason, url: await photoUrl(photo.id, photo.storage_key, run.id) } : null,
     registered,
   });
-});
-
-app.get("/runs/:id/photos/:photoId", (c) => {
-  const { run, error } = loadRun(c);
-  if (error) return error;
-  const photo = visiblePhoto(run.id);
-  if (!photo || photo.id !== c.req.param("photoId")) return fail(404, "photo_not_found", "사진을 찾을 수 없어요.");
-  return c.body(new Uint8Array(readLocalPhoto(photo.storage_key)), 200, { "content-type": "image/jpeg", "cache-control": "private, no-store" });
-});
-
-app.delete("/runs/:id/photo", async (c) => {
-  const { run, error } = loadRun(c);
-  if (error) return error;
-  const photo = visiblePhoto(run.id);
-  if (!photo) return fail(404, "photo_not_found", "사진을 찾을 수 없어요.");
-  await deletePhoto(photo.storage_key);
-  db.prepare("UPDATE photos SET deleted_at = ? WHERE id = ?").run(Date.now(), photo.id);
-  return c.json({ ok: true });
 });
 
 app.post("/runs/:id/register", (c) => {

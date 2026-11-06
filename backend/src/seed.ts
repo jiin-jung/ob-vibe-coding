@@ -4,7 +4,7 @@ import { sampleGoal } from "./ai.ts";
 import { applyChoice, applyPlan, continueAfterReport, createState } from "./game.ts";
 import type { Department } from "./content.ts";
 
-// 시연 전에 실행한다. 시연용 랭킹과 2학년 뒤에서 시작하는 플레이를 만든다.
+// 시연 전에 실행한다. 시연용 랭킹과 3학년 계획에서 시작하는 플레이를 만든다.
 const demoRows: [string, Department, number, string[]][] = [
   ["수강철회왕", "cse", 240, ["president", "fullScholar", "noDebt"]],
   ["공강사냥꾼", "ice", 210, ["bigCompany", "early", "retaker"]],

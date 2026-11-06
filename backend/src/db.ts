@@ -18,7 +18,6 @@ CREATE TABLE IF NOT EXISTS runs (
   regret TEXT NOT NULL, goal_text TEXT NOT NULL, notice TEXT NOT NULL, serious INTEGER NOT NULL, goal_sample INTEGER NOT NULL, round INTEGER NOT NULL,
   state TEXT NOT NULL, ending_title TEXT, ending_text TEXT, next_action TEXT, ending_sample INTEGER, created_at INTEGER NOT NULL
 );
-CREATE TABLE IF NOT EXISTS photos (id TEXT PRIMARY KEY, run_id TEXT NOT NULL REFERENCES runs(id), storage_key TEXT NOT NULL, reason TEXT NOT NULL, created_at INTEGER NOT NULL, deleted_at INTEGER);
 CREATE TABLE IF NOT EXISTS ranking_entries (
   run_id TEXT PRIMARY KEY, user_key TEXT NOT NULL, nickname TEXT NOT NULL, department TEXT NOT NULL, score INTEGER NOT NULL, is_demo INTEGER NOT NULL DEFAULT 0, created_at INTEGER NOT NULL
 );

@@ -1,5 +1,5 @@
 import {
-  ACHIEVEMENTS, ACTIVITIES, CHAINS, COURSES, ENDINGS, ENGLISH_EVENT, EVENTS, HIDDEN_OPTION, INCIDENTS, INTERVIEW_EVENT, ITEMS, LABS, QUESTS, START_CARDS,
+  ACHIEVEMENTS, ACTIVITIES, CHAINS, COURSES, ENDINGS, ENGLISH_EVENT, EVENTS, INCIDENTS, INTERVIEW_EVENT, ITEMS, LABS, START_CARDS,
 } from "./content.ts";
 import type { AchievementId, Department, Effects, EndingId, EventOption, GameEvent, GoalType, StatKey } from "./content.ts";
 
@@ -23,7 +23,7 @@ export interface Course {
   retaken: boolean;
 }
 
-export type Phase = "plan" | "event" | "report" | "quest" | "early" | "done";
+export type Phase = "plan" | "event" | "report" | "early" | "done";
 
 export interface PlayerEvent extends GameEvent {
   isSample?: boolean;
@@ -58,8 +58,6 @@ export interface GameState {
   eventIndex: number;
   lastResult: { title: string; result: string; changes: Effects; success: boolean } | null;
   report: YearReport | null;
-  questId: string;
-  questStatus: "none" | "passed" | "later";
   startCard: string;
   leaves: number;
   usedParttime: number;
@@ -97,9 +95,8 @@ export function createState(seed: number, department: Department, goalType: Goal
     stats: { study: 50, network: 50, mental: 60, romance: 50, luck: 50, reputation: 40, career: 40 },
     money: 100, debt: 0, courses: [], flags: [], usedEvents: [], items: [], labId: null, labCount: 0, plan: null,
     buffs: { notes: false, energy: false }, events: [], eventIndex: 0, lastResult: null, report: null,
-    questId: "", questStatus: "none", startCard: "", leaves: 0, usedParttime: 0, earlyGraduated: false,
+    startCard: "", leaves: 0, usedParttime: 0, earlyGraduated: false,
   };
-  state.questId = pick(state, QUESTS[goalType]).id;
   const card = pick(state, START_CARDS);
   state.startCard = card.id;
   applyEffects(state, card.effects);
@@ -231,7 +228,6 @@ export function pickEvents(state: GameState): PlayerEvent[] {
   if (state.year === 4 && !hasFlag(state, "english-cert")) picked = [ENGLISH_EVENT, ...picked.slice(0, 1)];
   else if (state.year >= 3 && roll(state) < 0.35) picked = [picked[0], { ...INTERVIEW_EVENT, year: state.year }];
   const events = picked.map((event) => structuredClone(event)) as PlayerEvent[];
-  if (state.year === 3 && state.questStatus === "passed" && !hasFlag(state, "outside-class")) events[0].options.push(structuredClone(HIDDEN_OPTION));
   state.usedEvents.push(...events.map((event) => event.id));
   return events;
 }
@@ -322,7 +318,6 @@ export function continueAfterReport(state: GameState) {
   if (state.phase !== "report") throw new GameError("지금은 넘어갈 수 없습니다.");
   const wasLeave = state.report?.earned === 0 && state.report.semesterGpa === 0;
   if (wasLeave) { state.phase = "plan"; state.report = null; return; }
-  if (state.year === 2 && state.questStatus === "none") { state.phase = "quest"; return; }
   if (isEligibleEarly(state)) { state.phase = "early"; return; }
   advanceYear(state);
 }
@@ -332,14 +327,6 @@ function advanceYear(state: GameState) {
   if (state.year >= 4) { state.phase = "done"; return; }
   state.year += 1;
   state.phase = "plan";
-}
-
-export function resolveQuest(state: GameState, passed: boolean) {
-  if (state.phase !== "quest" && state.phase !== "done") throw new GameError("지금은 현실 과제 단계가 아닙니다.");
-  if (state.questStatus === "passed") throw new GameError("이미 이수했습니다.");
-  state.questStatus = passed ? "passed" : "later";
-  if (passed) applyEffects(state, { network: 5, mental: 5 });
-  if (state.phase === "quest") advanceYear(state);
 }
 
 export function chooseEarly(state: GameState, graduate: boolean) {
@@ -377,7 +364,6 @@ export function calculateAchievements(state: GameState): AchievementId[] {
   if (state.usedParttime >= 3) achievements.add("parttime");
   if (hasFlag(state, "exchange")) achievements.add("exchange");
   if (hasFlag(state, "full-scholar")) achievements.add("fullScholar");
-  if (state.questStatus === "passed") achievements.add("realWorld");
   return [...achievements];
 }
 

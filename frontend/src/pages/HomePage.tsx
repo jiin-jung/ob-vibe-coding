@@ -27,7 +27,7 @@ export default function HomePage() {
       <section className="card hero">
         <Avatar kind="m" mood="tired" size={96} />
         <p className="hero-notice">귀하의 대학생활은 <strong>재수강 대상</strong>입니다.</p>
-        <p className="hero-sub">후회를 입력하고 1학년으로 복귀하십시오. 게임에서 다시 쓴 대학생활이 현실의 행동으로 이어집니다.</p>
+        <p className="hero-sub">후회를 입력하고 1학년으로 복귀하십시오. 내 후회에 맞춘 이야기로 대학생활을 다시 씁니다.</p>
         <ol className="stepper" aria-label="진행 단계">
           {STEPS.map((step, index) => <li key={step} className={index === 0 ? "active" : ""}><i />{step}</li>)}
         </ol>

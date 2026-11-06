@@ -26,7 +26,7 @@ export interface RunView {
   isGoalSample: boolean;
   startCard: { name: string; body: string };
   year: number;
-  phase: "plan" | "event" | "report" | "quest" | "early" | "done";
+  phase: "plan" | "event" | "report" | "early" | "done";
   stats: { study: number; network: number; mental: number; romance: number };
   money: number;
   debt: number;
@@ -35,10 +35,9 @@ export interface RunView {
   graduationCredits: number;
   englishCert: boolean;
   plan: PlanOptions | null;
-  event: { title: string; body: string; isSample: boolean; options: { label: string; chance: number | null; changes: Record<string, number>; hidden: boolean }[] } | null;
+  event: { title: string; body: string; isSample: boolean; options: { label: string; chance: number | null; changes: Record<string, number> }[] } | null;
   lastResult: { title: string; result: string; changes: Record<string, number>; success: boolean } | null;
   report: { year: number; semesterGpa: number; earned: number; notices: { title: string; body: string }[] } | null;
-  quest: { text: string; status: "none" | "passed" | "later" };
   canEarly: boolean;
 }
 
@@ -53,8 +52,6 @@ export interface ResultView {
   score: number;
   grades: Record<string, string>;
   achievements: { id: string; name: string; rarity: string; points: number }[];
-  realWorld: boolean;
-  photo: { id: string; reason: string; url: string } | null;
   registered: boolean;
 }
 
@@ -64,14 +61,6 @@ export interface RankingView {
   departments: { department: string; score: number; plays: number }[];
   achievements: { id: string; name: string; rarity: string; points: number; leader: { nickname: string; department: string; count: number } | null }[];
   legendCount: number;
-}
-
-export interface QuestVerdict {
-  judged: boolean;
-  pass: boolean;
-  passed: boolean;
-  reason: string;
-  run: RunView;
 }
 
 export class ApiError extends Error {}

@@ -179,13 +179,6 @@ export const INTERVIEW_EVENT: GameEvent = {
   ],
 };
 
-export const HIDDEN_OPTION: EventOption = {
-  label: "과 밖 수업을 신청한다",
-  effects: { network: 15, romance: 10 },
-  result: "현실 이수 내역이 반영되었습니다. 귀하의 시간표가 처음으로 과 밖으로 나갔습니다.",
-  tag: "outside-class",
-};
-
 export const CHAINS: { year: number; flag: string; title: string; body: string; effects: Effects }[] = [
   { year: 3, flag: "club", title: "그때 그 선배", body: "1학년 때 함께한 동아리 선배가 귀하를 추천했습니다. 추천 사유: 모임비를 제때 냈음.", effects: { network: 15, career: 5 } },
   { year: 3, flag: "club-avoid", title: "그때 그 선배", body: "동아리 박람회의 그 선배가 귀하를 기억합니다. 귀하는 기억하지 못합니다.", effects: { romance: 5, reputation: 3 } },
@@ -210,17 +203,6 @@ export const START_CARDS: { id: string; name: string; body: string; effects: Eff
   { id: "worker", name: "알바 경력자", body: "주문을 받는 능력이 확인되었습니다. 수강신청과는 별개입니다.", effects: { money: 30, network: 5, study: -5 } },
 ];
 
-export const QUESTS: Record<GoalType, { id: string; text: string }[]> = {
-  network: [{ id: "q-building", text: "다른 과 건물 입구를 찍어 제출하십시오." }, { id: "q-board", text: "다른 과 학생회나 동아리 게시물을 찍어 제출하십시오." }],
-  study: [{ id: "q-notes", text: "오늘 공부한 노트를 찍어 제출하십시오." }, { id: "q-library", text: "도서관이나 공부 자리를 찍어 제출하십시오." }],
-  career: [{ id: "q-major-book", text: "관심 분야의 책이나 채용 공고를 찍어 제출하십시오." }, { id: "q-plan", text: "이번 달 해볼 진로 계획 한 줄을 종이에 적어 찍어 제출하십시오." }],
-  challenge: [{ id: "q-new-place", text: "처음 가보는 교내 장소를 찍어 제출하십시오." }, { id: "q-poster", text: "모집 중인 동아리나 공모전 게시물을 찍어 제출하십시오." }],
-  romance: [{ id: "q-view", text: "오늘 가장 좋았던 캠퍼스 풍경을 찍어 제출하십시오." }, { id: "q-sky", text: "지금 보이는 하늘을 찍어 제출하십시오." }],
-  balance: [{ id: "q-meal", text: "오늘 먹은 밥을 찍어 제출하십시오." }, { id: "q-walk", text: "산책길이나 쉬는 자리를 찍어 제출하십시오." }],
-};
-
-export const QUEST_IDS = Object.values(QUESTS).flat();
-
 export const ACHIEVEMENTS = {
   warning: { name: "학사경고 생존", rarity: "일반", points: 10 },
   retaker: { name: "재수강 장인", rarity: "일반", points: 10 },
@@ -235,7 +217,6 @@ export const ACHIEVEMENTS = {
   startup: { name: "창업 성공", rarity: "전설", points: 80 },
   topStudent: { name: "과 수석", rarity: "전설", points: 80 },
   president: { name: "학생회장", rarity: "전설", points: 80 },
-  realWorld: { name: "현실 이수 완료", rarity: "특별", points: 30 },
 } as const;
 
 export type AchievementId = keyof typeof ACHIEVEMENTS;

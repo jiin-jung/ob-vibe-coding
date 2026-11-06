@@ -1,11 +1,10 @@
 import { toPng } from "html-to-image";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
-import { api, ApiError, runToken } from "../api";
+import { api, ApiError } from "../api";
 import type { ResultView } from "../api";
 import AuthPanel from "../components/AuthPanel";
 import Avatar from "../components/Avatar";
-import QuestPanel from "../components/QuestPanel";
 
 export default function ResultPage() {
   const { id = "" } = useParams();
@@ -14,7 +13,6 @@ export default function ResultPage() {
   const [error, setError] = useState("");
   const [showAuth, setShowAuth] = useState(false);
   const [message, setMessage] = useState("");
-  const [photoUrl, setPhotoUrl] = useState("");
   const card = useRef<HTMLDivElement>(null);
 
   const load = useCallback(() => {
@@ -22,18 +20,6 @@ export default function ResultPage() {
   }, [id]);
   useEffect(load, [load]);
 
-  // 로컬 저장 사진은 토큰을 주소에 넣지 않으려고 헤더로 받아서 보여준다.
-  const photoSource = result?.photo?.url;
-  useEffect(() => {
-    if (!photoSource) { setPhotoUrl(""); return; }
-    if (!photoSource.startsWith("/api/")) { setPhotoUrl(photoSource); return; }
-    let objectUrl = "";
-    fetch(photoSource, { headers: { "x-run-token": runToken(id) } })
-      .then((response) => response.ok ? response.blob() : Promise.reject(new Error("photo")))
-      .then((blob) => { objectUrl = URL.createObjectURL(blob); setPhotoUrl(objectUrl); })
-      .catch(() => setPhotoUrl(""));
-    return () => { if (objectUrl) URL.revokeObjectURL(objectUrl); };
-  }, [id, photoSource]);
 
   async function save() {
     if (!card.current) return;
@@ -79,15 +65,6 @@ export default function ResultPage() {
     }
   }
 
-  async function removePhoto() {
-    try {
-      await api(`/runs/${id}/photo`, { method: "DELETE", runId: id });
-      load();
-    } catch (err) {
-      setMessage(err instanceof ApiError ? err.message : "사진을 삭제하지 못했습니다.");
-    }
-  }
-
   if (error) return <main className="page"><p className="hint hint-error" role="alert">{error}</p><Link className="link" to="/">처음으로</Link></main>;
   if (!result) return <main className="page"><p className="processing">학사 시스템이 졸업 사정을 진행 중입니다.</p></main>;
   const { run } = result;
@@ -127,13 +104,6 @@ export default function ResultPage() {
             {result.achievements.map((item) => <li key={item.id} data-rarity={item.rarity}>{item.name}</li>)}
           </ul>
         )}
-        {result.realWorld && (
-          <div className="real-world">
-            <strong>현실 이수 완료</strong>
-            <span>게임 밖에서 대학생활을 한 칸 다시 썼습니다.</span>
-            <div className="stamp stamp-small" aria-hidden>이수</div>
-          </div>
-        )}
         {result.isSample && <p className="sample-tag">샘플 문구</p>}
       </div>
 
@@ -141,19 +111,6 @@ export default function ResultPage() {
         <h3>오늘 현실에서 해볼 일</h3>
         <p>{result.nextAction}</p>
       </section>
-
-      {result.photo && (
-        <section className="card">
-          <h3>제출한 현실 과제</h3>
-          {photoUrl && <img className="quest-photo" src={photoUrl} alt="제출한 현실 과제 사진" />}
-          <p className="hint">{result.photo.reason} 사진은 일주일 뒤 자동 삭제됩니다.</p>
-          <button className="link" onClick={removePhoto}>지금 삭제하기</button>
-        </section>
-      )}
-
-      {!result.realWorld && run.quest.status !== "passed" && (
-        <QuestPanel run={run} compact onPassed={load} />
-      )}
 
       <div className="actions">
         <button className="btn btn-secondary" onClick={save}>저장</button>

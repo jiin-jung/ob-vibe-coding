@@ -1,6 +1,6 @@
 import assert from "node:assert/strict";
 import test from "node:test";
-import { applyChoice, applyPlan, availableActivities, calculateAchievements, calculateEnding, chooseEarly, continueAfterReport, createState, creditOptions, earnedCredits, planCost, resolveQuest, retakeOptions, takeLeave } from "./game.ts";
+import { applyChoice, applyPlan, availableActivities, calculateAchievements, calculateEnding, chooseEarly, continueAfterReport, createState, creditOptions, earnedCredits, planCost, retakeOptions, takeLeave } from "./game.ts";
 import type { GameState } from "./game.ts";
 
 function playRandomGame(seed: number, policy: "random" | "study" | "network" | "career" | "startup" = "random") {
@@ -36,7 +36,6 @@ function playRandomGame(seed: number, policy: "random" | "study" | "network" | "
       const index = options.findIndex((option) => favoured[policy].test(option.label));
       applyChoice(state, index >= 0 ? index : random(options.length));
     } else if (state.phase === "report") continueAfterReport(state);
-    else if (state.phase === "quest") resolveQuest(state, random(2) === 0);
     else if (state.phase === "early") chooseEarly(state, true);
   }
   assert.equal(state.phase, "done");

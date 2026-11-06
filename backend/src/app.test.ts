@@ -1,10 +1,8 @@
 import assert from "node:assert/strict";
 import test from "node:test";
-import sharp from "sharp";
 
 process.env.DB_PATH = ":memory:";
 delete process.env.ANTHROPIC_API_KEY;
-delete process.env.S3_BUCKET;
 const logs: string[] = [];
 const realLog = console.log;
 console.log = (...args: unknown[]) => { logs.push(args.join(" ")); };
@@ -71,21 +69,12 @@ test("후회 원문은 저장하지 않는다", async () => {
   assert.ok(!dump.includes(regret));
 });
 
-test("일주일 지난 사진은 삭제 처리된다", async () => {
-  const { db } = await import("./db.ts");
-  const { purgeExpiredPhotos } = await import("./app.ts");
-  const created = await call({}, "POST", "/runs", newRun);
-  db.prepare("INSERT INTO photos (id, run_id, storage_key, reason, created_at) VALUES ('old', ?, 'runs/test/none.jpg', '', 0)").run(created.json.run.id);
-  assert.equal(await purgeExpiredPhotos(), 1);
-  assert.ok((db.prepare("SELECT deleted_at FROM photos WHERE id = 'old'").get() as any).deleted_at);
-});
-
 test("심각한 후회는 위기 표시가 켜진다", async () => {
   const created = await call({}, "POST", "/runs", { ...newRun, regret: "다 그만두고 죽고 싶었어요" });
   assert.equal(created.json.run.serious, true);
 });
 
-test("끝까지 플레이하고 결과에 후회 없이 랭킹에 오른다, 퀘스트 사진은 AI 없이 저장되지 않는다", async () => {
+test("끝까지 플레이하고 결과에 후회 없이 랭킹에 오른다", async () => {
   const client: Client = {};
   await login(client, "player@inu.ac.kr");
   const created = await call(client, "POST", "/runs", newRun);
@@ -102,16 +91,6 @@ test("끝까지 플레이하고 결과에 후회 없이 랭킹에 오른다, 퀘
       run = (await call(client, "POST", `/runs/${id}/choice`, { optionIndex: 0 })).json;
     } else if (run.phase === "report") {
       run = (await call(client, "POST", `/runs/${id}/continue`)).json;
-    } else if (run.phase === "quest") {
-      const jpeg = await sharp({ create: { width: 8, height: 8, channels: 3, background: "blue" } }).jpeg().toBuffer();
-      const form = new FormData();
-      form.set("consent", "true");
-      form.set("photo", new File([new Uint8Array(jpeg)], "a.jpg", { type: "image/jpeg" }));
-      const upload = await app.request(`/api/runs/${id}/quest`, { method: "POST", headers: { "x-run-token": client.token! }, body: form });
-      const verdict = await upload.json() as any;
-      assert.equal(verdict.passed, false);
-      assert.equal(verdict.judged, false);
-      run = (await call(client, "POST", `/runs/${id}/quest/later`)).json;
     } else if (run.phase === "early") {
       run = (await call(client, "POST", `/runs/${id}/early`, { graduate: false })).json;
     }
