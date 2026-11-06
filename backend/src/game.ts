@@ -299,6 +299,8 @@ function finishYear(state: GameState) {
   const incident = pick(state, INCIDENTS);
   applyEffects(state, incident.effects);
   notices.push({ title: incident.title, body: incident.body });
+  // 방학 동안 회복한다. 없으면 멘탈이 3학년쯤 바닥나 모든 판이 비슷해진다.
+  applyEffects(state, { mental: 12 });
   state.buffs = { notes: false, energy: false };
   state.report = { year: state.year, semesterGpa: gpa, earned: earnedCredits(state) - before, notices };
   state.phase = "report";
