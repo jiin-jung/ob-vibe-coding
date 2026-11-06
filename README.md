@@ -2,7 +2,7 @@
 
 [인천대학교 바이브코딩 대회] 팀 늙은이들
 
-**재수강:** 대학생활의 후회를 입력하고 1학년으로 돌아가 다시 플레이하면, 게임 속 선택이 현실의 행동으로 이어지는 웹 게임.
+**재수강:** 대학생활의 후회를 입력하고 1학년으로 돌아가, 인천대 규칙 그대로 다시 플레이하는 웹 게임.
 
 ## 구조
 
@@ -22,7 +22,7 @@ cd backend && npm install && npm run dev      # API, http://localhost:8787
 cd frontend && npm install && npm run dev     # 화면, http://localhost:5173
 ```
 
-비밀 값은 `.local/.env`에 둔다. 값이 없어도 실행된다. AI는 샘플 문구로, 메일은 서버 콘솔로, 사진은 `.local/uploads`로 대체된다.
+비밀 값은 `.local/.env`에 둔다. 값이 없어도 실행된다. AI는 샘플 문구로, 메일은 서버 콘솔로 대체된다.
 
 시연:
 
@@ -40,8 +40,6 @@ cd ../backend && npm run seed && npm start   # http://<노트북 IP>:8787
 | Vite, React | 프론트엔드 | https://vite.dev, https://react.dev |
 | Hono | 백엔드 | https://hono.dev |
 | Anthropic SDK | AI 호출 | https://github.com/anthropics/anthropic-sdk-typescript |
-| AWS SDK | S3 사진 저장 | https://github.com/aws/aws-sdk-js-v3 |
-| sharp | 사진 재인코딩 | https://sharp.pixelplumbing.com |
 | nodemailer | 메일 발송 | https://nodemailer.com |
 | zod | 입력 검증 | https://zod.dev |
 | React Router | 화면 이동 | https://reactrouter.com |

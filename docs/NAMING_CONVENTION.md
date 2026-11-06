@@ -17,9 +17,9 @@
 backend/src/
   app.ts        라우트
   game.ts       게임 규칙 (순수 함수)
-  content.ts    이벤트, 활동, 아이템, 퀘스트 데이터
+  content.ts    이벤트, 활동, 아이템 데이터
   ai.ts         AI 호출
-  db.ts, email.ts, mail.ts, s3.ts
+  db.ts, email.ts, mail.ts
 frontend/src/
   api.ts        API 호출
   pages/        화면
