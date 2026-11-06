@@ -1,0 +1,2939 @@
+[
+  {
+    "id": "inu.common.REG-01",
+    "domain": "common",
+    "category": "course_registration",
+    "title": "학기당 기준 신청학점",
+    "statement": "매 학기 기준취득학점 17~19학점, 교과목 학점단위상 부득이하면 20학점까지 신청 가능",
+    "source_id": "src-505f0d2aa8599835",
+    "source_updated_at": "2024-04-18",
+    "checked_at": "2026-11-06",
+    "scope": {
+      "cohort": "학번 구분 없음",
+      "department": "전체 학부(학과별 세부는 학과 확인)",
+      "year": "2026-11-06 열람 게시본(학년도 명시 없음)"
+    },
+    "conditions": [
+      "20학점은 교과목 학점단위상 부득이한 경우에만"
+    ],
+    "exceptions": [
+      "직전학기 평점 3.5/4.0 이상 추가 허용(REG-02)",
+      "최종학년·8학기 경과자 별도(REG-03)"
+    ],
+    "evidence": {
+      "quote": "매학기 기준취득학점은 17~19학점이며, 교과목 학점단위상 부득이한 경우 1학점 초과(20학점까지) 신청 가능",
+      "location": "수강신청 > 신청학점 1항"
+    },
+    "research_status": "verified",
+    "review_status": "pending",
+    "publish_enabled": false,
+    "rule_execution_enabled": false,
+    "game_use_proposal": "수강신청 학점 상한 규칙",
+    "provenance": {
+      "file": "inu-data-common.json",
+      "record_id": "REG-01",
+      "collector": "Claude"
+    }
+  },
+  {
+    "id": "inu.common.REG-02",
+    "domain": "common",
+    "category": "course_registration",
+    "title": "성적우수자 추가 신청학점",
+    "statement": "직전학기 평점평균 3.5 이상 21학점, 4.0 이상 24학점까지 신청 가능",
+    "source_id": "src-505f0d2aa8599835",
+    "source_updated_at": "2024-04-18",
+    "checked_at": "2026-11-06",
+    "scope": {
+      "cohort": "학번 구분 없음",
+      "department": "전체 학부(학과별 세부는 학과 확인)",
+      "year": "2026-11-06 열람 게시본(학년도 명시 없음)"
+    },
+    "conditions": [
+      "직전학기 성적 평점평균 기준"
+    ],
+    "exceptions": [],
+    "evidence": {
+      "quote": "직전학기 성적 평점평균 3.5이상인 자는 21학점까지, 4.0이상인 자는 24학점까지 신청가능",
+      "location": "수강신청 > 신청학점 2항"
+    },
+    "research_status": "verified",
+    "review_status": "pending",
+    "publish_enabled": false,
+    "rule_execution_enabled": false,
+    "game_use_proposal": "직전 학기 결과에 따라 다음 학기 상한 해금",
+    "provenance": {
+      "file": "inu-data-common.json",
+      "record_id": "REG-02",
+      "collector": "Claude"
+    }
+  },
+  {
+    "id": "inu.common.REG-03",
+    "domain": "common",
+    "category": "course_registration",
+    "title": "최종학년·8학기 경과자 신청학점",
+    "statement": "최종학년은 최저 9학점, 8학기 경과자는 졸업학점 부족분만 신청하고 등록금은 신청학점에 따라 차등",
+    "source_id": "src-505f0d2aa8599835",
+    "source_updated_at": "2024-04-18",
+    "checked_at": "2026-11-06",
+    "scope": {
+      "cohort": "학번 구분 없음",
+      "department": "전체 학부(학과별 세부는 학과 확인)",
+      "year": "2026-11-06 열람 게시본(학년도 명시 없음)"
+    },
+    "conditions": [
+      "최종학년 / 8학기 경과자"
+    ],
+    "exceptions": [],
+    "evidence": {
+      "quote": "최종학년 수강신청학점은 최저 9학점이며, 8학기 경과자는 졸업학점 부족 학점만 신청 가능",
+      "location": "수강신청 > 신청학점 3항"
+    },
+    "research_status": "verified",
+    "review_status": "pending",
+    "publish_enabled": false,
+    "rule_execution_enabled": false,
+    "game_use_proposal": "9학기 이상 연장 시 부족학점 처리",
+    "provenance": {
+      "file": "inu-data-common.json",
+      "record_id": "REG-03",
+      "collector": "Claude"
+    }
+  },
+  {
+    "id": "inu.common.REG-04",
+    "domain": "common",
+    "category": "course_registration",
+    "title": "사이버강좌(OCU) 한도",
+    "statement": "OCU 교양선택 교과목은 한 학기 6학점 이내, 별도 시스템 사용료 납부",
+    "source_id": "src-505f0d2aa8599835",
+    "source_updated_at": "2024-04-18",
+    "checked_at": "2026-11-06",
+    "scope": {
+      "cohort": "학번 구분 없음",
+      "department": "전체 학부(학과별 세부는 학과 확인)",
+      "year": "2026-11-06 열람 게시본(학년도 명시 없음)"
+    },
+    "conditions": [
+      "교양선택 OCU 과목에 한함"
+    ],
+    "exceptions": [
+      "변경 시 사이버 교과목으로만 변경 가능"
+    ],
+    "evidence": {
+      "quote": "사이버강좌(OCU) 교과목(교양선택)은 한학기에 6학점 이내에서 수강신청 할 수 있고",
+      "location": "수강신청 > 신청학점 4항"
+    },
+    "research_status": "verified",
+    "review_status": "pending",
+    "publish_enabled": false,
+    "rule_execution_enabled": false,
+    "game_use_proposal": "온라인 강의 선택지 한도",
+    "provenance": {
+      "file": "inu-data-common.json",
+      "record_id": "REG-04",
+      "collector": "Claude"
+    }
+  },
+  {
+    "id": "inu.common.REG-05",
+    "domain": "common",
+    "category": "course_registration",
+    "title": "수강신청 변경·유의사항",
+    "statement": "변경기간 이후 폐강 외 변경 불가, 시간표 중복 과목 신청 불가, 미신청 수강 과목은 학점 불인정",
+    "source_id": "src-505f0d2aa8599835",
+    "source_updated_at": "2024-04-18",
+    "checked_at": "2026-11-06",
+    "scope": {
+      "cohort": "학번 구분 없음",
+      "department": "전체 학부(학과별 세부는 학과 확인)",
+      "year": "2026-11-06 열람 게시본(학년도 명시 없음)"
+    },
+    "conditions": [
+      "변경기간 내 Web 본인 신청"
+    ],
+    "exceptions": [
+      "교과목 폐강 시 변경기간 이후에도 변경 가능"
+    ],
+    "evidence": {
+      "quote": "변경기간 이후에는 교과목이 폐강된 경우 외에는 변경 불가능",
+      "location": "수강신청 > 수강신청변경, 유의사항"
+    },
+    "research_status": "verified",
+    "review_status": "pending",
+    "publish_enabled": false,
+    "rule_execution_enabled": false,
+    "game_use_proposal": "시간표 충돌·정정기간 사건",
+    "provenance": {
+      "file": "inu-data-common.json",
+      "record_id": "REG-05",
+      "collector": "Claude"
+    }
+  },
+  {
+    "id": "inu.common.GRD-01",
+    "domain": "common",
+    "category": "grading",
+    "title": "성적 산출 비율",
+    "statement": "성적은 기말·수시시험 60%, 출석 20%, 기타 20% 비율로 산출",
+    "source_id": "src-4cfbb78790b9f575",
+    "source_updated_at": "2026-06-22",
+    "checked_at": "2026-11-06",
+    "scope": {
+      "cohort": "학번 구분 없음",
+      "department": "전체 학부(학과별 세부는 학과 확인)",
+      "year": "2026-11-06 열람 게시본(학년도 명시 없음)"
+    },
+    "conditions": [
+      "일반 교과목"
+    ],
+    "exceptions": [
+      "실험·실습·실기 및 방송·통신 운영 교과목은 달리할 수 있음"
+    ],
+    "evidence": {
+      "quote": "성적은 기말시험 및 수시시험(60%), 출석성적(20%), 기타성적(20%) 비율로 산출",
+      "location": "시험/성적 > 성적 > 성적평가"
+    },
+    "research_status": "verified",
+    "review_status": "pending",
+    "publish_enabled": false,
+    "rule_execution_enabled": false,
+    "game_use_proposal": "과목 성적 계산 설명(과목별 실제 비율은 강의계획서 우선)",
+    "provenance": {
+      "file": "inu-data-common.json",
+      "record_id": "GRD-01",
+      "collector": "Claude"
+    }
+  },
+  {
+    "id": "inu.common.GRD-02",
+    "domain": "common",
+    "category": "grading",
+    "title": "상대평가 등급 비율",
+    "statement": "수강 21명 이상 A 40% 이하·B 40% 이하, 20명 이하 A 50% 이하·B 40% 이하. 소수 절상, A 잔여인원은 B에 포함 가능",
+    "source_id": "src-4cfbb78790b9f575",
+    "source_updated_at": "2026-06-22",
+    "checked_at": "2026-11-06",
+    "scope": {
+      "cohort": "학번 구분 없음",
+      "department": "전체 학부(학과별 세부는 학과 확인)",
+      "year": "2026-11-06 열람 게시본(학년도 명시 없음)"
+    },
+    "conditions": [
+      "상대평가 교과목"
+    ],
+    "exceptions": [
+      "절대평가 가능 교과목(GRD-03)",
+      "P/F 교과목(GRD-04)"
+    ],
+    "evidence": {
+      "quote": "21명 이상 | 40% 이하 | 40% 이하 / 20명 이하 | 50% 이하 | 40% 이하",
+      "location": "시험/성적 > 학업성적의 평가기준 표"
+    },
+    "research_status": "verified",
+    "review_status": "pending",
+    "publish_enabled": false,
+    "rule_execution_enabled": false,
+    "game_use_proposal": "A 비율 상한 설명(기존 \"A 40%\"는 21명 이상 조건·\"이하\"로 정정)",
+    "provenance": {
+      "file": "inu-data-common.json",
+      "record_id": "GRD-02",
+      "collector": "Claude"
+    }
+  },
+  {
+    "id": "inu.common.GRD-03",
+    "domain": "common",
+    "category": "grading",
+    "title": "절대평가 가능 교과목",
+    "statement": "원어(영어)강의, 수강 10명 이하 전공교과목, 교무처장 사전승인 캡스톤디자인, 실험·실습·실기 전공교과목, 부·복수전공 수강자 등은 절대평가 가능",
+    "source_id": "src-4cfbb78790b9f575",
+    "source_updated_at": "2026-06-22",
+    "checked_at": "2026-11-06",
+    "scope": {
+      "cohort": "학번 구분 없음",
+      "department": "전체 학부(학과별 세부는 학과 확인)",
+      "year": "2026-11-06 열람 게시본(학년도 명시 없음)"
+    },
+    "conditions": [
+      "해당 유형에 한해 가능(의무 아님)"
+    ],
+    "exceptions": [],
+    "evidence": {
+      "quote": "6교무처장의 사전승인을 받은 캡스톤디자인 ... 8수강인원이 10명 이하인 전공교과목",
+      "location": "시험/성적 > 절대평가 가능 교과목 1~12호"
+    },
+    "research_status": "verified",
+    "review_status": "pending",
+    "publish_enabled": false,
+    "rule_execution_enabled": false,
+    "game_use_proposal": "캡스톤·소규모 전공 과목 배경",
+    "provenance": {
+      "file": "inu-data-common.json",
+      "record_id": "GRD-03",
+      "collector": "Claude"
+    }
+  },
+  {
+    "id": "inu.common.GRD-04",
+    "domain": "common",
+    "category": "grading",
+    "title": "P/F 평가 교과목",
+    "statement": "현장교육·실습·해외인턴십, 세미나·포럼, 사회봉사 교과목 등은 P/F 평가 가능",
+    "source_id": "src-4cfbb78790b9f575",
+    "source_updated_at": "2026-06-22",
+    "checked_at": "2026-11-06",
+    "scope": {
+      "cohort": "학번 구분 없음",
+      "department": "전체 학부(학과별 세부는 학과 확인)",
+      "year": "2026-11-06 열람 게시본(학년도 명시 없음)"
+    },
+    "conditions": [],
+    "exceptions": [],
+    "evidence": {
+      "quote": "다음 각 호의 교과목은 P(Pass) / F(Fail)방식으로 평가할 수 있다.",
+      "location": "시험/성적 > P/F 1~4호"
+    },
+    "research_status": "verified",
+    "review_status": "pending",
+    "publish_enabled": false,
+    "rule_execution_enabled": false,
+    "game_use_proposal": "현장실습·봉사 활동 평가 방식",
+    "provenance": {
+      "file": "inu-data-common.json",
+      "record_id": "GRD-04",
+      "collector": "Claude"
+    }
+  },
+  {
+    "id": "inu.common.GRD-05",
+    "domain": "common",
+    "category": "grading",
+    "title": "결시자 특례",
+    "statement": "수업일수 2/3 이상 수강 후 시행세칙 사유로 시험 미응시 시 성적인정원 제출, 최대 B+",
+    "source_id": "src-4cfbb78790b9f575",
+    "source_updated_at": "2026-06-22",
+    "checked_at": "2026-11-06",
+    "scope": {
+      "cohort": "학번 구분 없음",
+      "department": "전체 학부(학과별 세부는 학과 확인)",
+      "year": "2026-11-06 열람 게시본(학년도 명시 없음)"
+    },
+    "conditions": [
+      "수업일수 2/3 이상 수강",
+      "시행세칙 해당 사유"
+    ],
+    "exceptions": [],
+    "evidence": {
+      "quote": "담당교수는 수시시험 또는 임시시험 등의 성적을 참작하여 성적 부여(최대 B+)",
+      "location": "시험/성적 > 결시자특례"
+    },
+    "research_status": "verified",
+    "review_status": "pending",
+    "publish_enabled": false,
+    "rule_execution_enabled": false,
+    "game_use_proposal": "입대·질병으로 기말 결시 사건",
+    "provenance": {
+      "file": "inu-data-common.json",
+      "record_id": "GRD-05",
+      "collector": "Claude"
+    }
+  },
+  {
+    "id": "inu.common.GRD-06",
+    "domain": "common",
+    "category": "grading",
+    "title": "성적 열람 조건",
+    "statement": "기말 강의평가(이공계 연구활동 종사자는 연구실 안전교육 포함) 이수 후 확정전 성적 열람 가능",
+    "source_id": "src-4cfbb78790b9f575",
+    "source_updated_at": "2026-06-22",
+    "checked_at": "2026-11-06",
+    "scope": {
+      "cohort": "학번 구분 없음",
+      "department": "전체 학부(학과별 세부는 학과 확인)",
+      "year": "2026-11-06 열람 게시본(학년도 명시 없음)"
+    },
+    "conditions": [],
+    "exceptions": [
+      "연구실 안전교육은 이공계 연구활동 종사자만"
+    ],
+    "evidence": {
+      "quote": "기말 강의평가 및 연구실 안전교육 이수 후 성적 열람 가능",
+      "location": "시험/성적 > 성적열람"
+    },
+    "research_status": "verified",
+    "review_status": "pending",
+    "publish_enabled": false,
+    "rule_execution_enabled": false,
+    "game_use_proposal": "학기말 성적 확인 연출",
+    "provenance": {
+      "file": "inu-data-common.json",
+      "record_id": "GRD-06",
+      "collector": "Claude"
+    }
+  },
+  {
+    "id": "inu.common.ACW-01",
+    "domain": "common",
+    "category": "academic_warning",
+    "title": "학사경고 기준",
+    "statement": "매 학기말 성적 평점평균 1.80 미만이면 학사경고, 본인 또는 보호자에게 통보",
+    "source_id": "src-d191ff5bad1cf199",
+    "source_updated_at": "2023-06-14",
+    "checked_at": "2026-11-06",
+    "scope": {
+      "cohort": "학번 구분 없음",
+      "department": "전체 학부(학과별 세부는 학과 확인)",
+      "year": "게시본 2023-06-14 수정"
+    },
+    "conditions": [],
+    "exceptions": [
+      "학내 프로그램 이수 시 1회 면제(ACW-03)"
+    ],
+    "evidence": {
+      "quote": "매 학기말 성적 평점평균이 1.80미만인 자에 대하여 학사경고 처분하고 본인 또는 보호자에게 통보",
+      "location": "학사징계 > 학사경고"
+    },
+    "research_status": "verified",
+    "review_status": "pending",
+    "publish_enabled": false,
+    "rule_execution_enabled": false,
+    "game_use_proposal": "학기말 경고 판정",
+    "provenance": {
+      "file": "inu-data-common.json",
+      "record_id": "ACW-01",
+      "collector": "Claude"
+    }
+  },
+  {
+    "id": "inu.common.ACW-02",
+    "domain": "common",
+    "category": "academic_warning",
+    "title": "학사경고 3회 제적",
+    "statement": "재학기간 중 학사경고 3회째 받으면 제적(학칙 제51조 제6항)",
+    "source_id": "src-f0dea208db4f3f38",
+    "source_updated_at": "2025-04-03",
+    "checked_at": "2026-11-06",
+    "scope": {
+      "cohort": "학번 구분 없음",
+      "department": "전체 학부(학과별 세부는 학과 확인)",
+      "year": "2026-11-06 열람 게시본(학년도 명시 없음)"
+    },
+    "conditions": [
+      "재학기간 누적"
+    ],
+    "exceptions": [
+      "1회 면제 프로그램(ACW-03)"
+    ],
+    "evidence": {
+      "quote": "재학기간 중 학사경고를 3회 받은 자 (※ 학사경고 기준 : 매학기말 성적 평점평균이 1.80 미만)",
+      "location": "제적 > 학사징계제적(학칙 제51조 제6항); inu/664 학사제적과 일치"
+    },
+    "research_status": "verified",
+    "review_status": "pending",
+    "publish_enabled": false,
+    "rule_execution_enabled": false,
+    "game_use_proposal": "제적 엔딩 조건",
+    "provenance": {
+      "file": "inu-data-common.json",
+      "record_id": "ACW-02",
+      "collector": "Claude"
+    }
+  },
+  {
+    "id": "inu.common.ACW-03",
+    "domain": "common",
+    "category": "academic_warning",
+    "title": "학사경고 1회 면제 프로그램",
+    "statement": "학사경고 대상자 중 학업성취도 향상 학내 프로그램 이수자는 1회에 한해 경고 면제(2018-1학기 시행, 시행세칙 제60조)",
+    "source_id": "src-f0dea208db4f3f38",
+    "source_updated_at": "2025-04-03",
+    "checked_at": "2026-11-06",
+    "scope": {
+      "cohort": "2018-1학기 이후",
+      "department": "전체 학부(학과별 세부는 학과 확인)",
+      "year": "2026-11-06 열람 게시본(학년도 명시 없음)"
+    },
+    "conditions": [
+      "학내 프로그램 이수"
+    ],
+    "exceptions": [
+      "1회 한정",
+      "프로그램명·신청기간은 원문에 없음"
+    ],
+    "evidence": {
+      "quote": "학내 프로그램 이수한 자는 1회에 한하여 학사경고 면제 (2018학년도 1학기부터 시행)",
+      "location": "제적 > 학사경고 대상자 1회 면제 프로그램(학칙 시행세칙 제60조)"
+    },
+    "research_status": "verified",
+    "review_status": "pending",
+    "publish_enabled": false,
+    "rule_execution_enabled": false,
+    "game_use_proposal": "경고 구제 선택지(프로그램명은 가상 표기)",
+    "provenance": {
+      "file": "inu-data-common.json",
+      "record_id": "ACW-03",
+      "collector": "Claude"
+    }
+  },
+  {
+    "id": "inu.common.DIS-01",
+    "domain": "common",
+    "category": "dismissal",
+    "title": "미복학·미등록 제적",
+    "statement": "휴학기간 만료 후 미복학 시 제적, 기간 내 미등록 또는 등록 후 수강신청 미완료 시 제적",
+    "source_id": "src-f0dea208db4f3f38",
+    "source_updated_at": "2025-04-03",
+    "checked_at": "2026-11-06",
+    "scope": {
+      "cohort": "학번 구분 없음",
+      "department": "전체 학부(학과별 세부는 학과 확인)",
+      "year": "2026-11-06 열람 게시본(학년도 명시 없음)"
+    },
+    "conditions": [],
+    "exceptions": [],
+    "evidence": {
+      "quote": "등록금 납부를 하더라도 학칙 제 42조에 의거 수강신청 미완료시 제적",
+      "location": "제적 > 미복학제적(제51조1항)·미등록제적(제42조, 제51조2항)"
+    },
+    "research_status": "verified",
+    "review_status": "pending",
+    "publish_enabled": false,
+    "rule_execution_enabled": false,
+    "game_use_proposal": "복학 신청 누락 위기 사건",
+    "provenance": {
+      "file": "inu-data-common.json",
+      "record_id": "DIS-01",
+      "collector": "Claude"
+    }
+  },
+  {
+    "id": "inu.common.DIS-02",
+    "domain": "common",
+    "category": "dismissal",
+    "title": "재학연한 초과 제적",
+    "statement": "재학연한은 수업연한의 2배, 초과 시 제적",
+    "source_id": "src-f0dea208db4f3f38",
+    "source_updated_at": "2025-04-03",
+    "checked_at": "2026-11-06",
+    "scope": {
+      "cohort": "학번 구분 없음",
+      "department": "전체 학부(학과별 세부는 학과 확인)",
+      "year": "2026-11-06 열람 게시본(학년도 명시 없음)"
+    },
+    "conditions": [],
+    "exceptions": [
+      "재·편입학자는 나머지 수업연한 기준"
+    ],
+    "evidence": {
+      "quote": "재학연한 : 수업연한(재·편입학자는 나머지 수업연한)의 2배",
+      "location": "제적 > 연한초과제적(학칙 제23조, 제51조 제7항)"
+    },
+    "research_status": "verified",
+    "review_status": "pending",
+    "publish_enabled": false,
+    "rule_execution_enabled": false,
+    "game_use_proposal": "과도한 휴학 누적 경고",
+    "provenance": {
+      "file": "inu-data-common.json",
+      "record_id": "DIS-02",
+      "collector": "Claude"
+    }
+  },
+  {
+    "id": "inu.common.DIS-03",
+    "domain": "common",
+    "category": "dismissal",
+    "title": "첫 학기 자퇴·제적자 재입학 불가",
+    "statement": "2023년 이후 신·편입학생이 입학 후 첫 1개 학기 중 자퇴·제적되거나 징계 제적되면 재입학 불가",
+    "source_id": "src-f0dea208db4f3f38",
+    "source_updated_at": "2025-04-03",
+    "checked_at": "2026-11-06",
+    "scope": {
+      "cohort": "2023년 이후 신·편입학생",
+      "department": "전체 학부(학과별 세부는 학과 확인)",
+      "year": "2026-11-06 열람 게시본(학년도 명시 없음)"
+    },
+    "conditions": [],
+    "exceptions": [],
+    "evidence": {
+      "quote": "입학 후 첫 1개 학기 중에 자퇴하거나 제적된 자 및 징계에 의해 제적된 자는 재입학 불가",
+      "location": "제적 > 첫 문단"
+    },
+    "research_status": "verified",
+    "review_status": "pending",
+    "publish_enabled": false,
+    "rule_execution_enabled": false,
+    "game_use_proposal": "1학년 1학기 자퇴 선택 경고",
+    "provenance": {
+      "file": "inu-data-common.json",
+      "record_id": "DIS-03",
+      "collector": "Claude"
+    }
+  },
+  {
+    "id": "inu.common.LOA-01",
+    "domain": "common",
+    "category": "leave_of_absence",
+    "title": "일반휴학 기본",
+    "statement": "개인사정으로 1개월 이상 등교 불가 시 일반휴학, 1년 이내(한 학기 가능), 개강 전 기간(부득이 시 수업일수 1/3 이내)",
+    "source_id": "src-40a358eb491be1a6",
+    "source_updated_at": "2025-10-24",
+    "checked_at": "2026-11-06",
+    "scope": {
+      "cohort": "학번 구분 없음",
+      "department": "전체 학부(학과별 세부는 학과 확인)",
+      "year": "2026-11-06 열람 게시본(학년도 명시 없음)"
+    },
+    "conditions": [
+      "학사일정 기간 내 인터넷 신청"
+    ],
+    "exceptions": [
+      "신입생 첫 2개 학기 제한(LOA-02)"
+    ],
+    "evidence": {
+      "quote": "휴학기간 1년 이내(한 학기 휴학가능)",
+      "location": "휴·복학 > 일반휴학(학칙시행세칙 제21조)"
+    },
+    "research_status": "verified",
+    "review_status": "pending",
+    "publish_enabled": false,
+    "rule_execution_enabled": false,
+    "game_use_proposal": "휴학 선택지",
+    "provenance": {
+      "file": "inu-data-common.json",
+      "record_id": "LOA-01",
+      "collector": "Claude"
+    }
+  },
+  {
+    "id": "inu.common.LOA-02",
+    "domain": "common",
+    "category": "leave_of_absence",
+    "title": "신입생 첫 2학기 일반휴학 제한",
+    "statement": "2023학년도 이후 신입학생은 첫 2개 학기, 편·재입학생은 첫 1개 학기 휴학 불가. 입대·질병·육아 휴학은 제외",
+    "source_id": "src-40a358eb491be1a6",
+    "source_updated_at": "2025-10-24",
+    "checked_at": "2026-11-06",
+    "scope": {
+      "cohort": "2023학년도 이후 신입학생(2026학번 포함), 편·재입학생",
+      "department": "전체 학부(학과별 세부는 학과 확인)",
+      "year": "2026-11-06 열람 게시본(학년도 명시 없음)"
+    },
+    "conditions": [],
+    "exceptions": [
+      "입대휴학",
+      "질병휴학",
+      "육아휴학",
+      "~2022 입학 전공배정 학부 1학년은 한 학기 휴학불가(시행세칙 제11조)",
+      "창업휴학 허용 여부는 원문 미명시"
+    ],
+    "evidence": {
+      "quote": "신입학생(2023학년도이후) 첫 2개학기, 편⋅재입학생 입학 후 첫 1개학기 휴학 불가. 단, 입대⋅질병⋅육아 휴학의 경우 제외",
+      "location": "휴·복학 > 일반휴학 > 유의사항"
+    },
+    "research_status": "verified",
+    "review_status": "pending",
+    "publish_enabled": false,
+    "rule_execution_enabled": false,
+    "game_use_proposal": "1학년 일반휴학 선택지 비활성(입대·질병·육아는 허용)",
+    "provenance": {
+      "file": "inu-data-common.json",
+      "record_id": "LOA-02",
+      "collector": "Claude"
+    }
+  },
+  {
+    "id": "inu.common.LOA-03",
+    "domain": "common",
+    "category": "leave_of_absence",
+    "title": "휴학연기",
+    "statement": "일반휴학 중 1회에 한해 1년 이내 연장, 복학·연기 미처리 시 미복학제적",
+    "source_id": "src-40a358eb491be1a6",
+    "source_updated_at": "2025-10-24",
+    "checked_at": "2026-11-06",
+    "scope": {
+      "cohort": "학번 구분 없음",
+      "department": "전체 학부(학과별 세부는 학과 확인)",
+      "year": "2026-11-06 열람 게시본(학년도 명시 없음)"
+    },
+    "conditions": [
+      "일반휴학 중인 자"
+    ],
+    "exceptions": [
+      "휴학연기 중인 자는 추가 연기 불가"
+    ],
+    "evidence": {
+      "quote": "1회에 한하여 1년 이내(한 학기 휴학가능)",
+      "location": "휴·복학 > 휴학연기"
+    },
+    "research_status": "verified",
+    "review_status": "pending",
+    "publish_enabled": false,
+    "rule_execution_enabled": false,
+    "game_use_proposal": "장기 휴학 분기",
+    "provenance": {
+      "file": "inu-data-common.json",
+      "record_id": "LOA-03",
+      "collector": "Claude"
+    }
+  },
+  {
+    "id": "inu.common.LOA-04",
+    "domain": "common",
+    "category": "leave_of_absence",
+    "title": "입대휴학",
+    "statement": "병역의무로 학업 불가 시 해당 군복무기간(최대 6년) 휴학",
+    "source_id": "src-40a358eb491be1a6",
+    "source_updated_at": "2025-10-24",
+    "checked_at": "2026-11-06",
+    "scope": {
+      "cohort": "학번 구분 없음",
+      "department": "전체 학부(학과별 세부는 학과 확인)",
+      "year": "2026-11-06 열람 게시본(학년도 명시 없음)"
+    },
+    "conditions": [
+      "입대일 7일 전 신청",
+      "입영통지서 등 증빙"
+    ],
+    "exceptions": [
+      "귀가 조치 시 1주일 이내 취소 신고",
+      "일반휴학 불가자는 승인 전까지 학업 지속"
+    ],
+    "evidence": {
+      "quote": "해당 군복무기간(최대6년)",
+      "location": "휴·복학 > 입대휴학"
+    },
+    "research_status": "verified",
+    "review_status": "pending",
+    "publish_enabled": false,
+    "rule_execution_enabled": false,
+    "game_use_proposal": "입영 사건으로 타임라인 공백",
+    "provenance": {
+      "file": "inu-data-common.json",
+      "record_id": "LOA-04",
+      "collector": "Claude"
+    }
+  },
+  {
+    "id": "inu.common.LOA-05",
+    "domain": "common",
+    "category": "leave_of_absence",
+    "title": "질병휴학",
+    "statement": "질병으로 1개월 이상 등교 불가 시, 종합병원장 4주 이상 진단서로 신청",
+    "source_id": "src-40a358eb491be1a6",
+    "source_updated_at": "2025-10-24",
+    "checked_at": "2026-11-06",
+    "scope": {
+      "cohort": "학번 구분 없음",
+      "department": "전체 학부(학과별 세부는 학과 확인)",
+      "year": "2026-11-06 열람 게시본(학년도 명시 없음)"
+    },
+    "conditions": [
+      "종합병원 4주 이상 진단서"
+    ],
+    "exceptions": [
+      "수업일수 2/3선 이후 신청 시 성적인정원 제출"
+    ],
+    "evidence": {
+      "quote": "종합병원장의 4주 이상의 진단서",
+      "location": "휴·복학 > 질병휴학"
+    },
+    "research_status": "verified",
+    "review_status": "pending",
+    "publish_enabled": false,
+    "rule_execution_enabled": false,
+    "game_use_proposal": "건강 위기 사건(민감 묘사 주의)",
+    "provenance": {
+      "file": "inu-data-common.json",
+      "record_id": "LOA-05",
+      "collector": "Claude"
+    }
+  },
+  {
+    "id": "inu.common.LOA-06",
+    "domain": "common",
+    "category": "leave_of_absence",
+    "title": "육아휴학",
+    "statement": "임신·출산·육아로 학업 곤란 시 신청, 임신확인서 또는 가족관계증명서 제출",
+    "source_id": "src-40a358eb491be1a6",
+    "source_updated_at": "2025-10-24",
+    "checked_at": "2026-11-06",
+    "scope": {
+      "cohort": "학번 구분 없음",
+      "department": "전체 학부(학과별 세부는 학과 확인)",
+      "year": "2026-11-06 열람 게시본(학년도 명시 없음)"
+    },
+    "conditions": [],
+    "exceptions": [
+      "2/3선 이후 신청 시 성적인정원"
+    ],
+    "evidence": {
+      "quote": "임신‧출산‧육아로 인해 정상적인 학업수행이 어려운 경우",
+      "location": "휴·복학 > 육아휴학"
+    },
+    "research_status": "verified",
+    "review_status": "pending",
+    "publish_enabled": false,
+    "rule_execution_enabled": false,
+    "game_use_proposal": "게임 사건 비권장(민감), 제도 존재만 안내",
+    "provenance": {
+      "file": "inu-data-common.json",
+      "record_id": "LOA-06",
+      "collector": "Claude"
+    }
+  },
+  {
+    "id": "inu.common.LOA-07",
+    "domain": "common",
+    "category": "leave_of_absence",
+    "title": "창업휴학",
+    "statement": "창업으로 학업 곤란 시 사업계획서·사업자등록증 제출로 신청",
+    "source_id": "src-40a358eb491be1a6",
+    "source_updated_at": "2025-10-24",
+    "checked_at": "2026-11-06",
+    "scope": {
+      "cohort": "학번 구분 없음",
+      "department": "전체 학부(학과별 세부는 학과 확인)",
+      "year": "2026-11-06 열람 게시본(학년도 명시 없음)"
+    },
+    "conditions": [
+      "사업자등록증 필요"
+    ],
+    "exceptions": [
+      "신입생 첫 2학기 허용 여부 원문 미명시"
+    ],
+    "evidence": {
+      "quote": "창업으로 인해 정상적인 학업수행이 어려운 경우",
+      "location": "휴·복학 > 창업휴학"
+    },
+    "research_status": "verified",
+    "review_status": "pending",
+    "publish_enabled": false,
+    "rule_execution_enabled": false,
+    "game_use_proposal": "창업 루트 분기(사업자등록 조건 표시)",
+    "provenance": {
+      "file": "inu-data-common.json",
+      "record_id": "LOA-07",
+      "collector": "Claude"
+    }
+  },
+  {
+    "id": "inu.common.GRA-01",
+    "domain": "common",
+    "category": "graduation",
+    "title": "졸업소요학점(학교 공통)",
+    "statement": "2023학년도 이후 입학생 졸업소요학점 130학점 이상",
+    "source_id": "src-87f57fb557de730b",
+    "source_updated_at": "2026-04-03",
+    "checked_at": "2026-11-06",
+    "scope": {
+      "cohort": "2023학년도 이후 입학생(2026학번 포함)",
+      "department": "학교 공통 최저선(학과별 세부 졸업사정은 학과 확인)",
+      "year": "게시본 2026-04-03 수정"
+    },
+    "conditions": [
+      "교과과정 이수",
+      "논문 및 영어졸업인증, 자격 취득"
+    ],
+    "exceptions": [
+      "2020~2022 입학생은 학과별 130~140(예: 구 컴퓨터공학부 140)"
+    ],
+    "evidence": {
+      "quote": "2023학년도 이후 입학생 : 130학점 이상",
+      "location": "수료/졸업 > 졸업소요학점"
+    },
+    "research_status": "verified",
+    "review_status": "pending",
+    "publish_enabled": false,
+    "rule_execution_enabled": false,
+    "game_use_proposal": "8학기 총 이수학점 목표",
+    "provenance": {
+      "file": "inu-data-common.json",
+      "record_id": "GRA-01",
+      "collector": "Claude"
+    }
+  },
+  {
+    "id": "inu.common.GRA-02",
+    "domain": "common",
+    "category": "graduation",
+    "title": "졸업자격 구성",
+    "statement": "정해진 교과과정 이수 + 논문 및 영어졸업인증, 자격 취득. 외국인 한국어트랙은 한국어 졸업인증 추가",
+    "source_id": "src-87f57fb557de730b",
+    "source_updated_at": "2026-04-03",
+    "checked_at": "2026-11-06",
+    "scope": {
+      "cohort": "학번 구분 없음",
+      "department": "전체 학부(학과별 세부는 학과 확인)",
+      "year": "게시본 2026-04-03 수정"
+    },
+    "conditions": [],
+    "exceptions": [
+      "영어졸업인증 기준점수·면제는 이 원문에 없음"
+    ],
+    "evidence": {
+      "quote": "정해진 교과과정을 이수하고 논문 및 영어졸업인증, 자격을 취득한 자",
+      "location": "수료/졸업 > 졸업자격"
+    },
+    "research_status": "verified",
+    "review_status": "pending",
+    "publish_enabled": false,
+    "rule_execution_enabled": false,
+    "game_use_proposal": "졸업 체크리스트(영어인증·졸업논문/작품)",
+    "provenance": {
+      "file": "inu-data-common.json",
+      "record_id": "GRA-02",
+      "collector": "Claude"
+    }
+  },
+  {
+    "id": "inu.common.GRA-03",
+    "domain": "common",
+    "category": "graduation",
+    "title": "교양 졸업학점 범위",
+    "statement": "2012학년도 이후 입학생 교양 최소 30학점, 최대 55학점까지",
+    "source_id": "src-87f57fb557de730b",
+    "source_updated_at": "2026-04-03",
+    "checked_at": "2026-11-06",
+    "scope": {
+      "cohort": "2012학년도 이후 입학생(문면상 2026 포함)",
+      "department": "전체 학부(학과별 세부는 학과 확인)",
+      "year": "게시본 2026-04-03 수정"
+    },
+    "conditions": [],
+    "exceptions": [
+      "2026 교육과정 별도 기준 존재 여부 미확인"
+    ],
+    "evidence": {
+      "quote": "2012학년도 이후 입학생 : 최소 30학점 이상 최대 55학점까지",
+      "location": "수료/졸업 > 교양과목 졸업학점"
+    },
+    "research_status": "conditional",
+    "review_status": "pending",
+    "publish_enabled": false,
+    "rule_execution_enabled": false,
+    "game_use_proposal": "교양 과다 수강 경고",
+    "provenance": {
+      "file": "inu-data-common.json",
+      "record_id": "GRA-03",
+      "collector": "Claude"
+    }
+  },
+  {
+    "id": "inu.common.GRA-04",
+    "domain": "common",
+    "category": "graduation",
+    "title": "2026학번 기초교양",
+    "statement": "2026학년도 이후 입학자 기초교양 10~16학점: AI시대의글쓰기이론과실제, Academic English, AI사고와데이터리터러시(해당학과), AI와인간중심윤리, 대학영어회화1·2, 대학수학 6학점(자연·공학계열)",
+    "source_id": "src-87f57fb557de730b",
+    "source_updated_at": "2026-04-03",
+    "checked_at": "2026-11-06",
+    "scope": {
+      "cohort": "2026학년도 이후 입학자(2026학번 이후 편입자)",
+      "department": "전체 학부(학과별 세부는 학과 확인)",
+      "year": "게시본 2026-04-03 수정"
+    },
+    "conditions": [
+      "학과별 해당 여부는 학사공지 교양교육과정 확인"
+    ],
+    "exceptions": [
+      "대학수학은 자연·공학계열만",
+      "AI사고와데이터리터러시는 해당학과만"
+    ],
+    "evidence": {
+      "quote": "기초교양 10~16학점 이상 : AI시대의글쓰기이론과실제 2학점, Academic English 2학점, AI사고와데이터리터러시 2학점(해당학과), AI와인간중심윤리 2학점",
+      "location": "수료/졸업 > 교양필수 > 2026학년도 이후 입학자"
+    },
+    "research_status": "verified",
+    "review_status": "pending",
+    "publish_enabled": false,
+    "rule_execution_enabled": false,
+    "game_use_proposal": "1학년 필수 교양 이벤트",
+    "provenance": {
+      "file": "inu-data-common.json",
+      "record_id": "GRA-04",
+      "collector": "Claude"
+    }
+  },
+  {
+    "id": "inu.common.GRA-05",
+    "domain": "common",
+    "category": "graduation",
+    "title": "핵심교양 이수",
+    "statement": "2023학년도 이후 입학자 핵심교양 6개 영역 중 영역 무관 3과목 이상",
+    "source_id": "src-87f57fb557de730b",
+    "source_updated_at": "2026-04-03",
+    "checked_at": "2026-11-06",
+    "scope": {
+      "cohort": "2023학년도 이후 입학자(2026 포함)",
+      "department": "전체 학부(학과별 세부는 학과 확인)",
+      "year": "게시본 2026-04-03 수정"
+    },
+    "conditions": [],
+    "exceptions": [],
+    "evidence": {
+      "quote": "핵심교양 6개 영역 중 영역 관계없이 3과목 이상 이수",
+      "location": "수료/졸업 > 교양필수 2023·2026 항목"
+    },
+    "research_status": "verified",
+    "review_status": "pending",
+    "publish_enabled": false,
+    "rule_execution_enabled": false,
+    "game_use_proposal": "교양 선택 이벤트",
+    "provenance": {
+      "file": "inu-data-common.json",
+      "record_id": "GRA-05",
+      "collector": "Claude"
+    }
+  },
+  {
+    "id": "inu.common.GRA-06",
+    "domain": "common",
+    "category": "graduation",
+    "title": "전공 졸업학점(계열별)",
+    "statement": "2023학년도 이후 입학생 전공 공학계열 72, 이학계열 63, 기타 60학점 이상",
+    "source_id": "src-87f57fb557de730b",
+    "source_updated_at": "2026-04-03",
+    "checked_at": "2026-11-06",
+    "scope": {
+      "cohort": "2023학년도 이후 입학생",
+      "department": "계열별(소속 학과의 계열 분류는 학과 원문 확인)",
+      "year": "게시본 2026-04-03 수정"
+    },
+    "conditions": [
+      "소속 학과의 계열 분류"
+    ],
+    "exceptions": [
+      "신소재공학과·에너지화학공학과 60",
+      "도시환경공학부 환경공학전공 66",
+      "패션산업학과 60",
+      "복수전공 각 42",
+      "부전공 이수 시 주전공 60"
+    ],
+    "evidence": {
+      "quote": "2023학년도 이후 입학생 : 공학계열 72학점 이상, 이학계열 63학점 이상, 기타 60학점 이상 이수",
+      "location": "수료/졸업 > 전공과목 졸업학점"
+    },
+    "research_status": "conditional",
+    "review_status": "pending",
+    "publish_enabled": false,
+    "rule_execution_enabled": false,
+    "game_use_proposal": "전공 이수 목표(정보기술대학 학과 계열 분류는 이 원문에 없음)",
+    "provenance": {
+      "file": "inu-data-common.json",
+      "record_id": "GRA-06",
+      "collector": "Claude"
+    }
+  },
+  {
+    "id": "inu.common.GRA-07",
+    "domain": "common",
+    "category": "graduation",
+    "title": "조기졸업",
+    "statement": "4학기까지 총 평점평균 4.0 이상이면 5학기 개시 전 신청, 6·7학기에 졸업요건 충족하고 평점 4.0 이상이면 조기졸업",
+    "source_id": "src-87f57fb557de730b",
+    "source_updated_at": "2026-04-03",
+    "checked_at": "2026-11-06",
+    "scope": {
+      "cohort": "학번 구분 없음",
+      "department": "전체 학부(학과별 세부는 학과 확인)",
+      "year": "게시본 2026-04-03 수정"
+    },
+    "conditions": [
+      "4학기까지 총평점 4.0 이상",
+      "졸업 시에도 평점 4.0 이상"
+    ],
+    "exceptions": [],
+    "evidence": {
+      "quote": "신청자격 : 2학년 2학기(4학기)까지의 총성적 평점평균이 4.0이상인 자",
+      "location": "수료/졸업 > 조기졸업"
+    },
+    "research_status": "verified",
+    "review_status": "pending",
+    "publish_enabled": false,
+    "rule_execution_enabled": false,
+    "game_use_proposal": "고학점 조기졸업 루트",
+    "provenance": {
+      "file": "inu-data-common.json",
+      "record_id": "GRA-07",
+      "collector": "Claude"
+    }
+  },
+  {
+    "id": "inu.common.GRA-08",
+    "domain": "common",
+    "category": "graduation",
+    "title": "학년별 수료학점",
+    "statement": "졸업학점 130 기준 수료학점 1학년 33, 2학년 65, 3학년 98, 4학년 130",
+    "source_id": "src-87f57fb557de730b",
+    "source_updated_at": "2026-04-03",
+    "checked_at": "2026-11-06",
+    "scope": {
+      "cohort": "졸업학점 130 적용자",
+      "department": "전체 학부(학과별 세부는 학과 확인)",
+      "year": "게시본 2026-04-03 수정"
+    },
+    "conditions": [],
+    "exceptions": [
+      "졸업학점 131~140은 표의 별도 값"
+    ],
+    "evidence": {
+      "quote": "수료학년 1학년 33 / 2학년 65 / 3학년 98 / 4학년 130 (130열)",
+      "location": "수료/졸업 > 수료 표(130열)"
+    },
+    "research_status": "verified",
+    "review_status": "pending",
+    "publish_enabled": false,
+    "rule_execution_enabled": false,
+    "game_use_proposal": "학년 진급 체크포인트",
+    "provenance": {
+      "file": "inu-data-common.json",
+      "record_id": "GRA-08",
+      "collector": "Claude"
+    }
+  },
+  {
+    "id": "inu.common.GRA-09",
+    "domain": "common",
+    "category": "graduation",
+    "title": "졸업사정 불합격 처리",
+    "statement": "수료자는 등록 없이 요건 충족 후 졸업신청, 재수자는 학점등록 또는 휴학(미등록·미휴학 시 미등록제적)",
+    "source_id": "src-87f57fb557de730b",
+    "source_updated_at": "2026-04-03",
+    "checked_at": "2026-11-06",
+    "scope": {
+      "cohort": "학번 구분 없음",
+      "department": "전체 학부(학과별 세부는 학과 확인)",
+      "year": "게시본 2026-04-03 수정"
+    },
+    "conditions": [],
+    "exceptions": [],
+    "evidence": {
+      "quote": "등록도 안하고 휴학도 안하는 경우 미등록제적 처리됨",
+      "location": "수료/졸업 > 졸업사정 결과 불합격한 학생 지도"
+    },
+    "research_status": "verified",
+    "review_status": "pending",
+    "publish_enabled": false,
+    "rule_execution_enabled": false,
+    "game_use_proposal": "졸업 실패 분기",
+    "provenance": {
+      "file": "inu-data-common.json",
+      "record_id": "GRA-09",
+      "collector": "Claude"
+    }
+  },
+  {
+    "id": "inu.common.MAJ-01",
+    "domain": "common",
+    "category": "double_minor",
+    "title": "부·복수전공 신청자격·시기",
+    "statement": "2학기 이상 이수한 재학생 및 복학예정자, 학기 개시 전(학사일정 참조) 포털 신청, 해당 학과 심사",
+    "source_id": "src-39b9a99c5968d658",
+    "source_updated_at": "2026-04-03",
+    "checked_at": "2026-11-06",
+    "scope": {
+      "cohort": "학번 구분 없음",
+      "department": "전체 학부(학과별 세부는 학과 확인)",
+      "year": "게시본 2026-04-03 수정"
+    },
+    "conditions": [
+      "2학기 이상 이수",
+      "부·복수전공 학과 심사"
+    ],
+    "exceptions": [
+      "복학예정자가 합격 후 미복학 시 허가 취소",
+      "동일 학과 부·복수 중복신청 불가"
+    ],
+    "evidence": {
+      "quote": "2학기 이상 이수한 재학생 및 복학예정자",
+      "location": "부전공/복수전공 표 > 신청자격·신청기간"
+    },
+    "research_status": "verified",
+    "review_status": "pending",
+    "publish_enabled": false,
+    "rule_execution_enabled": false,
+    "game_use_proposal": "2학년부터 복수전공 신청 이벤트",
+    "provenance": {
+      "file": "inu-data-common.json",
+      "record_id": "MAJ-01",
+      "collector": "Claude"
+    }
+  },
+  {
+    "id": "inu.common.MAJ-02",
+    "domain": "common",
+    "category": "double_minor",
+    "title": "복수전공 이수학점",
+    "statement": "주전공·복수전공 각각 전공기초·핵심 포함 42학점 이상, 동일 교과목 최대 12학점 중복인정, 양쪽 요건 충족 시 학위",
+    "source_id": "src-39b9a99c5968d658",
+    "source_updated_at": "2026-04-03",
+    "checked_at": "2026-11-06",
+    "scope": {
+      "cohort": "학번 구분 없음",
+      "department": "전체 학부(학과별 세부는 학과 확인)",
+      "year": "게시본 2026-04-03 수정"
+    },
+    "conditions": [
+      "양 전공 졸업요건 모두 충족"
+    ],
+    "exceptions": [
+      "주전공 학위는 복수전공 완료까지 유보"
+    ],
+    "evidence": {
+      "quote": "복수전공 학과의 전공기초,전공핵심 포함 42학점 이상",
+      "location": "부전공/복수전공 표 > 이수학점·학점 중복인정; inu/666 일치"
+    },
+    "research_status": "verified",
+    "review_status": "pending",
+    "publish_enabled": false,
+    "rule_execution_enabled": false,
+    "game_use_proposal": "복수전공 루트",
+    "provenance": {
+      "file": "inu-data-common.json",
+      "record_id": "MAJ-02",
+      "collector": "Claude"
+    }
+  },
+  {
+    "id": "inu.common.MAJ-03",
+    "domain": "common",
+    "category": "double_minor",
+    "title": "부전공 이수학점",
+    "statement": "부전공 21학점 이상(지정 필수 9학점 이내 포함), 주전공 60학점 이상, 중복인정 최대 9학점, 학위증서에 부전공 표시",
+    "source_id": "src-39b9a99c5968d658",
+    "source_updated_at": "2026-04-03",
+    "checked_at": "2026-11-06",
+    "scope": {
+      "cohort": "2023-1학기 신청자부터 주전공 60학점 일괄",
+      "department": "전체 학부(학과별 세부는 학과 확인)",
+      "year": "게시본 2026-04-03 수정"
+    },
+    "conditions": [],
+    "exceptions": [
+      "이전 신청 이수자는 기존 주전공 졸업학점 적용"
+    ],
+    "evidence": {
+      "quote": "부전공 학과가 지정한 필수과목(9학점 이내) 포함 21학점 이상",
+      "location": "부전공/복수전공 표 > 이수학점, 유의사항 6"
+    },
+    "research_status": "verified",
+    "review_status": "pending",
+    "publish_enabled": false,
+    "rule_execution_enabled": false,
+    "game_use_proposal": "부전공 루트",
+    "provenance": {
+      "file": "inu-data-common.json",
+      "record_id": "MAJ-03",
+      "collector": "Claude"
+    }
+  },
+  {
+    "id": "inu.common.MAJ-04",
+    "domain": "common",
+    "category": "double_minor",
+    "title": "복수전공 포기·전환",
+    "statement": "복수전공 포기 시 일반 교과과정 이수, 부전공 요건 충족 시 부전공 전환 가능(수료자는 불가)",
+    "source_id": "src-39b9a99c5968d658",
+    "source_updated_at": "2026-04-03",
+    "checked_at": "2026-11-06",
+    "scope": {
+      "cohort": "학번 구분 없음",
+      "department": "전체 학부(학과별 세부는 학과 확인)",
+      "year": "게시본 2026-04-03 수정"
+    },
+    "conditions": [],
+    "exceptions": [
+      "수료자는 부전공 전환 불가"
+    ],
+    "evidence": {
+      "quote": "복수전공 이수 중 포기하는 학생이 부전공 이수인정에 필요한 요건을 갖추었을 경우 신청을 통해 부전공으로 전환 가능",
+      "location": "부전공/복수전공 > 유의사항 3"
+    },
+    "research_status": "verified",
+    "review_status": "pending",
+    "publish_enabled": false,
+    "rule_execution_enabled": false,
+    "game_use_proposal": "복수전공 포기 분기",
+    "provenance": {
+      "file": "inu-data-common.json",
+      "record_id": "MAJ-04",
+      "collector": "Claude"
+    }
+  },
+  {
+    "id": "inu.common.EXC-03",
+    "domain": "common",
+    "category": "exchange",
+    "title": "파견 후 잔여학기·8학기 파견",
+    "statement": "파견 종료 후 인천대 수학이 1학기 이상 남아야 함. 8차 학기 파견 시 졸업예정자 서약서, 귀국 후 9차 학기 수학, 휴학 불가",
+    "source_id": "src-2986e608f4da5457",
+    "source_updated_at": null,
+    "checked_at": "2026-11-06",
+    "scope": {
+      "cohort": "학년도 미표기",
+      "department": "전체 학부(학과별 세부는 학과 확인)",
+      "year": "적용 학년도 미표기 상시 안내"
+    },
+    "conditions": [],
+    "exceptions": [
+      "8차 학기 파견은 9차 학기 필수"
+    ],
+    "evidence": {
+      "quote": "8차 학기를 외국대학에서 수학하는 경우 ... 파견종료 후 인천대학에서 1학기 이상(9차 학기) 수학해야 함. 휴학 불가",
+      "location": "지원 자격 4항 주석"
+    },
+    "research_status": "conditional",
+    "review_status": "pending",
+    "publish_enabled": false,
+    "rule_execution_enabled": false,
+    "game_use_proposal": "4학년 교환 선택 시 졸업 연기 경고",
+    "provenance": {
+      "file": "inu-data-common.json",
+      "record_id": "EXC-03",
+      "collector": "Claude"
+    }
+  },
+  {
+    "id": "inu.common.EXC-05",
+    "domain": "common",
+    "category": "exchange",
+    "title": "모집·파견 시기",
+    "statement": "모집기간 매년 3월·9월, 파견시기 매학기(3월·9월)",
+    "source_id": "src-2986e608f4da5457",
+    "source_updated_at": null,
+    "checked_at": "2026-11-06",
+    "scope": {
+      "cohort": "학년도 미표기",
+      "department": "전체 학부(학과별 세부는 학과 확인)",
+      "year": "적용 학년도 미표기 상시 안내"
+    },
+    "conditions": [],
+    "exceptions": [
+      "학기당 정확한 선발인원·일정은 학기초 모집 공지 확인"
+    ],
+    "evidence": {
+      "quote": "모집기간 매년 3월, 9월",
+      "location": "파견시기·모집기간"
+    },
+    "research_status": "conditional",
+    "review_status": "pending",
+    "publish_enabled": false,
+    "rule_execution_enabled": false,
+    "game_use_proposal": "교환 공고 이벤트 시점(실제 마감일은 공고 확인)",
+    "provenance": {
+      "file": "inu-data-common.json",
+      "record_id": "EXC-05",
+      "collector": "Claude"
+    }
+  },
+  {
+    "id": "inu.common.EXC-06",
+    "domain": "common",
+    "category": "exchange",
+    "title": "선발기준",
+    "statement": "학업성적 100 + 어학면접 100 + 인성·자질 100, 합계 300점 고득점순",
+    "source_id": "src-2986e608f4da5457",
+    "source_updated_at": null,
+    "checked_at": "2026-11-06",
+    "scope": {
+      "cohort": "학년도 미표기",
+      "department": "전체 학부(학과별 세부는 학과 확인)",
+      "year": "적용 학년도 미표기 상시 안내"
+    },
+    "conditions": [],
+    "exceptions": [
+      "적격자 없으면 미달이어도 미선발 가능",
+      "외국대학 사정·비자로 파견 취소 가능"
+    ],
+    "evidence": {
+      "quote": "합산(300점 만점)하여 고득점자 순으로 선발",
+      "location": "선발기준"
+    },
+    "research_status": "conditional",
+    "review_status": "pending",
+    "publish_enabled": false,
+    "rule_execution_enabled": false,
+    "game_use_proposal": "선발 절차 설명(게임 점수 아님)",
+    "provenance": {
+      "file": "inu-data-common.json",
+      "record_id": "EXC-06",
+      "collector": "Claude"
+    }
+  },
+  {
+    "id": "inu.common.EXC-08",
+    "domain": "common",
+    "category": "exchange",
+    "title": "연간 선발 예상인원",
+    "statement": "중화권 60·미/영/캐 70·유럽·중남미 80·일본 60·동남아 5명 내외(자매대학 사정에 따라 변동)",
+    "source_id": "src-2986e608f4da5457",
+    "source_updated_at": null,
+    "checked_at": "2026-11-06",
+    "scope": {
+      "cohort": "학년도 미표기",
+      "department": "전체 학부(학과별 세부는 학과 확인)",
+      "year": "적용 학년도 미표기 상시 안내"
+    },
+    "conditions": [],
+    "exceptions": [
+      "학기당 정확 인원은 모집 공지"
+    ],
+    "evidence": {
+      "quote": "연간 선발인원은 자매대학 사정에 따라 변동가능",
+      "location": "대학별 선발인원 및 파견시기"
+    },
+    "research_status": "conditional",
+    "review_status": "pending",
+    "publish_enabled": false,
+    "rule_execution_enabled": false,
+    "game_use_proposal": "지역 선택 분위기(수치 고정 금지)",
+    "provenance": {
+      "file": "inu-data-common.json",
+      "record_id": "EXC-08",
+      "collector": "Claude"
+    }
+  },
+  {
+    "id": "inu.common.EXC-09",
+    "domain": "common",
+    "category": "exchange",
+    "title": "2027-1 파견 교환학생 모집 일정",
+    "statement": "2027-1학기 파견 모집 공고 2026-08-19 게시. 지원서 접수 2026-08-25 10:00~09-03 17:00(포털 온라인), 면접 9월 2~4주, 합격 발표 9월 말~10월 초, OT 10월 말~11월 초",
+    "source_id": "src-ad1f8458d3ba0e57",
+    "source_updated_at": "2026-08-19",
+    "checked_at": "2026-11-06",
+    "scope": {
+      "cohort": "2027-1학기 파견 지원자",
+      "department": "전체 학부",
+      "year": "2027-1학기 파견(2026-2학기 중 모집)"
+    },
+    "conditions": [
+      "인천대 포털 > 학사행정 > 학적 > 교환교류관리 > 파견학생신청"
+    ],
+    "exceptions": [
+      "추가 모집 공고 별도(EXC-13)"
+    ],
+    "evidence": {
+      "quote": "교환학생 지원서 접수 8 월 25 일 ( 화 ) 10:00 ~ 9 월 3 일 ( 목 ) 17:00 까지",
+      "location": "공고 1. 모집 및 선발 주요일정 표"
+    },
+    "research_status": "verified",
+    "review_status": "pending",
+    "publish_enabled": false,
+    "rule_execution_enabled": false,
+    "game_use_proposal": "2학기 개강 직전 교환 공고 이벤트",
+    "provenance": {
+      "file": "inu-data-common.json",
+      "record_id": "EXC-09",
+      "collector": "Claude"
+    }
+  },
+  {
+    "id": "inu.common.EXC-10",
+    "domain": "common",
+    "category": "exchange",
+    "title": "2027-1 공고 지원자격",
+    "statement": "파견시점 기준 2학기 이상 수학(편입생 1학기), 전 학년 누적 평점 2.5 이상(지원 학교·학과별 상이 가능), 파견 후 1학기 이상 잔여, 학과(부)장 확인",
+    "source_id": "src-ad1f8458d3ba0e57",
+    "source_updated_at": "2026-08-19",
+    "checked_at": "2026-11-06",
+    "scope": {
+      "cohort": "2027-1학기 파견 지원자",
+      "department": "전체 학부",
+      "year": "2027-1학기 파견"
+    },
+    "conditions": [
+      "파견시점 기준 학기 계산",
+      "학교·학과별 추가 평점 기준 가능"
+    ],
+    "exceptions": [
+      "편입생 1학기",
+      "동북아국제통상전공 자체 파견 참가자 일부 국가 제한"
+    ],
+    "evidence": {
+      "quote": "② 전 학년 누적 평점평균 2.5 점 이상 ※ 지원 학교 및 학과별로 상이할 수 있으므로 지원 전 확인 요망",
+      "location": "공고 2. 지원자격 ①②④⑤⑥"
+    },
+    "research_status": "verified",
+    "review_status": "pending",
+    "publish_enabled": false,
+    "rule_execution_enabled": false,
+    "game_use_proposal": "교환 지원 가능 여부 판정(2027-1 기준)",
+    "provenance": {
+      "file": "inu-data-common.json",
+      "record_id": "EXC-10",
+      "collector": "Claude"
+    }
+  },
+  {
+    "id": "inu.common.EXC-11",
+    "domain": "common",
+    "category": "exchange",
+    "title": "8차 학기 파견 제한",
+    "statement": "8차 학기 파견자는 졸업예정자 서약서 제출, 귀국 후 9차 학기 수학, 2026-2 수강학점 포함 잔여 졸업학점 필수, 최대 1개 학기만 지원",
+    "source_id": "src-ad1f8458d3ba0e57",
+    "source_updated_at": "2026-08-19",
+    "checked_at": "2026-11-06",
+    "scope": {
+      "cohort": "2027-1학기 파견 지원자",
+      "department": "전체 학부",
+      "year": "2027-1학기 파견"
+    },
+    "conditions": [
+      "잔여 졸업학점 존재"
+    ],
+    "exceptions": [
+      "최대 1개 학기"
+    ],
+    "evidence": {
+      "quote": "8 차 학기 파견자는 최대 1 개 학기만 지원 가능",
+      "location": "공고 2. 지원자격 ④ 괄호"
+    },
+    "research_status": "verified",
+    "review_status": "pending",
+    "publish_enabled": false,
+    "rule_execution_enabled": false,
+    "game_use_proposal": "4학년 교환 선택 → 9학기 연장 분기",
+    "provenance": {
+      "file": "inu-data-common.json",
+      "record_id": "EXC-11",
+      "collector": "Claude"
+    }
+  },
+  {
+    "id": "inu.common.EXC-12",
+    "domain": "common",
+    "category": "exchange",
+    "title": "휴학생 지원·파견학기 휴학 불이익",
+    "statement": "휴학생도 지원 가능하나 파견기간 반드시 등록(복학). 파견학기에 휴학하면 학점인정 불가·지원금 환수. 파견기간 변경 불가",
+    "source_id": "src-ad1f8458d3ba0e57",
+    "source_updated_at": "2026-08-19",
+    "checked_at": "2026-11-06",
+    "scope": {
+      "cohort": "2027-1학기 파견 지원자",
+      "department": "전체 학부",
+      "year": "2027-1학기 파견"
+    },
+    "conditions": [
+      "파견학기 등록(복학)"
+    ],
+    "exceptions": [],
+    "evidence": {
+      "quote": "파견학기에 휴학할 경우 교환학생 학점인정이 불가하고 지원금도 환수됩니다",
+      "location": "공고 4. 주의사항"
+    },
+    "research_status": "verified",
+    "review_status": "pending",
+    "publish_enabled": false,
+    "rule_execution_enabled": false,
+    "game_use_proposal": "휴학 중 교환 지원 분기",
+    "provenance": {
+      "file": "inu-data-common.json",
+      "record_id": "EXC-12",
+      "collector": "Claude"
+    }
+  },
+  {
+    "id": "inu.common.EXC-13",
+    "domain": "common",
+    "category": "exchange",
+    "title": "재지원·타대학 학점 인정 한도",
+    "statement": "기존 참여자는 동일 국가 제외 재지원 가능(최대 2회, 파견 중 지원 불가). 국내외 타 대학 취득학점은 졸업학점의 1/2 범위 내 인정 가능",
+    "source_id": "src-ad1f8458d3ba0e57",
+    "source_updated_at": "2026-08-19",
+    "checked_at": "2026-11-06",
+    "scope": {
+      "cohort": "2027-1학기 파견 지원자",
+      "department": "전체 학부",
+      "year": "2027-1학기 파견"
+    },
+    "conditions": [],
+    "exceptions": [
+      "동일 국가 재지원 불가"
+    ],
+    "evidence": {
+      "quote": "타 대학 취득한 학점은 졸업에 필요한 학점의 2 분의 1 의 범위내 인정 가능",
+      "location": "공고 4. 주의사항"
+    },
+    "research_status": "verified",
+    "review_status": "pending",
+    "publish_enabled": false,
+    "rule_execution_enabled": false,
+    "game_use_proposal": "두 번째 교환 선택지",
+    "provenance": {
+      "file": "inu-data-common.json",
+      "record_id": "EXC-13",
+      "collector": "Claude"
+    }
+  },
+  {
+    "id": "inu.common.EXC-14",
+    "domain": "common",
+    "category": "exchange",
+    "title": "파견 지원금(2027-1 공고)",
+    "statement": "교환학생 지원금: 영미권 100만원(1회), 유럽 100만원(1회, 20명 평가순), 중국 50만원(1회), 동남아 100만원(1회). 방문학생 영미권 400만원·캐나다 300만원(학기당)",
+    "source_id": "src-ad1f8458d3ba0e57",
+    "source_updated_at": "2026-08-19",
+    "checked_at": "2026-11-06",
+    "scope": {
+      "cohort": "2027-1학기 파견자",
+      "department": "전체 학부",
+      "year": "2027-1학기 파견"
+    },
+    "conditions": [
+      "국가·대학별 세부정보 첨부 참조"
+    ],
+    "exceptions": [
+      "미래에셋 등 외부 장학금 수혜자 제외",
+      "지급시기 국가별 상이"
+    ],
+    "evidence": {
+      "quote": "영미권 ( 미국 , 영국 ) 교환학생 100 만원 (1 회 )",
+      "location": "공고 4. 파견학생 지원금 표"
+    },
+    "research_status": "verified",
+    "review_status": "pending",
+    "publish_enabled": false,
+    "rule_execution_enabled": false,
+    "game_use_proposal": "교환 비용 부담 설명(게임 자원 아님)",
+    "provenance": {
+      "file": "inu-data-common.json",
+      "record_id": "EXC-14",
+      "collector": "Claude"
+    }
+  },
+  {
+    "id": "inu.common.EXC-15",
+    "domain": "common",
+    "category": "exchange",
+    "title": "추가 모집 공고 존재",
+    "statement": "2027-1학기 파견 교환학생 추가 모집 공고가 2026-09-04 게시됨(교환 1~2개 학기, 방문학생은 미국 일부 대학)",
+    "source_id": "src-f03c833206ce4ea7",
+    "source_updated_at": "2026-09-04",
+    "checked_at": "2026-11-06",
+    "scope": {
+      "cohort": "2027-1학기 파견 지원자",
+      "department": "전체 학부",
+      "year": "2027-1학기 파견"
+    },
+    "conditions": [],
+    "exceptions": [
+      "세부 일정·대상 대학은 공고 본문/첨부 확인"
+    ],
+    "evidence": {
+      "quote": "2027 년 1 학기 파견 예정 해외 자매대학 파견 교환학생을 아래와 같이 추가 모집",
+      "location": "공고 서두, 1. 제도안내"
+    },
+    "research_status": "verified",
+    "review_status": "pending",
+    "publish_enabled": false,
+    "rule_execution_enabled": false,
+    "game_use_proposal": "마감 후 추가 기회 이벤트",
+    "provenance": {
+      "file": "inu-data-common.json",
+      "record_id": "EXC-15",
+      "collector": "Claude"
+    }
+  },
+  {
+    "id": "inu.common.CAL-01",
+    "domain": "common",
+    "category": "academic_calendar",
+    "title": "2026-2학기 주요 학사일정",
+    "statement": "휴·복학신청 08-03~07, 2학기 수강신청 08-18~21, 등록 08-24~28, 개강 09-01, 수업일수 1/3선 10-05, 1/2선 10-23, 2/3선 11-09, 재입학 신청 11-11~13, 기말시험 12-08~14, 보강주간 12-15~21, 동계 계절학기 12-22~2027-01-13",
+    "source_id": "src-4ba681e1a0b9dcc7",
+    "source_updated_at": null,
+    "checked_at": "2026-11-06",
+    "scope": {
+      "cohort": "전체",
+      "department": "전체",
+      "year": "2026학년도 2학기"
+    },
+    "conditions": [],
+    "exceptions": [
+      "학교 사정에 따라 변동 가능"
+    ],
+    "evidence": {
+      "quote": "2026.12.08(Tue) ~ 2026.12.14(Mon) 2학기 기말시험",
+      "location": "학사일정 월별 보기 2026-08~12 (POST year/month)"
+    },
+    "research_status": "verified",
+    "review_status": "pending",
+    "publish_enabled": false,
+    "rule_execution_enabled": false,
+    "game_use_proposal": "2학기 타임라인 이벤트",
+    "provenance": {
+      "file": "inu-data-common.json",
+      "record_id": "CAL-01",
+      "collector": "Claude"
+    }
+  },
+  {
+    "id": "inu.common.CAL-02",
+    "domain": "common",
+    "category": "academic_calendar",
+    "title": "2027-1학기 준비 일정(공개분)",
+    "statement": "전과 신청 2027-01-07~11, 부/복수/연계전공 신청 01-27~29, 휴·복학신청 02-01~05, 1학기 수강신청(재학·복학) 02-15~18, 학위수여식 02-19, 등록 02-22~26, 신·편입생 수강신청 02-24~26, 입학식 02-26. 2027-03 이후는 미게시",
+    "source_id": "src-4ba681e1a0b9dcc7",
+    "source_updated_at": null,
+    "checked_at": "2026-11-06",
+    "scope": {
+      "cohort": "전체",
+      "department": "전체",
+      "year": "2027학년도 1학기 준비"
+    },
+    "conditions": [],
+    "exceptions": [
+      "3월 이후 일정 데이터 없음(2026-11-06 기준)",
+      "변동 가능"
+    ],
+    "evidence": {
+      "quote": "2027.01.27(Wed) ~ 2027.01.29(Fri) 부/복수/연계전공 신청",
+      "location": "학사일정 월별 보기 2027-01~03"
+    },
+    "research_status": "verified",
+    "review_status": "pending",
+    "publish_enabled": false,
+    "rule_execution_enabled": false,
+    "game_use_proposal": "겨울방학 전과·복수전공 신청 이벤트",
+    "provenance": {
+      "file": "inu-data-common.json",
+      "record_id": "CAL-02",
+      "collector": "Claude"
+    }
+  },
+  {
+    "id": "inu.common.CMP-01",
+    "domain": "common",
+    "category": "campus_life",
+    "title": "기숙사 3개 동·수용 2,676명",
+    "statement": "제1(2009-03 개관, 2024 리모델링) 546명, 제2(BTL, 2018-03) 1,130명, 제3(BTL, 2020-08) 1,000명, 합계 2,676명",
+    "source_id": "src-517decb1980b4315",
+    "source_updated_at": "2026-04-03",
+    "checked_at": "2026-11-06",
+    "scope": {
+      "cohort": "전체",
+      "department": "전체",
+      "year": "게시본 2026-04-03 수정(\"현재\" 표현)"
+    },
+    "conditions": [],
+    "exceptions": [
+      "제3기숙사는 표상 여 인원만 기재(남 \"-\")",
+      "배정 기준·선발 일정은 생활원 공지"
+    ],
+    "evidence": {
+      "quote": "현재는 2,676명이 기숙사에서 생활을 하고 있습니다.",
+      "location": "기숙사 > 소개 문단·호실 및 수용인원 표"
+    },
+    "research_status": "verified",
+    "review_status": "pending",
+    "publish_enabled": false,
+    "rule_execution_enabled": false,
+    "game_use_proposal": "기숙사 합격/탈락 사건 배경",
+    "provenance": {
+      "file": "inu-data-common.json",
+      "record_id": "CMP-01",
+      "collector": "Claude"
+    }
+  },
+  {
+    "id": "inu.common.CMP-02",
+    "domain": "common",
+    "category": "campus_life",
+    "title": "중앙동아리 분과·목록",
+    "statement": "공식 동아리 페이지에 6개 분과 49개 동아리 게시: 교양학술 8, 문화 11, 봉사 4, 종교 5, 체육 12, 취미·전시 9",
+    "source_id": "src-d4dd48f058685de7",
+    "source_updated_at": "2026-10-27",
+    "checked_at": "2026-11-06",
+    "scope": {
+      "cohort": "전체",
+      "department": "전체",
+      "year": "게시본 2026-10-27 수정"
+    },
+    "conditions": [],
+    "exceptions": [
+      "모집 시기·인원은 게시 안 됨"
+    ],
+    "evidence": {
+      "quote": "교양학술 분과 동아리 / 문화 분과 동아리 / 봉사 분과 동아리 / 종교 분과 동아리 / 체육 분과 동아리 / 취미·전시 분과 동아리",
+      "location": "동아리 페이지 분과별 목록(HTML li 항목 직접 계수)"
+    },
+    "research_status": "conflicting",
+    "review_status": "pending",
+    "publish_enabled": false,
+    "rule_execution_enabled": false,
+    "game_use_proposal": "동아리 선택 이벤트(기존 51개 주장과 불일치, 동아리명은 실명 대신 분과만 사용 권장)",
+    "provenance": {
+      "file": "inu-data-common.json",
+      "record_id": "CMP-02",
+      "collector": "Claude"
+    }
+  },
+  {
+    "id": "inu.common.CMP-03",
+    "domain": "common",
+    "category": "campus_life",
+    "title": "셔틀·통학버스",
+    "statement": "통학 부천-송내(2대 07:35·08:50), 안산-시흥(1대 07:20); 셔틀 등교 인천대입구역-정문-공과대-생활원 08:30~10:20(3대), 하교 18:00·18:15·18:30; 생활원-사범대-정보기술대 순환 08:30~18:00",
+    "source_id": "src-662bc4e5b924f02d",
+    "source_updated_at": "2026-04-06",
+    "checked_at": "2026-11-06",
+    "scope": {
+      "cohort": "전체",
+      "department": "전체",
+      "year": "게시본 2026-04-06 수정"
+    },
+    "conditions": [],
+    "exceptions": [
+      "세부 내용은 매학기 공지 참조",
+      "방학·학기별 변동 가능"
+    ],
+    "evidence": {
+      "quote": "세부 내용은 매학기 홈페이지 내 공지사항 참조",
+      "location": "셔틀버스 > 통학 및 셔틀버스 표"
+    },
+    "research_status": "conditional",
+    "review_status": "pending",
+    "publish_enabled": false,
+    "rule_execution_enabled": false,
+    "game_use_proposal": "\"셔틀 줄 vs 걷기\" 선택(시간표 수치는 학기별 재확인)",
+    "provenance": {
+      "file": "inu-data-common.json",
+      "record_id": "CMP-03",
+      "collector": "Claude"
+    }
+  },
+  {
+    "id": "inu.common.STA-01",
+    "domain": "common",
+    "category": "statistics",
+    "title": "2025 학부 재학·휴학생 수",
+    "statement": "2025년(조사기준일 4월 1일) 학부 재학생 11,247명(남 6,282·여 4,965), 휴학생 4,013명(남 3,204·여 809)",
+    "source_id": "src-33e8dadaf8c7f34b",
+    "source_updated_at": "2026-07-29",
+    "checked_at": "2026-11-06",
+    "scope": {
+      "cohort": "전체",
+      "department": "학부",
+      "year": "2025-04-01 기준(2026 수치 미게시)"
+    },
+    "conditions": [],
+    "exceptions": [
+      "2026년 수치는 페이지에 없음"
+    ],
+    "evidence": {
+      "quote": "학생현황 조사 기준일 : 매년 4월 1일 / 2025 재학생 남 6,282 여 4,965 / 휴학생 남 3,204 여 809",
+      "location": "대학 주요현황 > 학생현황 2025 학부열"
+    },
+    "research_status": "verified",
+    "review_status": "pending",
+    "publish_enabled": false,
+    "rule_execution_enabled": false,
+    "game_use_proposal": "엔딩 맥락 통계(연도 병기 필수)",
+    "provenance": {
+      "file": "inu-data-common.json",
+      "record_id": "STA-01",
+      "collector": "Claude"
+    }
+  },
+  {
+    "id": "inu.common.SCH-01",
+    "domain": "common",
+    "category": "scholarship",
+    "title": "교내장학금 신청 시기 구조",
+    "statement": "감면 장학금은 1학기 1월·2학기 7월 신청/추천, 지급 장학금은 학기 중(3·4·5월 / 9·10·11월) 종류별 신청",
+    "source_id": "src-3c624b6309f23a26",
+    "source_updated_at": "2026-06-29",
+    "checked_at": "2026-11-06",
+    "scope": {
+      "cohort": "전체",
+      "department": "전체",
+      "year": "게시본 2026-06-29 수정"
+    },
+    "conditions": [
+      "해당 신청/추천기간 내에만 신청"
+    ],
+    "exceptions": [
+      "세부 일정 조정 가능, 공지사항 > 장학금 확인"
+    ],
+    "evidence": {
+      "quote": "세부 일정은 조정될 수 있으며, 해당 장학금 신청/추천기간 내에만 신청 가능",
+      "location": "장학금 > 교내장학금별 신청기간 표"
+    },
+    "research_status": "verified",
+    "review_status": "pending",
+    "publish_enabled": false,
+    "rule_execution_enabled": false,
+    "game_use_proposal": "방학 중 장학금 신청 놓침 사건",
+    "provenance": {
+      "file": "inu-data-common.json",
+      "record_id": "SCH-01",
+      "collector": "Claude"
+    }
+  },
+  {
+    "id": "inu.common.SCH-02",
+    "domain": "common",
+    "category": "scholarship",
+    "title": "우수신입생 장학금 유지조건",
+    "statement": "2026-2학기 기준표: 수시 우수신입생(자기추천·교과·지역균형 최초합격자 계열별 상위) 등록금 전액 1년, 재학 중 직전학기 평점 3.5 이상",
+    "source_id": "src-3c624b6309f23a26",
+    "source_updated_at": "2026-06-29",
+    "checked_at": "2026-11-06",
+    "scope": {
+      "cohort": "수시 최초합격 우수신입생",
+      "department": "계열별 선정(학과당 최대 1명)",
+      "year": "2026-2학기 지급기준"
+    },
+    "conditions": [
+      "직전학기 평점 3.5 이상"
+    ],
+    "exceptions": [
+      "세부사항 내부 방침"
+    ],
+    "evidence": {
+      "quote": "재학 중에는 직전학기 평점평균 3.5 이상인 자",
+      "location": "장학금 > 2026-2학기 교내장학금 종류 > 우수신입생 장학금 표"
+    },
+    "research_status": "conditional",
+    "review_status": "pending",
+    "publish_enabled": false,
+    "rule_execution_enabled": false,
+    "game_use_proposal": "신입생 장학금 유지 압박(대상자 극소수, 일반화 금지)",
+    "provenance": {
+      "file": "inu-data-common.json",
+      "record_id": "SCH-02",
+      "collector": "Claude"
+    }
+  },
+  {
+    "id": "inu.common.SUP-01",
+    "domain": "common",
+    "category": "student_support",
+    "title": "대학생활지원과 통합 창구",
+    "statement": "대학생활지원과 사이트가 대학생활상담센터(개인·위기상담), INU인권센터, 사회봉사센터, 장애학생지원센터를 묶어 안내하고 종합상담(심리/인권) 신청을 제공",
+    "source_id": "src-753ce951ad8e9147",
+    "source_updated_at": null,
+    "checked_at": "2026-11-06",
+    "scope": {
+      "cohort": "전체",
+      "department": "전체",
+      "year": "2026-11-06 열람"
+    },
+    "conditions": [],
+    "exceptions": [
+      "개인 연락처는 수집하지 않음(기관 링크만)"
+    ],
+    "evidence": {
+      "quote": "종합상담신청(심리상담/인권상담)",
+      "location": "service 사이트 메뉴·하단 링크"
+    },
+    "research_status": "verified",
+    "review_status": "pending",
+    "publish_enabled": false,
+    "rule_execution_enabled": false,
+    "game_use_proposal": "번아웃 사건 엔딩의 공식 링크",
+    "provenance": {
+      "file": "inu-data-common.json",
+      "record_id": "SUP-01",
+      "collector": "Claude"
+    }
+  },
+  {
+    "id": "inu.common.SUP-02",
+    "domain": "common",
+    "category": "student_support",
+    "title": "상담센터 공개 프로그램(2026-11)",
+    "statement": "대학생활상담센터 2026-11 공지: 마음안심버스(2026-11-11 14~16시), \"불안해도 괜찮아\" 집단상담, MBTI 완전정복 특강",
+    "source_id": "src-753ce951ad8e9147",
+    "source_updated_at": null,
+    "checked_at": "2026-11-06",
+    "scope": {
+      "cohort": "전체",
+      "department": "전체",
+      "year": "2026-11 공지"
+    },
+    "conditions": [],
+    "exceptions": [
+      "신청 방법·정원은 개별 공지"
+    ],
+    "evidence": {
+      "quote": "[대학생활상담센터] 11월 마음안심버스 행사 안내 (11/11(수) 14시~16시]",
+      "location": "service 사이트 공지사항 최근글"
+    },
+    "research_status": "verified",
+    "review_status": "pending",
+    "publish_enabled": false,
+    "rule_execution_enabled": false,
+    "game_use_proposal": "9~10주차 번아웃 사건 실제 프로그램 예시",
+    "provenance": {
+      "file": "inu-data-common.json",
+      "record_id": "SUP-02",
+      "collector": "Claude"
+    }
+  },
+  {
+    "id": "inu.common.SUP-03",
+    "domain": "common",
+    "category": "student_support",
+    "title": "STARinU 비교과 목록 접근",
+    "statement": "STARinU 루트 접속 시 로그인 페이지로 이동 — 비교과 목록은 비로그인 공개 확인 불가. 단 교환 공고에서 버디·유학생 코디네이터 프로그램 수료증을 STARinU에서 발급한다고 명시",
+    "source_id": "src-a53ab580511cab27",
+    "source_updated_at": null,
+    "checked_at": "2026-11-06",
+    "scope": {
+      "cohort": "전체",
+      "department": "전체",
+      "year": "2026-11-06 열람"
+    },
+    "conditions": [],
+    "exceptions": [
+      "목록·개수는 미확인"
+    ],
+    "evidence": {
+      "quote": "STARinU 사이트 수료증 발급 후 제출",
+      "location": "starinu.inu.ac.kr → /common/user/login.do 리다이렉트; 428830 공고 가산점 표"
+    },
+    "research_status": "conditional",
+    "review_status": "pending",
+    "publish_enabled": false,
+    "rule_execution_enabled": false,
+    "game_use_proposal": "\"비교과 신청\" 링크만 제공, 목록 하드코딩 금지",
+    "provenance": {
+      "file": "inu-data-common.json",
+      "record_id": "SUP-03",
+      "collector": "Claude"
+    }
+  },
+  {
+    "id": "inu.common.UNV-01",
+    "domain": "common",
+    "category": "regulation",
+    "title": "학칙·학칙시행세칙 원문 조문",
+    "statement": "학사안내가 인용한 학칙 제23·42·50·51조, 시행세칙 제11·21·23·60조 본문 및 최종 개정일",
+    "source_id": "src-06975a30fd3cc32d",
+    "source_updated_at": null,
+    "checked_at": "2026-11-06",
+    "scope": {
+      "cohort": null,
+      "department": null,
+      "year": null
+    },
+    "conditions": [],
+    "exceptions": [],
+    "evidence": {
+      "quote": null,
+      "location": "규정 검색이 JS 로딩, rule 8037/8050·lawSearchView 2회 시도 실패"
+    },
+    "research_status": "unverified",
+    "review_status": "pending",
+    "publish_enabled": false,
+    "rule_execution_enabled": false,
+    "game_use_proposal": "사용 보류(원문 확인 전 사실 카드 금지)",
+    "provenance": {
+      "file": "inu-data-common.json",
+      "record_id": "UNV-01",
+      "collector": "Claude"
+    }
+  },
+  {
+    "id": "inu.common.UNV-02",
+    "domain": "common",
+    "category": "graduation",
+    "title": "정보기술대학 학과의 공학계열 분류·학과별 졸업요건",
+    "statement": "2026학번 학과별 전공 이수학점·필수과목·영어졸업인증 기준",
+    "source_id": null,
+    "source_updated_at": null,
+    "checked_at": "2026-11-06",
+    "scope": {
+      "cohort": null,
+      "department": null,
+      "year": null
+    },
+    "conditions": [],
+    "exceptions": [],
+    "evidence": {
+      "quote": null,
+      "location": "학과 원문 미확보(전공 담당 작업 중단)"
+    },
+    "research_status": "unverified",
+    "review_status": "pending",
+    "publish_enabled": false,
+    "rule_execution_enabled": false,
+    "game_use_proposal": "사용 보류(원문 확인 전 사실 카드 금지)",
+    "provenance": {
+      "file": "inu-data-common.json",
+      "record_id": "UNV-02",
+      "collector": "Claude"
+    }
+  },
+  {
+    "id": "inu.common.UNV-03",
+    "domain": "common",
+    "category": "graduation",
+    "title": "영어졸업인증 기준점수",
+    "statement": "학교 공통 기준·면제 조건",
+    "source_id": null,
+    "source_updated_at": null,
+    "checked_at": "2026-11-06",
+    "scope": {
+      "cohort": null,
+      "department": null,
+      "year": null
+    },
+    "conditions": [],
+    "exceptions": [],
+    "evidence": {
+      "quote": null,
+      "location": "원문 미확보"
+    },
+    "research_status": "unverified",
+    "review_status": "pending",
+    "publish_enabled": false,
+    "rule_execution_enabled": false,
+    "game_use_proposal": "사용 보류(원문 확인 전 사실 카드 금지)",
+    "provenance": {
+      "file": "inu-data-common.json",
+      "record_id": "UNV-03",
+      "collector": "Claude"
+    }
+  },
+  {
+    "id": "inu.common.UNV-04",
+    "domain": "common",
+    "category": "academic_warning",
+    "title": "학사경고 면제 프로그램 명칭·신청 시기",
+    "statement": "시행세칙 제60조의 학내 프로그램 실체",
+    "source_id": null,
+    "source_updated_at": null,
+    "checked_at": "2026-11-06",
+    "scope": {
+      "cohort": null,
+      "department": null,
+      "year": null
+    },
+    "conditions": [],
+    "exceptions": [],
+    "evidence": {
+      "quote": null,
+      "location": "원문 미확보"
+    },
+    "research_status": "unverified",
+    "review_status": "pending",
+    "publish_enabled": false,
+    "rule_execution_enabled": false,
+    "game_use_proposal": "사용 보류(원문 확인 전 사실 카드 금지)",
+    "provenance": {
+      "file": "inu-data-common.json",
+      "record_id": "UNV-04",
+      "collector": "Claude"
+    }
+  },
+  {
+    "id": "inu.common.UNV-05",
+    "domain": "common",
+    "category": "campus_life",
+    "title": "2026 축제명·학생회 구조",
+    "statement": "기존 주장(총학생회-단과대 13단위 등)",
+    "source_id": null,
+    "source_updated_at": null,
+    "checked_at": "2026-11-06",
+    "scope": {
+      "cohort": null,
+      "department": null,
+      "year": null
+    },
+    "conditions": [],
+    "exceptions": [],
+    "evidence": {
+      "quote": null,
+      "location": "원문 미확보"
+    },
+    "research_status": "unverified",
+    "review_status": "pending",
+    "publish_enabled": false,
+    "rule_execution_enabled": false,
+    "game_use_proposal": "사용 보류(원문 확인 전 사실 카드 금지)",
+    "provenance": {
+      "file": "inu-data-common.json",
+      "record_id": "UNV-05",
+      "collector": "Claude"
+    }
+  },
+  {
+    "id": "inu.it.exchange-definition",
+    "domain": "it",
+    "category": "program",
+    "title": "교환학생 제도",
+    "statement": "교류협정 외국대학에서 1학기 또는 1년 수학하고 본교에서 학점을 인정받는 프로그램으로 안내된다.",
+    "source_id": "src-2986e608f4da5457",
+    "source_updated_at": null,
+    "checked_at": "2026-11-06",
+    "scope": {
+      "cohort": null,
+      "department": "인천대학교 학부생",
+      "year": null
+    },
+    "conditions": [],
+    "exceptions": [],
+    "evidence": {
+      "quote": "일정기간 (1학기 또는 1년) 수학하고 본교에서 학점을 인정받는 프로그램",
+      "location": "본문 73-79행"
+    },
+    "research_status": "verified",
+    "review_status": "pending",
+    "publish_enabled": false,
+    "rule_execution_enabled": false,
+    "game_use_proposal": "교환 기회 소개",
+    "provenance": {
+      "file": "inu-data-it.json",
+      "record_id": "exchange-definition",
+      "collector": "Codex"
+    }
+  },
+  {
+    "id": "inu.it.exchange-completion",
+    "domain": "it",
+    "category": "eligibility",
+    "title": "교환학생 지원 학기 요건",
+    "statement": "파견 시점을 기준으로 2학기 이상 수료해야 한다고 안내한다.",
+    "source_id": "src-2986e608f4da5457",
+    "source_updated_at": null,
+    "checked_at": "2026-11-06",
+    "scope": {
+      "cohort": null,
+      "department": "인천대학교 학부생",
+      "year": null
+    },
+    "conditions": [
+      "파견 시점 기준"
+    ],
+    "exceptions": [
+      "편입생은 인천대 1학기 이상 이수"
+    ],
+    "evidence": {
+      "quote": "파견시점을 기준으로 2학기 이상 수료자",
+      "location": "본문 116-120행"
+    },
+    "research_status": "conditional",
+    "review_status": "pending",
+    "publish_enabled": false,
+    "rule_execution_enabled": false,
+    "game_use_proposal": "지원 시기 확인 사건; 최신 모집공고 확인",
+    "provenance": {
+      "file": "inu-data-it.json",
+      "record_id": "exchange-completion",
+      "collector": "Codex"
+    }
+  },
+  {
+    "id": "inu.it.exchange-gpa",
+    "domain": "it",
+    "category": "eligibility",
+    "title": "교환학생 평점 요건",
+    "statement": "전체 학년 평점평균 2.5 이상으로 안내한다.",
+    "source_id": "src-2986e608f4da5457",
+    "source_updated_at": null,
+    "checked_at": "2026-11-06",
+    "scope": {
+      "cohort": null,
+      "department": "인천대학교 학부생",
+      "year": null
+    },
+    "conditions": [
+      "전체 학년 평점평균"
+    ],
+    "exceptions": [],
+    "evidence": {
+      "quote": "전체 학년 평점평균 2. 5이상",
+      "location": "본문 116-121행"
+    },
+    "research_status": "conditional",
+    "review_status": "pending",
+    "publish_enabled": false,
+    "rule_execution_enabled": false,
+    "game_use_proposal": "자격 확인 카드; 학년도 공고 대조",
+    "provenance": {
+      "file": "inu-data-it.json",
+      "record_id": "exchange-gpa",
+      "collector": "Codex"
+    }
+  },
+  {
+    "id": "inu.it.exchange-dept-approval",
+    "domain": "it",
+    "category": "eligibility",
+    "title": "교환학생 학과 허가",
+    "statement": "소속 학부·과·전공의 허가가 필요하며 응시원서에 학과장 확인이 필요하다고 안내한다.",
+    "source_id": "src-2986e608f4da5457",
+    "source_updated_at": null,
+    "checked_at": "2026-11-06",
+    "scope": {
+      "cohort": null,
+      "department": "인천대학교 학부생",
+      "year": null
+    },
+    "conditions": [],
+    "exceptions": [],
+    "evidence": {
+      "quote": "소속학부(과, 전공)의 허락을 받은 학생",
+      "location": "본문 122-126행"
+    },
+    "research_status": "conditional",
+    "review_status": "pending",
+    "publish_enabled": false,
+    "rule_execution_enabled": false,
+    "game_use_proposal": "지원 전 문의 행동",
+    "provenance": {
+      "file": "inu-data-it.json",
+      "record_id": "exchange-dept-approval",
+      "collector": "Codex"
+    }
+  },
+  {
+    "id": "inu.it.exchange-language",
+    "domain": "it",
+    "category": "eligibility",
+    "title": "교환학생 어학요건",
+    "statement": "파견 희망 대학이 요구하는 어학능력을 갖춰야 한다고 안내한다.",
+    "source_id": "src-2986e608f4da5457",
+    "source_updated_at": null,
+    "checked_at": "2026-11-06",
+    "scope": {
+      "cohort": null,
+      "department": "인천대학교 학부생",
+      "year": null
+    },
+    "conditions": [
+      "희망 파견대학별"
+    ],
+    "exceptions": [
+      "일부 전공은 국가별 지원 제한 안내가 있음"
+    ],
+    "evidence": {
+      "quote": "파견희망대학에서 요구하는 소정의 어학능력",
+      "location": "본문 124-127행"
+    },
+    "research_status": "conditional",
+    "review_status": "pending",
+    "publish_enabled": false,
+    "rule_execution_enabled": false,
+    "game_use_proposal": "대학별 요건 확인",
+    "provenance": {
+      "file": "inu-data-it.json",
+      "record_id": "exchange-language",
+      "collector": "Codex"
+    }
+  },
+  {
+    "id": "inu.it.exchange-residency-after",
+    "domain": "it",
+    "category": "eligibility",
+    "title": "파견 후 본교 수학 잔여기간",
+    "statement": "파견 종료 후 인천대학교에서 1학기 이상 수학이 남아 있어야 한다고 안내한다.",
+    "source_id": "src-2986e608f4da5457",
+    "source_updated_at": null,
+    "checked_at": "2026-11-06",
+    "scope": {
+      "cohort": null,
+      "department": "인천대학교 학부생",
+      "year": null
+    },
+    "conditions": [],
+    "exceptions": [
+      "8차 학기 파견 시 9차 학기 수학 서약 및 휴학 불가 안내"
+    ],
+    "evidence": {
+      "quote": "파견기간 종료 후 인천대학교 수학이 1학기 이상 남아 있는 학생",
+      "location": "본문 120-123행"
+    },
+    "research_status": "conditional",
+    "review_status": "pending",
+    "publish_enabled": false,
+    "rule_execution_enabled": false,
+    "game_use_proposal": "졸업 일정 점검 사건",
+    "provenance": {
+      "file": "inu-data-it.json",
+      "record_id": "exchange-residency-after",
+      "collector": "Codex"
+    }
+  },
+  {
+    "id": "inu.it.exchange-season",
+    "domain": "it",
+    "category": "calendar",
+    "title": "교환학생 모집 시기",
+    "statement": "페이지는 매년 3월과 9월 모집으로 안내한다.",
+    "source_id": "src-2986e608f4da5457",
+    "source_updated_at": null,
+    "checked_at": "2026-11-06",
+    "scope": {
+      "cohort": null,
+      "department": "인천대학교 학부생",
+      "year": null
+    },
+    "conditions": [
+      "매년 안내 페이지 기준"
+    ],
+    "exceptions": [
+      "학기별 최신 공고 확인 필요"
+    ],
+    "evidence": {
+      "quote": "매년 3월, 9월",
+      "location": "본문 134-137행"
+    },
+    "research_status": "conditional",
+    "review_status": "pending",
+    "publish_enabled": false,
+    "rule_execution_enabled": false,
+    "game_use_proposal": "모집 공고 탐색 사건",
+    "provenance": {
+      "file": "inu-data-it.json",
+      "record_id": "exchange-season",
+      "collector": "Codex"
+    }
+  },
+  {
+    "id": "inu.it.exchange-selection",
+    "domain": "it",
+    "category": "selection",
+    "title": "교환학생 선발 평가",
+    "statement": "학업성적·어학면접·인성 및 자질 평가를 각 100점, 합계 300점으로 안내한다.",
+    "source_id": "src-2986e608f4da5457",
+    "source_updated_at": null,
+    "checked_at": "2026-11-06",
+    "scope": {
+      "cohort": null,
+      "department": "인천대학교 학부생",
+      "year": null
+    },
+    "conditions": [],
+    "exceptions": [
+      "적격자가 없으면 미선발 가능"
+    ],
+    "evidence": {
+      "quote": "학업성적(100점), 어학면접평가(100점), 인성 및 자질 평가(100점)",
+      "location": "본문 138-145행"
+    },
+    "research_status": "conditional",
+    "review_status": "pending",
+    "publish_enabled": false,
+    "rule_execution_enabled": false,
+    "game_use_proposal": "지원 준비 사건; 선발 보장으로 표현 금지",
+    "provenance": {
+      "file": "inu-data-it.json",
+      "record_id": "exchange-selection",
+      "collector": "Codex"
+    }
+  },
+  {
+    "id": "inu.it.exchange-graduation-check",
+    "domain": "it",
+    "category": "advisory",
+    "title": "교환 전 졸업요건 검토",
+    "statement": "교환학생 파견으로 졸업학점·필수과목·인증·논문 등 졸업요건에 문제가 없는지 고려하라고 안내한다.",
+    "source_id": "src-2986e608f4da5457",
+    "source_updated_at": null,
+    "checked_at": "2026-11-06",
+    "scope": {
+      "cohort": null,
+      "department": "인천대학교 학부생",
+      "year": null
+    },
+    "conditions": [],
+    "exceptions": [],
+    "evidence": {
+      "quote": "각종 졸업요건(졸업학점, 필수과목, 졸업인증, 논문...)에 문제가 없는지 고려",
+      "location": "본문 140-143행"
+    },
+    "research_status": "verified",
+    "review_status": "pending",
+    "publish_enabled": false,
+    "rule_execution_enabled": false,
+    "game_use_proposal": "학과 졸업요건 사전 확인 사건",
+    "provenance": {
+      "file": "inu-data-it.json",
+      "record_id": "exchange-graduation-check",
+      "collector": "Codex"
+    }
+  },
+  {
+    "id": "inu.it.exchange-course-credit",
+    "domain": "it",
+    "category": "academic",
+    "title": "교환 학점 인정의 전공 여부",
+    "statement": "취득학점을 전공으로 인정받으려면 학과장 동의가 필요하며 그렇지 않으면 일반선택으로 인정 가능하다고 안내한다.",
+    "source_id": "src-2986e608f4da5457",
+    "source_updated_at": null,
+    "checked_at": "2026-11-06",
+    "scope": {
+      "cohort": null,
+      "department": "인천대학교 학부생",
+      "year": null
+    },
+    "conditions": [
+      "전공 인정은 학과장 동의"
+    ],
+    "exceptions": [],
+    "evidence": {
+      "quote": "학과장의 동의하에 전공학점이 아닌 경우 일반 선택으로 가능",
+      "location": "본문 110-115행"
+    },
+    "research_status": "conditional",
+    "review_status": "pending",
+    "publish_enabled": false,
+    "rule_execution_enabled": false,
+    "game_use_proposal": "과목 사전 승인 행동",
+    "provenance": {
+      "file": "inu-data-it.json",
+      "record_id": "exchange-course-credit",
+      "collector": "Codex"
+    }
+  },
+  {
+    "id": "inu.it.it-college-label",
+    "domain": "it",
+    "category": "organization",
+    "title": "단과대학 병기 명칭",
+    "statement": "인천대 공식 메뉴에 '인공지능대학(정보기술대학)'으로 병기되어 있다.",
+    "source_id": "src-87f57fb557de730b",
+    "source_updated_at": null,
+    "checked_at": "2026-11-06",
+    "scope": {
+      "cohort": null,
+      "department": "정보기술대학/인공지능대학",
+      "year": null
+    },
+    "conditions": [],
+    "exceptions": [
+      "개편 적용일과 코호트별 소속은 이 페이지로 확인되지 않음"
+    ],
+    "evidence": {
+      "quote": "인공지능대학(정보기술대학)",
+      "location": "대학 메뉴 22행"
+    },
+    "research_status": "conditional",
+    "review_status": "pending",
+    "publish_enabled": false,
+    "rule_execution_enabled": false,
+    "game_use_proposal": "시뮬레이션 명칭은 학번별 적용 공지 대조 후 결정",
+    "provenance": {
+      "file": "inu-data-it.json",
+      "record_id": "it-college-label",
+      "collector": "Codex"
+    }
+  },
+  {
+    "id": "inu.it.cse-course-menu",
+    "domain": "it",
+    "category": "academic",
+    "title": "컴퓨터공학부 교육과정 메뉴",
+    "statement": "컴퓨터공학부 공식 홈페이지 메뉴에 교육과정 및 졸업요건 항목이 있다.",
+    "source_id": "src-8caf6fcc1a838392",
+    "source_updated_at": null,
+    "checked_at": "2026-11-06",
+    "scope": {
+      "cohort": null,
+      "department": "컴퓨터공학부",
+      "year": null
+    },
+    "conditions": [],
+    "exceptions": [
+      "세부 교과표 내용은 이번 확인에서 확보하지 못함"
+    ],
+    "evidence": {
+      "quote": "교육과정; 졸업요건",
+      "location": "메뉴 20-26행"
+    },
+    "research_status": "verified",
+    "review_status": "pending",
+    "publish_enabled": false,
+    "rule_execution_enabled": false,
+    "game_use_proposal": "2026 학번 원문 교과표 확보 경로",
+    "provenance": {
+      "file": "inu-data-it.json",
+      "record_id": "cse-course-menu",
+      "collector": "Codex"
+    }
+  },
+  {
+    "id": "inu.it.cse-research-menu",
+    "domain": "it",
+    "category": "research",
+    "title": "컴퓨터공학부 연구 메뉴",
+    "statement": "공식 홈페이지 메뉴에 연구실소개, INURF 프로그램, 학석사연계과정 항목이 있다.",
+    "source_id": "src-8caf6fcc1a838392",
+    "source_updated_at": null,
+    "checked_at": "2026-11-06",
+    "scope": {
+      "cohort": null,
+      "department": "컴퓨터공학부",
+      "year": null
+    },
+    "conditions": [],
+    "exceptions": [
+      "메뉴 존재는 개별 자격·모집조건을 입증하지 않음"
+    ],
+    "evidence": {
+      "quote": "연구실소개; INURF 프로그램; 학석사연계과정",
+      "location": "메뉴 28-34행"
+    },
+    "research_status": "verified",
+    "review_status": "pending",
+    "publish_enabled": false,
+    "rule_execution_enabled": false,
+    "game_use_proposal": "최신 공고를 찾아보는 탐색 사건",
+    "provenance": {
+      "file": "inu-data-it.json",
+      "record_id": "cse-research-menu",
+      "collector": "Codex"
+    }
+  },
+  {
+    "id": "inu.it.cse-course-notice-2026-2",
+    "domain": "it",
+    "category": "academic",
+    "title": "컴퓨터공학부 2026-2 수업시간 유의",
+    "statement": "공지 목록은 90분과 60분 수업이 병행되므로 시작·종료시간을 확인하라고 안내한다.",
+    "source_id": "src-8caf6fcc1a838392",
+    "source_updated_at": "2026-08-12",
+    "checked_at": "2026-11-06",
+    "scope": {
+      "cohort": null,
+      "department": "컴퓨터공학부",
+      "year": "2026-2"
+    },
+    "conditions": [
+      "해당 학기 시간표"
+    ],
+    "exceptions": [
+      "첨부 시간표 원문 별도 확인 필요"
+    ],
+    "evidence": {
+      "quote": "90분 수업과 60분 수업이 병행되어 있으니 시작시간과 끝시간을 꼭 확인",
+      "location": "공지 목록 84-86행"
+    },
+    "research_status": "conditional",
+    "review_status": "pending",
+    "publish_enabled": false,
+    "rule_execution_enabled": false,
+    "game_use_proposal": "시간표 충돌 확인 사건",
+    "provenance": {
+      "file": "inu-data-it.json",
+      "record_id": "cse-course-notice-2026-2",
+      "collector": "Codex"
+    }
+  },
+  {
+    "id": "inu.it.inurf-current-criteria",
+    "domain": "it",
+    "category": "research",
+    "title": "INURF 최신 자격·모집조건",
+    "statement": null,
+    "source_id": "src-7a7c782ac9cfa0a3",
+    "source_updated_at": null,
+    "checked_at": "2026-11-06",
+    "scope": {
+      "cohort": null,
+      "department": "컴퓨터공학부",
+      "year": null
+    },
+    "conditions": [],
+    "exceptions": [
+      "원문 열람이 캐시 미스로 실패; 이전 요약의 수치 미채택"
+    ],
+    "evidence": {
+      "quote": null,
+      "location": "원문 열람 실패"
+    },
+    "research_status": "unverified",
+    "review_status": "pending",
+    "publish_enabled": false,
+    "rule_execution_enabled": false,
+    "game_use_proposal": "최신 공고 확인 링크로만 사용",
+    "provenance": {
+      "file": "inu-data-it.json",
+      "record_id": "inurf-current-criteria",
+      "collector": "Codex"
+    }
+  },
+  {
+    "id": "inu.it.it-lab-counts",
+    "domain": "it",
+    "category": "research",
+    "title": "학과별 연구실 수 13/12/8",
+    "statement": null,
+    "source_id": null,
+    "source_updated_at": null,
+    "checked_at": "2026-11-06",
+    "scope": {
+      "cohort": null,
+      "department": "정보기술대학 3개 학과",
+      "year": null
+    },
+    "conditions": [],
+    "exceptions": [
+      "공식 연구실 목록의 완전성과 기준시점 미확인"
+    ],
+    "evidence": {
+      "quote": null,
+      "location": null
+    },
+    "research_status": "unverified",
+    "review_status": "pending",
+    "publish_enabled": false,
+    "rule_execution_enabled": false,
+    "game_use_proposal": null,
+    "provenance": {
+      "file": "inu-data-it.json",
+      "record_id": "it-lab-counts",
+      "collector": "Codex"
+    }
+  },
+  {
+    "id": "inu.it.it-student-count",
+    "domain": "it",
+    "category": "organization",
+    "title": "정보기술대학 학생 1,065명 주장",
+    "statement": null,
+    "source_id": null,
+    "source_updated_at": null,
+    "checked_at": "2026-11-06",
+    "scope": {
+      "cohort": null,
+      "department": "정보기술대학",
+      "year": null
+    },
+    "conditions": [],
+    "exceptions": [
+      "기준연도와 공식 통계 미확인"
+    ],
+    "evidence": {
+      "quote": null,
+      "location": null
+    },
+    "research_status": "unverified",
+    "review_status": "pending",
+    "publish_enabled": false,
+    "rule_execution_enabled": false,
+    "game_use_proposal": null,
+    "provenance": {
+      "file": "inu-data-it.json",
+      "record_id": "it-student-count",
+      "collector": "Codex"
+    }
+  },
+  {
+    "id": "inu.it.2027-reorg-date",
+    "domain": "it",
+    "category": "organization",
+    "title": "정보기술대학 개편 적용시점",
+    "statement": "공식 학칙 개정안은 2027학년도 편제개편으로 단과대 명칭 변경과 관련 학과 명칭변경·전공 신설을 제안했으며 심의결과 원안가결로 기재한다.",
+    "source_id": "src-30dd4ce905003532",
+    "source_updated_at": "2026-02",
+    "checked_at": "2026-11-06",
+    "scope": {
+      "cohort": "2027학년도 모집단위 기준",
+      "department": "정보기술대학 소속 모집단위",
+      "year": "2027"
+    },
+    "conditions": [
+      "회의록 개정안 및 심의결과 기준"
+    ],
+    "exceptions": [
+      "2026학번 재학생의 학적/교육과정 전환 세부사항은 미확인"
+    ],
+    "evidence": {
+      "quote": "2027학년도 학부 편제를 개편; 정보기술대학 → 인공지능대학",
+      "location": "PDF 14-17쪽, 본문 750-821행"
+    },
+    "research_status": "conditional",
+    "review_status": "pending",
+    "publish_enabled": false,
+    "rule_execution_enabled": false,
+    "game_use_proposal": "2026학번은 기존 명칭, 2027학년도 신입 기준과 구별해 표시",
+    "provenance": {
+      "file": "inu-data-it.json",
+      "record_id": "2027-reorg-date",
+      "collector": "Codex"
+    }
+  },
+  {
+    "id": "inu.it.2027-department-names",
+    "domain": "it",
+    "category": "organization",
+    "title": "2027학년도 정보기술대학 모집단위 변경",
+    "statement": "개정안은 정보통신공학과를 인공지능정보통신공학부, 임베디드시스템공학과를 인공지능시스템공학과로 바꾸고 컴퓨터공학부에 컴퓨터공학전공·인공지능전공을 두는 안이다.",
+    "source_id": "src-30dd4ce905003532",
+    "source_updated_at": "2026-02",
+    "checked_at": "2026-11-06",
+    "scope": {
+      "cohort": "2027학년도 모집단위 기준",
+      "department": "컴퓨터공학부, 정보통신공학과, 임베디드시스템공학과",
+      "year": "2027"
+    },
+    "conditions": [
+      "전공 신설/명칭 변경 안"
+    ],
+    "exceptions": [
+      "재학생 전환 조건은 별도 확인 필요"
+    ],
+    "evidence": {
+      "quote": "정보통신공학과 → 인공지능정보통신공학부; 임베디드시스템공학과 → 인공지능시스템공학과",
+      "location": "PDF 15-16쪽, 본문 793-821행"
+    },
+    "research_status": "conditional",
+    "review_status": "pending",
+    "publish_enabled": false,
+    "rule_execution_enabled": false,
+    "game_use_proposal": "명칭 변경의 학번 적용을 구분하는 사건",
+    "provenance": {
+      "file": "inu-data-it.json",
+      "record_id": "2027-department-names",
+      "collector": "Codex"
+    }
+  },
+  {
+    "id": "inu.it.cse-curriculum-visible",
+    "domain": "it",
+    "category": "academic",
+    "title": "컴퓨터공학부 교육과정 과목 예시",
+    "statement": "공식 교육과정 화면에는 학년별 전공기초·전공핵심·전공심화 과목 예시가 있으며 1학년 프로그래밍입문·이산수학, 2학년 자료구조·알고리즘, 4학년 CAPSTONE DESIGN 등이 노출된다.",
+    "source_id": "src-777baa110a8fcdca",
+    "source_updated_at": null,
+    "checked_at": "2026-11-06",
+    "scope": {
+      "cohort": null,
+      "department": "컴퓨터공학부",
+      "year": null
+    },
+    "conditions": [
+      "화면에 연도 선택 UI가 있으나 선택값 식별 불가"
+    ],
+    "exceptions": [
+      "특정 2026학번의 필수/선택 이수표로 간주하지 않음"
+    ],
+    "evidence": {
+      "quote": "1학년 ... 프로그래밍입문; 2학년 ... 자료구조; 4학년 ... CAPSTONE DESIGN",
+      "location": "본문 71-128행"
+    },
+    "research_status": "conditional",
+    "review_status": "pending",
+    "publish_enabled": false,
+    "rule_execution_enabled": false,
+    "game_use_proposal": "전공 탐색 카드로 과목군 예시만 제시",
+    "provenance": {
+      "file": "inu-data-it.json",
+      "record_id": "cse-curriculum-visible",
+      "collector": "Codex"
+    }
+  },
+  {
+    "id": "inu.it.ese-old-curriculum",
+    "domain": "it",
+    "category": "academic",
+    "title": "임베디드 계열 2026년까지 교육과정 표",
+    "statement": "공식 학과 사이트에 '교육과정(~2026)' 구분의 학년별 교과표가 게시되어 있으며 1학년 C언어프로그래밍·이산수학, 2학년 데이터구조·알고리즘, 4학년 캡스톤디자인(1)(2) 등을 열거한다.",
+    "source_id": "src-2c582cf1109f97de",
+    "source_updated_at": null,
+    "checked_at": "2026-11-06",
+    "scope": {
+      "cohort": "2026 이하로 표기된 교육과정 적용 대상",
+      "department": "임베디드시스템공학과(현 명칭 인공지능시스템공학과)",
+      "year": "2026 이하 표기"
+    },
+    "conditions": [
+      "페이지 교육과정 연도 선택 범위 표기"
+    ],
+    "exceptions": [
+      "각 학번별 필수과목 여부는 별도 졸업사정표로 대조 필요"
+    ],
+    "evidence": {
+      "quote": "교육과정(~2026); 4학년 ... 캡스턴디자인(1), 캡스턴디자인(2)",
+      "location": "교육과정 표 본문"
+    },
+    "research_status": "conditional",
+    "review_status": "pending",
+    "publish_enabled": false,
+    "rule_execution_enabled": false,
+    "game_use_proposal": "구 교육과정 과목군 사실 카드; 필수 이수 단정 금지",
+    "provenance": {
+      "file": "inu-data-it.json",
+      "record_id": "ese-old-curriculum",
+      "collector": "Codex"
+    }
+  },
+  {
+    "id": "inu.it.ese-graduation-requirements",
+    "domain": "it",
+    "category": "graduation",
+    "title": "인공지능시스템공학과 졸업요건 안내",
+    "statement": "학과 페이지는 공인영어인증, 졸업작품 발표 평균 70/100 이상, 전공기초 전부, 전공핵심 24학점 이상, 전공 총 72학점 이상 및 전공필수 24학점 중 캡스톤디자인(1) 또는 (2) 이수를 안내한다.",
+    "source_id": "src-6568cf51981d877b",
+    "source_updated_at": null,
+    "checked_at": "2026-11-06",
+    "scope": {
+      "cohort": null,
+      "department": "인공지능시스템공학과(구 임베디드시스템공학과)",
+      "year": null
+    },
+    "conditions": [
+      "각 학년도별 전공기초가 상이하므로 본인 학번 교과과정 확인 필요"
+    ],
+    "exceptions": [
+      "학사과정과 유사전공 석사연계 진학은 논문/시험 면제 가능 안내"
+    ],
+    "evidence": {
+      "quote": "전공기초 모두 이수; 전공핵심 24학점 이상; 전공학점 ... 72학점 이상",
+      "location": "졸업요건 본문"
+    },
+    "research_status": "conditional",
+    "review_status": "pending",
+    "publish_enabled": false,
+    "rule_execution_enabled": false,
+    "game_use_proposal": "학과 졸업요건 확인 사건; 코호트별 교과과정 확인 필수",
+    "provenance": {
+      "file": "inu-data-it.json",
+      "record_id": "ese-graduation-requirements",
+      "collector": "Codex"
+    }
+  },
+  {
+    "id": "inu.it.ite-curriculum-course-set",
+    "domain": "it",
+    "category": "academic",
+    "title": "정보통신 계열 교육과정 과목군",
+    "statement": "공식 교육과정 표에는 데이터구조, 통신공학이론, 컴퓨터네트워크, 기계학습론, 디지털통신, 사물인터넷 등 과목이 학년·학기별로 등재된다.",
+    "source_id": "src-ced150069e455694",
+    "source_updated_at": null,
+    "checked_at": "2026-11-06",
+    "scope": {
+      "cohort": null,
+      "department": "정보통신공학과/인공지능정보통신공학부",
+      "year": null
+    },
+    "conditions": [
+      "해당 페이지 교육과정 표에 표시된 과목군"
+    ],
+    "exceptions": [
+      "연도 선택 상태 확인 불가; 2026학번 필수과목으로 일반화 금지"
+    ],
+    "evidence": {
+      "quote": "3학년 ... 통신공학이론; 컴퓨터네트워크; 기계학습론",
+      "location": "본문 80-136행"
+    },
+    "research_status": "conditional",
+    "review_status": "pending",
+    "publish_enabled": false,
+    "rule_execution_enabled": false,
+    "game_use_proposal": "전공 분야 탐색용 과목 예시",
+    "provenance": {
+      "file": "inu-data-it.json",
+      "record_id": "ite-curriculum-course-set",
+      "collector": "Codex"
+    }
+  }
+]

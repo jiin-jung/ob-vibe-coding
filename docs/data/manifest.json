@@ -1,0 +1,28 @@
+{
+  "schema_version": "0.1.0",
+  "built_at": "2026-11-06T05:07:35.712183+00:00",
+  "state": "research_snapshot_not_production_seed",
+  "inputs": [
+    {
+      "file": "inu-data-common.json",
+      "sha256": "a97f0636545839330405b30b1d7ff16e9568d4c0eb29de546ed73d8f432bcac1",
+      "records": 64
+    },
+    {
+      "file": "inu-data-it.json",
+      "sha256": "6ca0cb52f7208fbecf51bb53be51ee18e45b81d64b8e9285ffc6bf4240d08bbf",
+      "records": 23
+    }
+  ],
+  "record_count": 87,
+  "source_count": 26,
+  "research_status_counts": {
+    "verified": 53,
+    "conditional": 25,
+    "conflicting": 1,
+    "unverified": 8
+  },
+  "production_approved_records": 0,
+  "executable_rules": 0,
+  "note": "자료조사 상태를 보존한 스냅샷. verified는 수집자가 원문을 확인했다는 보고이며, 최종 적용 승인과 다름. 중복 출처의 주장을 자동 병합하지 않음."
+}

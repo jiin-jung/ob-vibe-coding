@@ -1,0 +1,247 @@
+[
+  {
+    "left": "inu.common.GRA-01",
+    "right": "inu.it.it-college-label",
+    "reason": "서로 다른 수집자가 같은 출처를 사용함; 같은 주장인지 검토 필요"
+  },
+  {
+    "left": "inu.common.GRA-02",
+    "right": "inu.it.it-college-label",
+    "reason": "서로 다른 수집자가 같은 출처를 사용함; 같은 주장인지 검토 필요"
+  },
+  {
+    "left": "inu.common.GRA-03",
+    "right": "inu.it.it-college-label",
+    "reason": "서로 다른 수집자가 같은 출처를 사용함; 같은 주장인지 검토 필요"
+  },
+  {
+    "left": "inu.common.GRA-04",
+    "right": "inu.it.it-college-label",
+    "reason": "서로 다른 수집자가 같은 출처를 사용함; 같은 주장인지 검토 필요"
+  },
+  {
+    "left": "inu.common.GRA-05",
+    "right": "inu.it.it-college-label",
+    "reason": "서로 다른 수집자가 같은 출처를 사용함; 같은 주장인지 검토 필요"
+  },
+  {
+    "left": "inu.common.GRA-06",
+    "right": "inu.it.it-college-label",
+    "reason": "서로 다른 수집자가 같은 출처를 사용함; 같은 주장인지 검토 필요"
+  },
+  {
+    "left": "inu.common.GRA-07",
+    "right": "inu.it.it-college-label",
+    "reason": "서로 다른 수집자가 같은 출처를 사용함; 같은 주장인지 검토 필요"
+  },
+  {
+    "left": "inu.common.GRA-08",
+    "right": "inu.it.it-college-label",
+    "reason": "서로 다른 수집자가 같은 출처를 사용함; 같은 주장인지 검토 필요"
+  },
+  {
+    "left": "inu.common.GRA-09",
+    "right": "inu.it.it-college-label",
+    "reason": "서로 다른 수집자가 같은 출처를 사용함; 같은 주장인지 검토 필요"
+  },
+  {
+    "left": "inu.common.EXC-03",
+    "right": "inu.it.exchange-definition",
+    "reason": "서로 다른 수집자가 같은 출처를 사용함; 같은 주장인지 검토 필요"
+  },
+  {
+    "left": "inu.common.EXC-03",
+    "right": "inu.it.exchange-completion",
+    "reason": "서로 다른 수집자가 같은 출처를 사용함; 같은 주장인지 검토 필요"
+  },
+  {
+    "left": "inu.common.EXC-03",
+    "right": "inu.it.exchange-gpa",
+    "reason": "서로 다른 수집자가 같은 출처를 사용함; 같은 주장인지 검토 필요"
+  },
+  {
+    "left": "inu.common.EXC-03",
+    "right": "inu.it.exchange-dept-approval",
+    "reason": "서로 다른 수집자가 같은 출처를 사용함; 같은 주장인지 검토 필요"
+  },
+  {
+    "left": "inu.common.EXC-03",
+    "right": "inu.it.exchange-language",
+    "reason": "서로 다른 수집자가 같은 출처를 사용함; 같은 주장인지 검토 필요"
+  },
+  {
+    "left": "inu.common.EXC-03",
+    "right": "inu.it.exchange-residency-after",
+    "reason": "서로 다른 수집자가 같은 출처를 사용함; 같은 주장인지 검토 필요"
+  },
+  {
+    "left": "inu.common.EXC-03",
+    "right": "inu.it.exchange-season",
+    "reason": "서로 다른 수집자가 같은 출처를 사용함; 같은 주장인지 검토 필요"
+  },
+  {
+    "left": "inu.common.EXC-03",
+    "right": "inu.it.exchange-selection",
+    "reason": "서로 다른 수집자가 같은 출처를 사용함; 같은 주장인지 검토 필요"
+  },
+  {
+    "left": "inu.common.EXC-03",
+    "right": "inu.it.exchange-graduation-check",
+    "reason": "서로 다른 수집자가 같은 출처를 사용함; 같은 주장인지 검토 필요"
+  },
+  {
+    "left": "inu.common.EXC-03",
+    "right": "inu.it.exchange-course-credit",
+    "reason": "서로 다른 수집자가 같은 출처를 사용함; 같은 주장인지 검토 필요"
+  },
+  {
+    "left": "inu.common.EXC-05",
+    "right": "inu.it.exchange-definition",
+    "reason": "서로 다른 수집자가 같은 출처를 사용함; 같은 주장인지 검토 필요"
+  },
+  {
+    "left": "inu.common.EXC-05",
+    "right": "inu.it.exchange-completion",
+    "reason": "서로 다른 수집자가 같은 출처를 사용함; 같은 주장인지 검토 필요"
+  },
+  {
+    "left": "inu.common.EXC-05",
+    "right": "inu.it.exchange-gpa",
+    "reason": "서로 다른 수집자가 같은 출처를 사용함; 같은 주장인지 검토 필요"
+  },
+  {
+    "left": "inu.common.EXC-05",
+    "right": "inu.it.exchange-dept-approval",
+    "reason": "서로 다른 수집자가 같은 출처를 사용함; 같은 주장인지 검토 필요"
+  },
+  {
+    "left": "inu.common.EXC-05",
+    "right": "inu.it.exchange-language",
+    "reason": "서로 다른 수집자가 같은 출처를 사용함; 같은 주장인지 검토 필요"
+  },
+  {
+    "left": "inu.common.EXC-05",
+    "right": "inu.it.exchange-residency-after",
+    "reason": "서로 다른 수집자가 같은 출처를 사용함; 같은 주장인지 검토 필요"
+  },
+  {
+    "left": "inu.common.EXC-05",
+    "right": "inu.it.exchange-season",
+    "reason": "서로 다른 수집자가 같은 출처를 사용함; 같은 주장인지 검토 필요"
+  },
+  {
+    "left": "inu.common.EXC-05",
+    "right": "inu.it.exchange-selection",
+    "reason": "서로 다른 수집자가 같은 출처를 사용함; 같은 주장인지 검토 필요"
+  },
+  {
+    "left": "inu.common.EXC-05",
+    "right": "inu.it.exchange-graduation-check",
+    "reason": "서로 다른 수집자가 같은 출처를 사용함; 같은 주장인지 검토 필요"
+  },
+  {
+    "left": "inu.common.EXC-05",
+    "right": "inu.it.exchange-course-credit",
+    "reason": "서로 다른 수집자가 같은 출처를 사용함; 같은 주장인지 검토 필요"
+  },
+  {
+    "left": "inu.common.EXC-06",
+    "right": "inu.it.exchange-definition",
+    "reason": "서로 다른 수집자가 같은 출처를 사용함; 같은 주장인지 검토 필요"
+  },
+  {
+    "left": "inu.common.EXC-06",
+    "right": "inu.it.exchange-completion",
+    "reason": "서로 다른 수집자가 같은 출처를 사용함; 같은 주장인지 검토 필요"
+  },
+  {
+    "left": "inu.common.EXC-06",
+    "right": "inu.it.exchange-gpa",
+    "reason": "서로 다른 수집자가 같은 출처를 사용함; 같은 주장인지 검토 필요"
+  },
+  {
+    "left": "inu.common.EXC-06",
+    "right": "inu.it.exchange-dept-approval",
+    "reason": "서로 다른 수집자가 같은 출처를 사용함; 같은 주장인지 검토 필요"
+  },
+  {
+    "left": "inu.common.EXC-06",
+    "right": "inu.it.exchange-language",
+    "reason": "서로 다른 수집자가 같은 출처를 사용함; 같은 주장인지 검토 필요"
+  },
+  {
+    "left": "inu.common.EXC-06",
+    "right": "inu.it.exchange-residency-after",
+    "reason": "서로 다른 수집자가 같은 출처를 사용함; 같은 주장인지 검토 필요"
+  },
+  {
+    "left": "inu.common.EXC-06",
+    "right": "inu.it.exchange-season",
+    "reason": "서로 다른 수집자가 같은 출처를 사용함; 같은 주장인지 검토 필요"
+  },
+  {
+    "left": "inu.common.EXC-06",
+    "right": "inu.it.exchange-selection",
+    "reason": "서로 다른 수집자가 같은 출처를 사용함; 같은 주장인지 검토 필요"
+  },
+  {
+    "left": "inu.common.EXC-06",
+    "right": "inu.it.exchange-graduation-check",
+    "reason": "서로 다른 수집자가 같은 출처를 사용함; 같은 주장인지 검토 필요"
+  },
+  {
+    "left": "inu.common.EXC-06",
+    "right": "inu.it.exchange-course-credit",
+    "reason": "서로 다른 수집자가 같은 출처를 사용함; 같은 주장인지 검토 필요"
+  },
+  {
+    "left": "inu.common.EXC-08",
+    "right": "inu.it.exchange-definition",
+    "reason": "서로 다른 수집자가 같은 출처를 사용함; 같은 주장인지 검토 필요"
+  },
+  {
+    "left": "inu.common.EXC-08",
+    "right": "inu.it.exchange-completion",
+    "reason": "서로 다른 수집자가 같은 출처를 사용함; 같은 주장인지 검토 필요"
+  },
+  {
+    "left": "inu.common.EXC-08",
+    "right": "inu.it.exchange-gpa",
+    "reason": "서로 다른 수집자가 같은 출처를 사용함; 같은 주장인지 검토 필요"
+  },
+  {
+    "left": "inu.common.EXC-08",
+    "right": "inu.it.exchange-dept-approval",
+    "reason": "서로 다른 수집자가 같은 출처를 사용함; 같은 주장인지 검토 필요"
+  },
+  {
+    "left": "inu.common.EXC-08",
+    "right": "inu.it.exchange-language",
+    "reason": "서로 다른 수집자가 같은 출처를 사용함; 같은 주장인지 검토 필요"
+  },
+  {
+    "left": "inu.common.EXC-08",
+    "right": "inu.it.exchange-residency-after",
+    "reason": "서로 다른 수집자가 같은 출처를 사용함; 같은 주장인지 검토 필요"
+  },
+  {
+    "left": "inu.common.EXC-08",
+    "right": "inu.it.exchange-season",
+    "reason": "서로 다른 수집자가 같은 출처를 사용함; 같은 주장인지 검토 필요"
+  },
+  {
+    "left": "inu.common.EXC-08",
+    "right": "inu.it.exchange-selection",
+    "reason": "서로 다른 수집자가 같은 출처를 사용함; 같은 주장인지 검토 필요"
+  },
+  {
+    "left": "inu.common.EXC-08",
+    "right": "inu.it.exchange-graduation-check",
+    "reason": "서로 다른 수집자가 같은 출처를 사용함; 같은 주장인지 검토 필요"
+  },
+  {
+    "left": "inu.common.EXC-08",
+    "right": "inu.it.exchange-course-credit",
+    "reason": "서로 다른 수집자가 같은 출처를 사용함; 같은 주장인지 검토 필요"
+  }
+]

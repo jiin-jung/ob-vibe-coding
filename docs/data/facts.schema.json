@@ -1,0 +1,97 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "INU research facts v0.1",
+  "type": "array",
+  "items": {
+    "type": "object",
+    "required": [
+      "id",
+      "domain",
+      "category",
+      "title",
+      "statement",
+      "source_id",
+      "source_updated_at",
+      "checked_at",
+      "scope",
+      "conditions",
+      "exceptions",
+      "evidence",
+      "research_status",
+      "review_status",
+      "publish_enabled",
+      "rule_execution_enabled",
+      "game_use_proposal",
+      "provenance"
+    ],
+    "properties": {
+      "id": {
+        "type": "string",
+        "pattern": "^inu\\.(common|it)\\."
+      },
+      "domain": {
+        "enum": [
+          "common",
+          "it"
+        ]
+      },
+      "statement": {
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "source_id": {
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "research_status": {
+        "enum": [
+          "verified",
+          "conditional",
+          "unverified",
+          "conflicting"
+        ]
+      },
+      "review_status": {
+        "enum": [
+          "pending",
+          "approved",
+          "rejected"
+        ]
+      },
+      "publish_enabled": {
+        "type": "boolean"
+      },
+      "rule_execution_enabled": {
+        "type": "boolean"
+      },
+      "conditions": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        }
+      },
+      "exceptions": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        }
+      },
+      "scope": {
+        "type": "object",
+        "required": [
+          "cohort",
+          "department",
+          "year"
+        ]
+      },
+      "checked_at": {
+        "type": "string",
+        "format": "date"
+      }
+    }
+  }
+}

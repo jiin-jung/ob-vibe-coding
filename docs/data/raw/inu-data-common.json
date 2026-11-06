@@ -1,0 +1,1398 @@
+[
+ {
+  "id": "REG-01",
+  "category": "course_registration",
+  "title": "학기당 기준 신청학점",
+  "fact": "매 학기 기준취득학점 17~19학점, 교과목 학점단위상 부득이하면 20학점까지 신청 가능",
+  "source_url": "https://www.inu.ac.kr/inu/653/subview.do",
+  "source_title": "인천대학교 학사안내 > 수업 > 수강신청",
+  "source_updated_at": "2024-04-18",
+  "checked_at": "2026-11-06",
+  "applicable_cohort": "학번 구분 없음",
+  "applicable_department": "전체 학부(학과별 세부는 학과 확인)",
+  "applicable_year": "2026-11-06 열람 게시본(학년도 명시 없음)",
+  "conditions": [
+   "20학점은 교과목 학점단위상 부득이한 경우에만"
+  ],
+  "exceptions": [
+   "직전학기 평점 3.5/4.0 이상 추가 허용(REG-02)",
+   "최종학년·8학기 경과자 별도(REG-03)"
+  ],
+  "evidence_quote": "매학기 기준취득학점은 17~19학점이며, 교과목 학점단위상 부득이한 경우 1학점 초과(20학점까지) 신청 가능",
+  "evidence_location": "수강신청 > 신청학점 1항",
+  "status": "verified",
+  "game_use": "수강신청 학점 상한 규칙"
+ },
+ {
+  "id": "REG-02",
+  "category": "course_registration",
+  "title": "성적우수자 추가 신청학점",
+  "fact": "직전학기 평점평균 3.5 이상 21학점, 4.0 이상 24학점까지 신청 가능",
+  "source_url": "https://www.inu.ac.kr/inu/653/subview.do",
+  "source_title": "인천대학교 학사안내 > 수업 > 수강신청",
+  "source_updated_at": "2024-04-18",
+  "checked_at": "2026-11-06",
+  "applicable_cohort": "학번 구분 없음",
+  "applicable_department": "전체 학부(학과별 세부는 학과 확인)",
+  "applicable_year": "2026-11-06 열람 게시본(학년도 명시 없음)",
+  "conditions": [
+   "직전학기 성적 평점평균 기준"
+  ],
+  "exceptions": [],
+  "evidence_quote": "직전학기 성적 평점평균 3.5이상인 자는 21학점까지, 4.0이상인 자는 24학점까지 신청가능",
+  "evidence_location": "수강신청 > 신청학점 2항",
+  "status": "verified",
+  "game_use": "직전 학기 결과에 따라 다음 학기 상한 해금"
+ },
+ {
+  "id": "REG-03",
+  "category": "course_registration",
+  "title": "최종학년·8학기 경과자 신청학점",
+  "fact": "최종학년은 최저 9학점, 8학기 경과자는 졸업학점 부족분만 신청하고 등록금은 신청학점에 따라 차등",
+  "source_url": "https://www.inu.ac.kr/inu/653/subview.do",
+  "source_title": "인천대학교 학사안내 > 수업 > 수강신청",
+  "source_updated_at": "2024-04-18",
+  "checked_at": "2026-11-06",
+  "applicable_cohort": "학번 구분 없음",
+  "applicable_department": "전체 학부(학과별 세부는 학과 확인)",
+  "applicable_year": "2026-11-06 열람 게시본(학년도 명시 없음)",
+  "conditions": [
+   "최종학년 / 8학기 경과자"
+  ],
+  "exceptions": [],
+  "evidence_quote": "최종학년 수강신청학점은 최저 9학점이며, 8학기 경과자는 졸업학점 부족 학점만 신청 가능",
+  "evidence_location": "수강신청 > 신청학점 3항",
+  "status": "verified",
+  "game_use": "9학기 이상 연장 시 부족학점 처리"
+ },
+ {
+  "id": "REG-04",
+  "category": "course_registration",
+  "title": "사이버강좌(OCU) 한도",
+  "fact": "OCU 교양선택 교과목은 한 학기 6학점 이내, 별도 시스템 사용료 납부",
+  "source_url": "https://www.inu.ac.kr/inu/653/subview.do",
+  "source_title": "인천대학교 학사안내 > 수업 > 수강신청",
+  "source_updated_at": "2024-04-18",
+  "checked_at": "2026-11-06",
+  "applicable_cohort": "학번 구분 없음",
+  "applicable_department": "전체 학부(학과별 세부는 학과 확인)",
+  "applicable_year": "2026-11-06 열람 게시본(학년도 명시 없음)",
+  "conditions": [
+   "교양선택 OCU 과목에 한함"
+  ],
+  "exceptions": [
+   "변경 시 사이버 교과목으로만 변경 가능"
+  ],
+  "evidence_quote": "사이버강좌(OCU) 교과목(교양선택)은 한학기에 6학점 이내에서 수강신청 할 수 있고",
+  "evidence_location": "수강신청 > 신청학점 4항",
+  "status": "verified",
+  "game_use": "온라인 강의 선택지 한도"
+ },
+ {
+  "id": "REG-05",
+  "category": "course_registration",
+  "title": "수강신청 변경·유의사항",
+  "fact": "변경기간 이후 폐강 외 변경 불가, 시간표 중복 과목 신청 불가, 미신청 수강 과목은 학점 불인정",
+  "source_url": "https://www.inu.ac.kr/inu/653/subview.do",
+  "source_title": "인천대학교 학사안내 > 수업 > 수강신청",
+  "source_updated_at": "2024-04-18",
+  "checked_at": "2026-11-06",
+  "applicable_cohort": "학번 구분 없음",
+  "applicable_department": "전체 학부(학과별 세부는 학과 확인)",
+  "applicable_year": "2026-11-06 열람 게시본(학년도 명시 없음)",
+  "conditions": [
+   "변경기간 내 Web 본인 신청"
+  ],
+  "exceptions": [
+   "교과목 폐강 시 변경기간 이후에도 변경 가능"
+  ],
+  "evidence_quote": "변경기간 이후에는 교과목이 폐강된 경우 외에는 변경 불가능",
+  "evidence_location": "수강신청 > 수강신청변경, 유의사항",
+  "status": "verified",
+  "game_use": "시간표 충돌·정정기간 사건"
+ },
+ {
+  "id": "GRD-01",
+  "category": "grading",
+  "title": "성적 산출 비율",
+  "fact": "성적은 기말·수시시험 60%, 출석 20%, 기타 20% 비율로 산출",
+  "source_url": "https://www.inu.ac.kr/inu/655/subview.do",
+  "source_title": "인천대학교 학사안내 > 성적 > 시험/성적",
+  "source_updated_at": "2026-06-22",
+  "checked_at": "2026-11-06",
+  "applicable_cohort": "학번 구분 없음",
+  "applicable_department": "전체 학부(학과별 세부는 학과 확인)",
+  "applicable_year": "2026-11-06 열람 게시본(학년도 명시 없음)",
+  "conditions": [
+   "일반 교과목"
+  ],
+  "exceptions": [
+   "실험·실습·실기 및 방송·통신 운영 교과목은 달리할 수 있음"
+  ],
+  "evidence_quote": "성적은 기말시험 및 수시시험(60%), 출석성적(20%), 기타성적(20%) 비율로 산출",
+  "evidence_location": "시험/성적 > 성적 > 성적평가",
+  "status": "verified",
+  "game_use": "과목 성적 계산 설명(과목별 실제 비율은 강의계획서 우선)"
+ },
+ {
+  "id": "GRD-02",
+  "category": "grading",
+  "title": "상대평가 등급 비율",
+  "fact": "수강 21명 이상 A 40% 이하·B 40% 이하, 20명 이하 A 50% 이하·B 40% 이하. 소수 절상, A 잔여인원은 B에 포함 가능",
+  "source_url": "https://www.inu.ac.kr/inu/655/subview.do",
+  "source_title": "인천대학교 학사안내 > 성적 > 시험/성적",
+  "source_updated_at": "2026-06-22",
+  "checked_at": "2026-11-06",
+  "applicable_cohort": "학번 구분 없음",
+  "applicable_department": "전체 학부(학과별 세부는 학과 확인)",
+  "applicable_year": "2026-11-06 열람 게시본(학년도 명시 없음)",
+  "conditions": [
+   "상대평가 교과목"
+  ],
+  "exceptions": [
+   "절대평가 가능 교과목(GRD-03)",
+   "P/F 교과목(GRD-04)"
+  ],
+  "evidence_quote": "21명 이상 | 40% 이하 | 40% 이하 / 20명 이하 | 50% 이하 | 40% 이하",
+  "evidence_location": "시험/성적 > 학업성적의 평가기준 표",
+  "status": "verified",
+  "game_use": "A 비율 상한 설명(기존 \"A 40%\"는 21명 이상 조건·\"이하\"로 정정)"
+ },
+ {
+  "id": "GRD-03",
+  "category": "grading",
+  "title": "절대평가 가능 교과목",
+  "fact": "원어(영어)강의, 수강 10명 이하 전공교과목, 교무처장 사전승인 캡스톤디자인, 실험·실습·실기 전공교과목, 부·복수전공 수강자 등은 절대평가 가능",
+  "source_url": "https://www.inu.ac.kr/inu/655/subview.do",
+  "source_title": "인천대학교 학사안내 > 성적 > 시험/성적",
+  "source_updated_at": "2026-06-22",
+  "checked_at": "2026-11-06",
+  "applicable_cohort": "학번 구분 없음",
+  "applicable_department": "전체 학부(학과별 세부는 학과 확인)",
+  "applicable_year": "2026-11-06 열람 게시본(학년도 명시 없음)",
+  "conditions": [
+   "해당 유형에 한해 가능(의무 아님)"
+  ],
+  "exceptions": [],
+  "evidence_quote": "6교무처장의 사전승인을 받은 캡스톤디자인 ... 8수강인원이 10명 이하인 전공교과목",
+  "evidence_location": "시험/성적 > 절대평가 가능 교과목 1~12호",
+  "status": "verified",
+  "game_use": "캡스톤·소규모 전공 과목 배경"
+ },
+ {
+  "id": "GRD-04",
+  "category": "grading",
+  "title": "P/F 평가 교과목",
+  "fact": "현장교육·실습·해외인턴십, 세미나·포럼, 사회봉사 교과목 등은 P/F 평가 가능",
+  "source_url": "https://www.inu.ac.kr/inu/655/subview.do",
+  "source_title": "인천대학교 학사안내 > 성적 > 시험/성적",
+  "source_updated_at": "2026-06-22",
+  "checked_at": "2026-11-06",
+  "applicable_cohort": "학번 구분 없음",
+  "applicable_department": "전체 학부(학과별 세부는 학과 확인)",
+  "applicable_year": "2026-11-06 열람 게시본(학년도 명시 없음)",
+  "conditions": [],
+  "exceptions": [],
+  "evidence_quote": "다음 각 호의 교과목은 P(Pass) / F(Fail)방식으로 평가할 수 있다.",
+  "evidence_location": "시험/성적 > P/F 1~4호",
+  "status": "verified",
+  "game_use": "현장실습·봉사 활동 평가 방식"
+ },
+ {
+  "id": "GRD-05",
+  "category": "grading",
+  "title": "결시자 특례",
+  "fact": "수업일수 2/3 이상 수강 후 시행세칙 사유로 시험 미응시 시 성적인정원 제출, 최대 B+",
+  "source_url": "https://www.inu.ac.kr/inu/655/subview.do",
+  "source_title": "인천대학교 학사안내 > 성적 > 시험/성적",
+  "source_updated_at": "2026-06-22",
+  "checked_at": "2026-11-06",
+  "applicable_cohort": "학번 구분 없음",
+  "applicable_department": "전체 학부(학과별 세부는 학과 확인)",
+  "applicable_year": "2026-11-06 열람 게시본(학년도 명시 없음)",
+  "conditions": [
+   "수업일수 2/3 이상 수강",
+   "시행세칙 해당 사유"
+  ],
+  "exceptions": [],
+  "evidence_quote": "담당교수는 수시시험 또는 임시시험 등의 성적을 참작하여 성적 부여(최대 B+)",
+  "evidence_location": "시험/성적 > 결시자특례",
+  "status": "verified",
+  "game_use": "입대·질병으로 기말 결시 사건"
+ },
+ {
+  "id": "GRD-06",
+  "category": "grading",
+  "title": "성적 열람 조건",
+  "fact": "기말 강의평가(이공계 연구활동 종사자는 연구실 안전교육 포함) 이수 후 확정전 성적 열람 가능",
+  "source_url": "https://www.inu.ac.kr/inu/655/subview.do",
+  "source_title": "인천대학교 학사안내 > 성적 > 시험/성적",
+  "source_updated_at": "2026-06-22",
+  "checked_at": "2026-11-06",
+  "applicable_cohort": "학번 구분 없음",
+  "applicable_department": "전체 학부(학과별 세부는 학과 확인)",
+  "applicable_year": "2026-11-06 열람 게시본(학년도 명시 없음)",
+  "conditions": [],
+  "exceptions": [
+   "연구실 안전교육은 이공계 연구활동 종사자만"
+  ],
+  "evidence_quote": "기말 강의평가 및 연구실 안전교육 이수 후 성적 열람 가능",
+  "evidence_location": "시험/성적 > 성적열람",
+  "status": "verified",
+  "game_use": "학기말 성적 확인 연출"
+ },
+ {
+  "id": "ACW-01",
+  "category": "academic_warning",
+  "title": "학사경고 기준",
+  "fact": "매 학기말 성적 평점평균 1.80 미만이면 학사경고, 본인 또는 보호자에게 통보",
+  "source_url": "https://www.inu.ac.kr/inu/664/subview.do",
+  "source_title": "인천대학교 학사안내 > 성적 > 학사징계",
+  "source_updated_at": "2023-06-14",
+  "checked_at": "2026-11-06",
+  "applicable_cohort": "학번 구분 없음",
+  "applicable_department": "전체 학부(학과별 세부는 학과 확인)",
+  "applicable_year": "게시본 2023-06-14 수정",
+  "conditions": [],
+  "exceptions": [
+   "학내 프로그램 이수 시 1회 면제(ACW-03)"
+  ],
+  "evidence_quote": "매 학기말 성적 평점평균이 1.80미만인 자에 대하여 학사경고 처분하고 본인 또는 보호자에게 통보",
+  "evidence_location": "학사징계 > 학사경고",
+  "status": "verified",
+  "game_use": "학기말 경고 판정"
+ },
+ {
+  "id": "ACW-02",
+  "category": "academic_warning",
+  "title": "학사경고 3회 제적",
+  "fact": "재학기간 중 학사경고 3회째 받으면 제적(학칙 제51조 제6항)",
+  "source_url": "https://www.inu.ac.kr/inu/660/subview.do",
+  "source_title": "인천대학교 학사안내 > 학적 > 제적",
+  "source_updated_at": "2025-04-03",
+  "checked_at": "2026-11-06",
+  "applicable_cohort": "학번 구분 없음",
+  "applicable_department": "전체 학부(학과별 세부는 학과 확인)",
+  "applicable_year": "2026-11-06 열람 게시본(학년도 명시 없음)",
+  "conditions": [
+   "재학기간 누적"
+  ],
+  "exceptions": [
+   "1회 면제 프로그램(ACW-03)"
+  ],
+  "evidence_quote": "재학기간 중 학사경고를 3회 받은 자 (※ 학사경고 기준 : 매학기말 성적 평점평균이 1.80 미만)",
+  "evidence_location": "제적 > 학사징계제적(학칙 제51조 제6항); inu/664 학사제적과 일치",
+  "status": "verified",
+  "game_use": "제적 엔딩 조건"
+ },
+ {
+  "id": "ACW-03",
+  "category": "academic_warning",
+  "title": "학사경고 1회 면제 프로그램",
+  "fact": "학사경고 대상자 중 학업성취도 향상 학내 프로그램 이수자는 1회에 한해 경고 면제(2018-1학기 시행, 시행세칙 제60조)",
+  "source_url": "https://www.inu.ac.kr/inu/660/subview.do",
+  "source_title": "인천대학교 학사안내 > 학적 > 제적",
+  "source_updated_at": "2025-04-03",
+  "checked_at": "2026-11-06",
+  "applicable_cohort": "2018-1학기 이후",
+  "applicable_department": "전체 학부(학과별 세부는 학과 확인)",
+  "applicable_year": "2026-11-06 열람 게시본(학년도 명시 없음)",
+  "conditions": [
+   "학내 프로그램 이수"
+  ],
+  "exceptions": [
+   "1회 한정",
+   "프로그램명·신청기간은 원문에 없음"
+  ],
+  "evidence_quote": "학내 프로그램 이수한 자는 1회에 한하여 학사경고 면제 (2018학년도 1학기부터 시행)",
+  "evidence_location": "제적 > 학사경고 대상자 1회 면제 프로그램(학칙 시행세칙 제60조)",
+  "status": "verified",
+  "game_use": "경고 구제 선택지(프로그램명은 가상 표기)"
+ },
+ {
+  "id": "DIS-01",
+  "category": "dismissal",
+  "title": "미복학·미등록 제적",
+  "fact": "휴학기간 만료 후 미복학 시 제적, 기간 내 미등록 또는 등록 후 수강신청 미완료 시 제적",
+  "source_url": "https://www.inu.ac.kr/inu/660/subview.do",
+  "source_title": "인천대학교 학사안내 > 학적 > 제적",
+  "source_updated_at": "2025-04-03",
+  "checked_at": "2026-11-06",
+  "applicable_cohort": "학번 구분 없음",
+  "applicable_department": "전체 학부(학과별 세부는 학과 확인)",
+  "applicable_year": "2026-11-06 열람 게시본(학년도 명시 없음)",
+  "conditions": [],
+  "exceptions": [],
+  "evidence_quote": "등록금 납부를 하더라도 학칙 제 42조에 의거 수강신청 미완료시 제적",
+  "evidence_location": "제적 > 미복학제적(제51조1항)·미등록제적(제42조, 제51조2항)",
+  "status": "verified",
+  "game_use": "복학 신청 누락 위기 사건"
+ },
+ {
+  "id": "DIS-02",
+  "category": "dismissal",
+  "title": "재학연한 초과 제적",
+  "fact": "재학연한은 수업연한의 2배, 초과 시 제적",
+  "source_url": "https://www.inu.ac.kr/inu/660/subview.do",
+  "source_title": "인천대학교 학사안내 > 학적 > 제적",
+  "source_updated_at": "2025-04-03",
+  "checked_at": "2026-11-06",
+  "applicable_cohort": "학번 구분 없음",
+  "applicable_department": "전체 학부(학과별 세부는 학과 확인)",
+  "applicable_year": "2026-11-06 열람 게시본(학년도 명시 없음)",
+  "conditions": [],
+  "exceptions": [
+   "재·편입학자는 나머지 수업연한 기준"
+  ],
+  "evidence_quote": "재학연한 : 수업연한(재·편입학자는 나머지 수업연한)의 2배",
+  "evidence_location": "제적 > 연한초과제적(학칙 제23조, 제51조 제7항)",
+  "status": "verified",
+  "game_use": "과도한 휴학 누적 경고"
+ },
+ {
+  "id": "DIS-03",
+  "category": "dismissal",
+  "title": "첫 학기 자퇴·제적자 재입학 불가",
+  "fact": "2023년 이후 신·편입학생이 입학 후 첫 1개 학기 중 자퇴·제적되거나 징계 제적되면 재입학 불가",
+  "source_url": "https://www.inu.ac.kr/inu/660/subview.do",
+  "source_title": "인천대학교 학사안내 > 학적 > 제적",
+  "source_updated_at": "2025-04-03",
+  "checked_at": "2026-11-06",
+  "applicable_cohort": "2023년 이후 신·편입학생",
+  "applicable_department": "전체 학부(학과별 세부는 학과 확인)",
+  "applicable_year": "2026-11-06 열람 게시본(학년도 명시 없음)",
+  "conditions": [],
+  "exceptions": [],
+  "evidence_quote": "입학 후 첫 1개 학기 중에 자퇴하거나 제적된 자 및 징계에 의해 제적된 자는 재입학 불가",
+  "evidence_location": "제적 > 첫 문단",
+  "status": "verified",
+  "game_use": "1학년 1학기 자퇴 선택 경고"
+ },
+ {
+  "id": "LOA-01",
+  "category": "leave_of_absence",
+  "title": "일반휴학 기본",
+  "fact": "개인사정으로 1개월 이상 등교 불가 시 일반휴학, 1년 이내(한 학기 가능), 개강 전 기간(부득이 시 수업일수 1/3 이내)",
+  "source_url": "https://www.inu.ac.kr/inu/658/subview.do",
+  "source_title": "인천대학교 학사안내 > 학적 > 휴·복학",
+  "source_updated_at": "2025-10-24",
+  "checked_at": "2026-11-06",
+  "applicable_cohort": "학번 구분 없음",
+  "applicable_department": "전체 학부(학과별 세부는 학과 확인)",
+  "applicable_year": "2026-11-06 열람 게시본(학년도 명시 없음)",
+  "conditions": [
+   "학사일정 기간 내 인터넷 신청"
+  ],
+  "exceptions": [
+   "신입생 첫 2개 학기 제한(LOA-02)"
+  ],
+  "evidence_quote": "휴학기간 1년 이내(한 학기 휴학가능)",
+  "evidence_location": "휴·복학 > 일반휴학(학칙시행세칙 제21조)",
+  "status": "verified",
+  "game_use": "휴학 선택지"
+ },
+ {
+  "id": "LOA-02",
+  "category": "leave_of_absence",
+  "title": "신입생 첫 2학기 일반휴학 제한",
+  "fact": "2023학년도 이후 신입학생은 첫 2개 학기, 편·재입학생은 첫 1개 학기 휴학 불가. 입대·질병·육아 휴학은 제외",
+  "source_url": "https://www.inu.ac.kr/inu/658/subview.do",
+  "source_title": "인천대학교 학사안내 > 학적 > 휴·복학",
+  "source_updated_at": "2025-10-24",
+  "checked_at": "2026-11-06",
+  "applicable_cohort": "2023학년도 이후 신입학생(2026학번 포함), 편·재입학생",
+  "applicable_department": "전체 학부(학과별 세부는 학과 확인)",
+  "applicable_year": "2026-11-06 열람 게시본(학년도 명시 없음)",
+  "conditions": [],
+  "exceptions": [
+   "입대휴학",
+   "질병휴학",
+   "육아휴학",
+   "~2022 입학 전공배정 학부 1학년은 한 학기 휴학불가(시행세칙 제11조)",
+   "창업휴학 허용 여부는 원문 미명시"
+  ],
+  "evidence_quote": "신입학생(2023학년도이후) 첫 2개학기, 편⋅재입학생 입학 후 첫 1개학기 휴학 불가. 단, 입대⋅질병⋅육아 휴학의 경우 제외",
+  "evidence_location": "휴·복학 > 일반휴학 > 유의사항",
+  "status": "verified",
+  "game_use": "1학년 일반휴학 선택지 비활성(입대·질병·육아는 허용)"
+ },
+ {
+  "id": "LOA-03",
+  "category": "leave_of_absence",
+  "title": "휴학연기",
+  "fact": "일반휴학 중 1회에 한해 1년 이내 연장, 복학·연기 미처리 시 미복학제적",
+  "source_url": "https://www.inu.ac.kr/inu/658/subview.do",
+  "source_title": "인천대학교 학사안내 > 학적 > 휴·복학",
+  "source_updated_at": "2025-10-24",
+  "checked_at": "2026-11-06",
+  "applicable_cohort": "학번 구분 없음",
+  "applicable_department": "전체 학부(학과별 세부는 학과 확인)",
+  "applicable_year": "2026-11-06 열람 게시본(학년도 명시 없음)",
+  "conditions": [
+   "일반휴학 중인 자"
+  ],
+  "exceptions": [
+   "휴학연기 중인 자는 추가 연기 불가"
+  ],
+  "evidence_quote": "1회에 한하여 1년 이내(한 학기 휴학가능)",
+  "evidence_location": "휴·복학 > 휴학연기",
+  "status": "verified",
+  "game_use": "장기 휴학 분기"
+ },
+ {
+  "id": "LOA-04",
+  "category": "leave_of_absence",
+  "title": "입대휴학",
+  "fact": "병역의무로 학업 불가 시 해당 군복무기간(최대 6년) 휴학",
+  "source_url": "https://www.inu.ac.kr/inu/658/subview.do",
+  "source_title": "인천대학교 학사안내 > 학적 > 휴·복학",
+  "source_updated_at": "2025-10-24",
+  "checked_at": "2026-11-06",
+  "applicable_cohort": "학번 구분 없음",
+  "applicable_department": "전체 학부(학과별 세부는 학과 확인)",
+  "applicable_year": "2026-11-06 열람 게시본(학년도 명시 없음)",
+  "conditions": [
+   "입대일 7일 전 신청",
+   "입영통지서 등 증빙"
+  ],
+  "exceptions": [
+   "귀가 조치 시 1주일 이내 취소 신고",
+   "일반휴학 불가자는 승인 전까지 학업 지속"
+  ],
+  "evidence_quote": "해당 군복무기간(최대6년)",
+  "evidence_location": "휴·복학 > 입대휴학",
+  "status": "verified",
+  "game_use": "입영 사건으로 타임라인 공백"
+ },
+ {
+  "id": "LOA-05",
+  "category": "leave_of_absence",
+  "title": "질병휴학",
+  "fact": "질병으로 1개월 이상 등교 불가 시, 종합병원장 4주 이상 진단서로 신청",
+  "source_url": "https://www.inu.ac.kr/inu/658/subview.do",
+  "source_title": "인천대학교 학사안내 > 학적 > 휴·복학",
+  "source_updated_at": "2025-10-24",
+  "checked_at": "2026-11-06",
+  "applicable_cohort": "학번 구분 없음",
+  "applicable_department": "전체 학부(학과별 세부는 학과 확인)",
+  "applicable_year": "2026-11-06 열람 게시본(학년도 명시 없음)",
+  "conditions": [
+   "종합병원 4주 이상 진단서"
+  ],
+  "exceptions": [
+   "수업일수 2/3선 이후 신청 시 성적인정원 제출"
+  ],
+  "evidence_quote": "종합병원장의 4주 이상의 진단서",
+  "evidence_location": "휴·복학 > 질병휴학",
+  "status": "verified",
+  "game_use": "건강 위기 사건(민감 묘사 주의)"
+ },
+ {
+  "id": "LOA-06",
+  "category": "leave_of_absence",
+  "title": "육아휴학",
+  "fact": "임신·출산·육아로 학업 곤란 시 신청, 임신확인서 또는 가족관계증명서 제출",
+  "source_url": "https://www.inu.ac.kr/inu/658/subview.do",
+  "source_title": "인천대학교 학사안내 > 학적 > 휴·복학",
+  "source_updated_at": "2025-10-24",
+  "checked_at": "2026-11-06",
+  "applicable_cohort": "학번 구분 없음",
+  "applicable_department": "전체 학부(학과별 세부는 학과 확인)",
+  "applicable_year": "2026-11-06 열람 게시본(학년도 명시 없음)",
+  "conditions": [],
+  "exceptions": [
+   "2/3선 이후 신청 시 성적인정원"
+  ],
+  "evidence_quote": "임신‧출산‧육아로 인해 정상적인 학업수행이 어려운 경우",
+  "evidence_location": "휴·복학 > 육아휴학",
+  "status": "verified",
+  "game_use": "게임 사건 비권장(민감), 제도 존재만 안내"
+ },
+ {
+  "id": "LOA-07",
+  "category": "leave_of_absence",
+  "title": "창업휴학",
+  "fact": "창업으로 학업 곤란 시 사업계획서·사업자등록증 제출로 신청",
+  "source_url": "https://www.inu.ac.kr/inu/658/subview.do",
+  "source_title": "인천대학교 학사안내 > 학적 > 휴·복학",
+  "source_updated_at": "2025-10-24",
+  "checked_at": "2026-11-06",
+  "applicable_cohort": "학번 구분 없음",
+  "applicable_department": "전체 학부(학과별 세부는 학과 확인)",
+  "applicable_year": "2026-11-06 열람 게시본(학년도 명시 없음)",
+  "conditions": [
+   "사업자등록증 필요"
+  ],
+  "exceptions": [
+   "신입생 첫 2학기 허용 여부 원문 미명시"
+  ],
+  "evidence_quote": "창업으로 인해 정상적인 학업수행이 어려운 경우",
+  "evidence_location": "휴·복학 > 창업휴학",
+  "status": "verified",
+  "game_use": "창업 루트 분기(사업자등록 조건 표시)"
+ },
+ {
+  "id": "GRA-01",
+  "category": "graduation",
+  "title": "졸업소요학점(학교 공통)",
+  "fact": "2023학년도 이후 입학생 졸업소요학점 130학점 이상",
+  "source_url": "https://www.inu.ac.kr/inu/666/subview.do",
+  "source_title": "인천대학교 학사안내 > 졸업 > 수료/졸업",
+  "source_updated_at": "2026-04-03",
+  "checked_at": "2026-11-06",
+  "applicable_cohort": "2023학년도 이후 입학생(2026학번 포함)",
+  "applicable_department": "학교 공통 최저선(학과별 세부 졸업사정은 학과 확인)",
+  "applicable_year": "게시본 2026-04-03 수정",
+  "conditions": [
+   "교과과정 이수",
+   "논문 및 영어졸업인증, 자격 취득"
+  ],
+  "exceptions": [
+   "2020~2022 입학생은 학과별 130~140(예: 구 컴퓨터공학부 140)"
+  ],
+  "evidence_quote": "2023학년도 이후 입학생 : 130학점 이상",
+  "evidence_location": "수료/졸업 > 졸업소요학점",
+  "status": "verified",
+  "game_use": "8학기 총 이수학점 목표"
+ },
+ {
+  "id": "GRA-02",
+  "category": "graduation",
+  "title": "졸업자격 구성",
+  "fact": "정해진 교과과정 이수 + 논문 및 영어졸업인증, 자격 취득. 외국인 한국어트랙은 한국어 졸업인증 추가",
+  "source_url": "https://www.inu.ac.kr/inu/666/subview.do",
+  "source_title": "인천대학교 학사안내 > 졸업 > 수료/졸업",
+  "source_updated_at": "2026-04-03",
+  "checked_at": "2026-11-06",
+  "applicable_cohort": "학번 구분 없음",
+  "applicable_department": "전체 학부(학과별 세부는 학과 확인)",
+  "applicable_year": "게시본 2026-04-03 수정",
+  "conditions": [],
+  "exceptions": [
+   "영어졸업인증 기준점수·면제는 이 원문에 없음"
+  ],
+  "evidence_quote": "정해진 교과과정을 이수하고 논문 및 영어졸업인증, 자격을 취득한 자",
+  "evidence_location": "수료/졸업 > 졸업자격",
+  "status": "verified",
+  "game_use": "졸업 체크리스트(영어인증·졸업논문/작품)"
+ },
+ {
+  "id": "GRA-03",
+  "category": "graduation",
+  "title": "교양 졸업학점 범위",
+  "fact": "2012학년도 이후 입학생 교양 최소 30학점, 최대 55학점까지",
+  "source_url": "https://www.inu.ac.kr/inu/666/subview.do",
+  "source_title": "인천대학교 학사안내 > 졸업 > 수료/졸업",
+  "source_updated_at": "2026-04-03",
+  "checked_at": "2026-11-06",
+  "applicable_cohort": "2012학년도 이후 입학생(문면상 2026 포함)",
+  "applicable_department": "전체 학부(학과별 세부는 학과 확인)",
+  "applicable_year": "게시본 2026-04-03 수정",
+  "conditions": [],
+  "exceptions": [
+   "2026 교육과정 별도 기준 존재 여부 미확인"
+  ],
+  "evidence_quote": "2012학년도 이후 입학생 : 최소 30학점 이상 최대 55학점까지",
+  "evidence_location": "수료/졸업 > 교양과목 졸업학점",
+  "status": "conditional",
+  "game_use": "교양 과다 수강 경고"
+ },
+ {
+  "id": "GRA-04",
+  "category": "graduation",
+  "title": "2026학번 기초교양",
+  "fact": "2026학년도 이후 입학자 기초교양 10~16학점: AI시대의글쓰기이론과실제, Academic English, AI사고와데이터리터러시(해당학과), AI와인간중심윤리, 대학영어회화1·2, 대학수학 6학점(자연·공학계열)",
+  "source_url": "https://www.inu.ac.kr/inu/666/subview.do",
+  "source_title": "인천대학교 학사안내 > 졸업 > 수료/졸업",
+  "source_updated_at": "2026-04-03",
+  "checked_at": "2026-11-06",
+  "applicable_cohort": "2026학년도 이후 입학자(2026학번 이후 편입자)",
+  "applicable_department": "전체 학부(학과별 세부는 학과 확인)",
+  "applicable_year": "게시본 2026-04-03 수정",
+  "conditions": [
+   "학과별 해당 여부는 학사공지 교양교육과정 확인"
+  ],
+  "exceptions": [
+   "대학수학은 자연·공학계열만",
+   "AI사고와데이터리터러시는 해당학과만"
+  ],
+  "evidence_quote": "기초교양 10~16학점 이상 : AI시대의글쓰기이론과실제 2학점, Academic English 2학점, AI사고와데이터리터러시 2학점(해당학과), AI와인간중심윤리 2학점",
+  "evidence_location": "수료/졸업 > 교양필수 > 2026학년도 이후 입학자",
+  "status": "verified",
+  "game_use": "1학년 필수 교양 이벤트"
+ },
+ {
+  "id": "GRA-05",
+  "category": "graduation",
+  "title": "핵심교양 이수",
+  "fact": "2023학년도 이후 입학자 핵심교양 6개 영역 중 영역 무관 3과목 이상",
+  "source_url": "https://www.inu.ac.kr/inu/666/subview.do",
+  "source_title": "인천대학교 학사안내 > 졸업 > 수료/졸업",
+  "source_updated_at": "2026-04-03",
+  "checked_at": "2026-11-06",
+  "applicable_cohort": "2023학년도 이후 입학자(2026 포함)",
+  "applicable_department": "전체 학부(학과별 세부는 학과 확인)",
+  "applicable_year": "게시본 2026-04-03 수정",
+  "conditions": [],
+  "exceptions": [],
+  "evidence_quote": "핵심교양 6개 영역 중 영역 관계없이 3과목 이상 이수",
+  "evidence_location": "수료/졸업 > 교양필수 2023·2026 항목",
+  "status": "verified",
+  "game_use": "교양 선택 이벤트"
+ },
+ {
+  "id": "GRA-06",
+  "category": "graduation",
+  "title": "전공 졸업학점(계열별)",
+  "fact": "2023학년도 이후 입학생 전공 공학계열 72, 이학계열 63, 기타 60학점 이상",
+  "source_url": "https://www.inu.ac.kr/inu/666/subview.do",
+  "source_title": "인천대학교 학사안내 > 졸업 > 수료/졸업",
+  "source_updated_at": "2026-04-03",
+  "checked_at": "2026-11-06",
+  "applicable_cohort": "2023학년도 이후 입학생",
+  "applicable_department": "계열별(소속 학과의 계열 분류는 학과 원문 확인)",
+  "applicable_year": "게시본 2026-04-03 수정",
+  "conditions": [
+   "소속 학과의 계열 분류"
+  ],
+  "exceptions": [
+   "신소재공학과·에너지화학공학과 60",
+   "도시환경공학부 환경공학전공 66",
+   "패션산업학과 60",
+   "복수전공 각 42",
+   "부전공 이수 시 주전공 60"
+  ],
+  "evidence_quote": "2023학년도 이후 입학생 : 공학계열 72학점 이상, 이학계열 63학점 이상, 기타 60학점 이상 이수",
+  "evidence_location": "수료/졸업 > 전공과목 졸업학점",
+  "status": "conditional",
+  "game_use": "전공 이수 목표(정보기술대학 학과 계열 분류는 이 원문에 없음)"
+ },
+ {
+  "id": "GRA-07",
+  "category": "graduation",
+  "title": "조기졸업",
+  "fact": "4학기까지 총 평점평균 4.0 이상이면 5학기 개시 전 신청, 6·7학기에 졸업요건 충족하고 평점 4.0 이상이면 조기졸업",
+  "source_url": "https://www.inu.ac.kr/inu/666/subview.do",
+  "source_title": "인천대학교 학사안내 > 졸업 > 수료/졸업",
+  "source_updated_at": "2026-04-03",
+  "checked_at": "2026-11-06",
+  "applicable_cohort": "학번 구분 없음",
+  "applicable_department": "전체 학부(학과별 세부는 학과 확인)",
+  "applicable_year": "게시본 2026-04-03 수정",
+  "conditions": [
+   "4학기까지 총평점 4.0 이상",
+   "졸업 시에도 평점 4.0 이상"
+  ],
+  "exceptions": [],
+  "evidence_quote": "신청자격 : 2학년 2학기(4학기)까지의 총성적 평점평균이 4.0이상인 자",
+  "evidence_location": "수료/졸업 > 조기졸업",
+  "status": "verified",
+  "game_use": "고학점 조기졸업 루트"
+ },
+ {
+  "id": "GRA-08",
+  "category": "graduation",
+  "title": "학년별 수료학점",
+  "fact": "졸업학점 130 기준 수료학점 1학년 33, 2학년 65, 3학년 98, 4학년 130",
+  "source_url": "https://www.inu.ac.kr/inu/666/subview.do",
+  "source_title": "인천대학교 학사안내 > 졸업 > 수료/졸업",
+  "source_updated_at": "2026-04-03",
+  "checked_at": "2026-11-06",
+  "applicable_cohort": "졸업학점 130 적용자",
+  "applicable_department": "전체 학부(학과별 세부는 학과 확인)",
+  "applicable_year": "게시본 2026-04-03 수정",
+  "conditions": [],
+  "exceptions": [
+   "졸업학점 131~140은 표의 별도 값"
+  ],
+  "evidence_quote": "수료학년 1학년 33 / 2학년 65 / 3학년 98 / 4학년 130 (130열)",
+  "evidence_location": "수료/졸업 > 수료 표(130열)",
+  "status": "verified",
+  "game_use": "학년 진급 체크포인트"
+ },
+ {
+  "id": "GRA-09",
+  "category": "graduation",
+  "title": "졸업사정 불합격 처리",
+  "fact": "수료자는 등록 없이 요건 충족 후 졸업신청, 재수자는 학점등록 또는 휴학(미등록·미휴학 시 미등록제적)",
+  "source_url": "https://www.inu.ac.kr/inu/666/subview.do",
+  "source_title": "인천대학교 학사안내 > 졸업 > 수료/졸업",
+  "source_updated_at": "2026-04-03",
+  "checked_at": "2026-11-06",
+  "applicable_cohort": "학번 구분 없음",
+  "applicable_department": "전체 학부(학과별 세부는 학과 확인)",
+  "applicable_year": "게시본 2026-04-03 수정",
+  "conditions": [],
+  "exceptions": [],
+  "evidence_quote": "등록도 안하고 휴학도 안하는 경우 미등록제적 처리됨",
+  "evidence_location": "수료/졸업 > 졸업사정 결과 불합격한 학생 지도",
+  "status": "verified",
+  "game_use": "졸업 실패 분기"
+ },
+ {
+  "id": "MAJ-01",
+  "category": "double_minor",
+  "title": "부·복수전공 신청자격·시기",
+  "fact": "2학기 이상 이수한 재학생 및 복학예정자, 학기 개시 전(학사일정 참조) 포털 신청, 해당 학과 심사",
+  "source_url": "https://www.inu.ac.kr/inu/659/subview.do",
+  "source_title": "인천대학교 학사안내 > 전공 > 부전공/복수전공",
+  "source_updated_at": "2026-04-03",
+  "checked_at": "2026-11-06",
+  "applicable_cohort": "학번 구분 없음",
+  "applicable_department": "전체 학부(학과별 세부는 학과 확인)",
+  "applicable_year": "게시본 2026-04-03 수정",
+  "conditions": [
+   "2학기 이상 이수",
+   "부·복수전공 학과 심사"
+  ],
+  "exceptions": [
+   "복학예정자가 합격 후 미복학 시 허가 취소",
+   "동일 학과 부·복수 중복신청 불가"
+  ],
+  "evidence_quote": "2학기 이상 이수한 재학생 및 복학예정자",
+  "evidence_location": "부전공/복수전공 표 > 신청자격·신청기간",
+  "status": "verified",
+  "game_use": "2학년부터 복수전공 신청 이벤트"
+ },
+ {
+  "id": "MAJ-02",
+  "category": "double_minor",
+  "title": "복수전공 이수학점",
+  "fact": "주전공·복수전공 각각 전공기초·핵심 포함 42학점 이상, 동일 교과목 최대 12학점 중복인정, 양쪽 요건 충족 시 학위",
+  "source_url": "https://www.inu.ac.kr/inu/659/subview.do",
+  "source_title": "인천대학교 학사안내 > 전공 > 부전공/복수전공",
+  "source_updated_at": "2026-04-03",
+  "checked_at": "2026-11-06",
+  "applicable_cohort": "학번 구분 없음",
+  "applicable_department": "전체 학부(학과별 세부는 학과 확인)",
+  "applicable_year": "게시본 2026-04-03 수정",
+  "conditions": [
+   "양 전공 졸업요건 모두 충족"
+  ],
+  "exceptions": [
+   "주전공 학위는 복수전공 완료까지 유보"
+  ],
+  "evidence_quote": "복수전공 학과의 전공기초,전공핵심 포함 42학점 이상",
+  "evidence_location": "부전공/복수전공 표 > 이수학점·학점 중복인정; inu/666 일치",
+  "status": "verified",
+  "game_use": "복수전공 루트"
+ },
+ {
+  "id": "MAJ-03",
+  "category": "double_minor",
+  "title": "부전공 이수학점",
+  "fact": "부전공 21학점 이상(지정 필수 9학점 이내 포함), 주전공 60학점 이상, 중복인정 최대 9학점, 학위증서에 부전공 표시",
+  "source_url": "https://www.inu.ac.kr/inu/659/subview.do",
+  "source_title": "인천대학교 학사안내 > 전공 > 부전공/복수전공",
+  "source_updated_at": "2026-04-03",
+  "checked_at": "2026-11-06",
+  "applicable_cohort": "2023-1학기 신청자부터 주전공 60학점 일괄",
+  "applicable_department": "전체 학부(학과별 세부는 학과 확인)",
+  "applicable_year": "게시본 2026-04-03 수정",
+  "conditions": [],
+  "exceptions": [
+   "이전 신청 이수자는 기존 주전공 졸업학점 적용"
+  ],
+  "evidence_quote": "부전공 학과가 지정한 필수과목(9학점 이내) 포함 21학점 이상",
+  "evidence_location": "부전공/복수전공 표 > 이수학점, 유의사항 6",
+  "status": "verified",
+  "game_use": "부전공 루트"
+ },
+ {
+  "id": "MAJ-04",
+  "category": "double_minor",
+  "title": "복수전공 포기·전환",
+  "fact": "복수전공 포기 시 일반 교과과정 이수, 부전공 요건 충족 시 부전공 전환 가능(수료자는 불가)",
+  "source_url": "https://www.inu.ac.kr/inu/659/subview.do",
+  "source_title": "인천대학교 학사안내 > 전공 > 부전공/복수전공",
+  "source_updated_at": "2026-04-03",
+  "checked_at": "2026-11-06",
+  "applicable_cohort": "학번 구분 없음",
+  "applicable_department": "전체 학부(학과별 세부는 학과 확인)",
+  "applicable_year": "게시본 2026-04-03 수정",
+  "conditions": [],
+  "exceptions": [
+   "수료자는 부전공 전환 불가"
+  ],
+  "evidence_quote": "복수전공 이수 중 포기하는 학생이 부전공 이수인정에 필요한 요건을 갖추었을 경우 신청을 통해 부전공으로 전환 가능",
+  "evidence_location": "부전공/복수전공 > 유의사항 3",
+  "status": "verified",
+  "game_use": "복수전공 포기 분기"
+ },
+ {
+  "id": "EXC-03",
+  "category": "exchange",
+  "title": "파견 후 잔여학기·8학기 파견",
+  "fact": "파견 종료 후 인천대 수학이 1학기 이상 남아야 함. 8차 학기 파견 시 졸업예정자 서약서, 귀국 후 9차 학기 수학, 휴학 불가",
+  "source_url": "https://dsw.inu.ac.kr/global/6009/subview.do",
+  "source_title": "국제교류과 교환학생 프로그램",
+  "source_updated_at": null,
+  "checked_at": "2026-11-06",
+  "applicable_cohort": "학년도 미표기",
+  "applicable_department": "전체 학부(학과별 세부는 학과 확인)",
+  "applicable_year": "적용 학년도 미표기 상시 안내",
+  "conditions": [],
+  "exceptions": [
+   "8차 학기 파견은 9차 학기 필수"
+  ],
+  "evidence_quote": "8차 학기를 외국대학에서 수학하는 경우 ... 파견종료 후 인천대학에서 1학기 이상(9차 학기) 수학해야 함. 휴학 불가",
+  "evidence_location": "지원 자격 4항 주석",
+  "status": "conditional",
+  "game_use": "4학년 교환 선택 시 졸업 연기 경고"
+ },
+ {
+  "id": "EXC-05",
+  "category": "exchange",
+  "title": "모집·파견 시기",
+  "fact": "모집기간 매년 3월·9월, 파견시기 매학기(3월·9월)",
+  "source_url": "https://dsw.inu.ac.kr/global/6009/subview.do",
+  "source_title": "국제교류과 교환학생 프로그램",
+  "source_updated_at": null,
+  "checked_at": "2026-11-06",
+  "applicable_cohort": "학년도 미표기",
+  "applicable_department": "전체 학부(학과별 세부는 학과 확인)",
+  "applicable_year": "적용 학년도 미표기 상시 안내",
+  "conditions": [],
+  "exceptions": [
+   "학기당 정확한 선발인원·일정은 학기초 모집 공지 확인"
+  ],
+  "evidence_quote": "모집기간 매년 3월, 9월",
+  "evidence_location": "파견시기·모집기간",
+  "status": "conditional",
+  "game_use": "교환 공고 이벤트 시점(실제 마감일은 공고 확인)"
+ },
+ {
+  "id": "EXC-06",
+  "category": "exchange",
+  "title": "선발기준",
+  "fact": "학업성적 100 + 어학면접 100 + 인성·자질 100, 합계 300점 고득점순",
+  "source_url": "https://dsw.inu.ac.kr/global/6009/subview.do",
+  "source_title": "국제교류과 교환학생 프로그램",
+  "source_updated_at": null,
+  "checked_at": "2026-11-06",
+  "applicable_cohort": "학년도 미표기",
+  "applicable_department": "전체 학부(학과별 세부는 학과 확인)",
+  "applicable_year": "적용 학년도 미표기 상시 안내",
+  "conditions": [],
+  "exceptions": [
+   "적격자 없으면 미달이어도 미선발 가능",
+   "외국대학 사정·비자로 파견 취소 가능"
+  ],
+  "evidence_quote": "합산(300점 만점)하여 고득점자 순으로 선발",
+  "evidence_location": "선발기준",
+  "status": "conditional",
+  "game_use": "선발 절차 설명(게임 점수 아님)"
+ },
+ {
+  "id": "EXC-08",
+  "category": "exchange",
+  "title": "연간 선발 예상인원",
+  "fact": "중화권 60·미/영/캐 70·유럽·중남미 80·일본 60·동남아 5명 내외(자매대학 사정에 따라 변동)",
+  "source_url": "https://dsw.inu.ac.kr/global/6009/subview.do",
+  "source_title": "국제교류과 교환학생 프로그램",
+  "source_updated_at": null,
+  "checked_at": "2026-11-06",
+  "applicable_cohort": "학년도 미표기",
+  "applicable_department": "전체 학부(학과별 세부는 학과 확인)",
+  "applicable_year": "적용 학년도 미표기 상시 안내",
+  "conditions": [],
+  "exceptions": [
+   "학기당 정확 인원은 모집 공지"
+  ],
+  "evidence_quote": "연간 선발인원은 자매대학 사정에 따라 변동가능",
+  "evidence_location": "대학별 선발인원 및 파견시기",
+  "status": "conditional",
+  "game_use": "지역 선택 분위기(수치 고정 금지)"
+ },
+ {
+  "id": "EXC-09",
+  "category": "exchange",
+  "title": "2027-1 파견 교환학생 모집 일정",
+  "fact": "2027-1학기 파견 모집 공고 2026-08-19 게시. 지원서 접수 2026-08-25 10:00~09-03 17:00(포털 온라인), 면접 9월 2~4주, 합격 발표 9월 말~10월 초, OT 10월 말~11월 초",
+  "source_url": "https://www.inu.ac.kr/bbs/global/1412/428830/artclView.do",
+  "source_title": "국제교류과 공지: 2027년 1학기 해외자매대학 파견교환학생 모집안내",
+  "source_updated_at": "2026-08-19",
+  "checked_at": "2026-11-06",
+  "applicable_cohort": "2027-1학기 파견 지원자",
+  "applicable_department": "전체 학부",
+  "applicable_year": "2027-1학기 파견(2026-2학기 중 모집)",
+  "conditions": [
+   "인천대 포털 > 학사행정 > 학적 > 교환교류관리 > 파견학생신청"
+  ],
+  "exceptions": [
+   "추가 모집 공고 별도(EXC-13)"
+  ],
+  "evidence_quote": "교환학생 지원서 접수 8 월 25 일 ( 화 ) 10:00 ~ 9 월 3 일 ( 목 ) 17:00 까지",
+  "evidence_location": "공고 1. 모집 및 선발 주요일정 표",
+  "status": "verified",
+  "game_use": "2학기 개강 직전 교환 공고 이벤트"
+ },
+ {
+  "id": "EXC-10",
+  "category": "exchange",
+  "title": "2027-1 공고 지원자격",
+  "fact": "파견시점 기준 2학기 이상 수학(편입생 1학기), 전 학년 누적 평점 2.5 이상(지원 학교·학과별 상이 가능), 파견 후 1학기 이상 잔여, 학과(부)장 확인",
+  "source_url": "https://www.inu.ac.kr/bbs/global/1412/428830/artclView.do",
+  "source_title": "국제교류과 공지: 2027년 1학기 해외자매대학 파견교환학생 모집안내",
+  "source_updated_at": "2026-08-19",
+  "checked_at": "2026-11-06",
+  "applicable_cohort": "2027-1학기 파견 지원자",
+  "applicable_department": "전체 학부",
+  "applicable_year": "2027-1학기 파견",
+  "conditions": [
+   "파견시점 기준 학기 계산",
+   "학교·학과별 추가 평점 기준 가능"
+  ],
+  "exceptions": [
+   "편입생 1학기",
+   "동북아국제통상전공 자체 파견 참가자 일부 국가 제한"
+  ],
+  "evidence_quote": "② 전 학년 누적 평점평균 2.5 점 이상 ※ 지원 학교 및 학과별로 상이할 수 있으므로 지원 전 확인 요망",
+  "evidence_location": "공고 2. 지원자격 ①②④⑤⑥",
+  "status": "verified",
+  "game_use": "교환 지원 가능 여부 판정(2027-1 기준)"
+ },
+ {
+  "id": "EXC-11",
+  "category": "exchange",
+  "title": "8차 학기 파견 제한",
+  "fact": "8차 학기 파견자는 졸업예정자 서약서 제출, 귀국 후 9차 학기 수학, 2026-2 수강학점 포함 잔여 졸업학점 필수, 최대 1개 학기만 지원",
+  "source_url": "https://www.inu.ac.kr/bbs/global/1412/428830/artclView.do",
+  "source_title": "국제교류과 공지: 2027년 1학기 해외자매대학 파견교환학생 모집안내",
+  "source_updated_at": "2026-08-19",
+  "checked_at": "2026-11-06",
+  "applicable_cohort": "2027-1학기 파견 지원자",
+  "applicable_department": "전체 학부",
+  "applicable_year": "2027-1학기 파견",
+  "conditions": [
+   "잔여 졸업학점 존재"
+  ],
+  "exceptions": [
+   "최대 1개 학기"
+  ],
+  "evidence_quote": "8 차 학기 파견자는 최대 1 개 학기만 지원 가능",
+  "evidence_location": "공고 2. 지원자격 ④ 괄호",
+  "status": "verified",
+  "game_use": "4학년 교환 선택 → 9학기 연장 분기"
+ },
+ {
+  "id": "EXC-12",
+  "category": "exchange",
+  "title": "휴학생 지원·파견학기 휴학 불이익",
+  "fact": "휴학생도 지원 가능하나 파견기간 반드시 등록(복학). 파견학기에 휴학하면 학점인정 불가·지원금 환수. 파견기간 변경 불가",
+  "source_url": "https://www.inu.ac.kr/bbs/global/1412/428830/artclView.do",
+  "source_title": "국제교류과 공지: 2027년 1학기 해외자매대학 파견교환학생 모집안내",
+  "source_updated_at": "2026-08-19",
+  "checked_at": "2026-11-06",
+  "applicable_cohort": "2027-1학기 파견 지원자",
+  "applicable_department": "전체 학부",
+  "applicable_year": "2027-1학기 파견",
+  "conditions": [
+   "파견학기 등록(복학)"
+  ],
+  "exceptions": [],
+  "evidence_quote": "파견학기에 휴학할 경우 교환학생 학점인정이 불가하고 지원금도 환수됩니다",
+  "evidence_location": "공고 4. 주의사항",
+  "status": "verified",
+  "game_use": "휴학 중 교환 지원 분기"
+ },
+ {
+  "id": "EXC-13",
+  "category": "exchange",
+  "title": "재지원·타대학 학점 인정 한도",
+  "fact": "기존 참여자는 동일 국가 제외 재지원 가능(최대 2회, 파견 중 지원 불가). 국내외 타 대학 취득학점은 졸업학점의 1/2 범위 내 인정 가능",
+  "source_url": "https://www.inu.ac.kr/bbs/global/1412/428830/artclView.do",
+  "source_title": "국제교류과 공지: 2027년 1학기 해외자매대학 파견교환학생 모집안내",
+  "source_updated_at": "2026-08-19",
+  "checked_at": "2026-11-06",
+  "applicable_cohort": "2027-1학기 파견 지원자",
+  "applicable_department": "전체 학부",
+  "applicable_year": "2027-1학기 파견",
+  "conditions": [],
+  "exceptions": [
+   "동일 국가 재지원 불가"
+  ],
+  "evidence_quote": "타 대학 취득한 학점은 졸업에 필요한 학점의 2 분의 1 의 범위내 인정 가능",
+  "evidence_location": "공고 4. 주의사항",
+  "status": "verified",
+  "game_use": "두 번째 교환 선택지"
+ },
+ {
+  "id": "EXC-14",
+  "category": "exchange",
+  "title": "파견 지원금(2027-1 공고)",
+  "fact": "교환학생 지원금: 영미권 100만원(1회), 유럽 100만원(1회, 20명 평가순), 중국 50만원(1회), 동남아 100만원(1회). 방문학생 영미권 400만원·캐나다 300만원(학기당)",
+  "source_url": "https://www.inu.ac.kr/bbs/global/1412/428830/artclView.do",
+  "source_title": "국제교류과 공지: 2027년 1학기 해외자매대학 파견교환학생 모집안내",
+  "source_updated_at": "2026-08-19",
+  "checked_at": "2026-11-06",
+  "applicable_cohort": "2027-1학기 파견자",
+  "applicable_department": "전체 학부",
+  "applicable_year": "2027-1학기 파견",
+  "conditions": [
+   "국가·대학별 세부정보 첨부 참조"
+  ],
+  "exceptions": [
+   "미래에셋 등 외부 장학금 수혜자 제외",
+   "지급시기 국가별 상이"
+  ],
+  "evidence_quote": "영미권 ( 미국 , 영국 ) 교환학생 100 만원 (1 회 )",
+  "evidence_location": "공고 4. 파견학생 지원금 표",
+  "status": "verified",
+  "game_use": "교환 비용 부담 설명(게임 자원 아님)"
+ },
+ {
+  "id": "EXC-15",
+  "category": "exchange",
+  "title": "추가 모집 공고 존재",
+  "fact": "2027-1학기 파견 교환학생 추가 모집 공고가 2026-09-04 게시됨(교환 1~2개 학기, 방문학생은 미국 일부 대학)",
+  "source_url": "https://www.inu.ac.kr/bbs/global/1412/430033/artclView.do",
+  "source_title": "국제교류과 공지: 2027년 1학기 해외자매대학 파견교환학생 추가 모집안내",
+  "source_updated_at": "2026-09-04",
+  "checked_at": "2026-11-06",
+  "applicable_cohort": "2027-1학기 파견 지원자",
+  "applicable_department": "전체 학부",
+  "applicable_year": "2027-1학기 파견",
+  "conditions": [],
+  "exceptions": [
+   "세부 일정·대상 대학은 공고 본문/첨부 확인"
+  ],
+  "evidence_quote": "2027 년 1 학기 파견 예정 해외 자매대학 파견 교환학생을 아래와 같이 추가 모집",
+  "evidence_location": "공고 서두, 1. 제도안내",
+  "status": "verified",
+  "game_use": "마감 후 추가 기회 이벤트"
+ },
+ {
+  "id": "CAL-01",
+  "category": "academic_calendar",
+  "title": "2026-2학기 주요 학사일정",
+  "fact": "휴·복학신청 08-03~07, 2학기 수강신청 08-18~21, 등록 08-24~28, 개강 09-01, 수업일수 1/3선 10-05, 1/2선 10-23, 2/3선 11-09, 재입학 신청 11-11~13, 기말시험 12-08~14, 보강주간 12-15~21, 동계 계절학기 12-22~2027-01-13",
+  "source_url": "https://www.inu.ac.kr/inu/651/subview.do",
+  "source_title": "인천대학교 학사일정(월별 보기, year/month 조회)",
+  "source_updated_at": null,
+  "checked_at": "2026-11-06",
+  "applicable_cohort": "전체",
+  "applicable_department": "전체",
+  "applicable_year": "2026학년도 2학기",
+  "conditions": [],
+  "exceptions": [
+   "학교 사정에 따라 변동 가능"
+  ],
+  "evidence_quote": "2026.12.08(Tue) ~ 2026.12.14(Mon) 2학기 기말시험",
+  "evidence_location": "학사일정 월별 보기 2026-08~12 (POST year/month)",
+  "status": "verified",
+  "game_use": "2학기 타임라인 이벤트"
+ },
+ {
+  "id": "CAL-02",
+  "category": "academic_calendar",
+  "title": "2027-1학기 준비 일정(공개분)",
+  "fact": "전과 신청 2027-01-07~11, 부/복수/연계전공 신청 01-27~29, 휴·복학신청 02-01~05, 1학기 수강신청(재학·복학) 02-15~18, 학위수여식 02-19, 등록 02-22~26, 신·편입생 수강신청 02-24~26, 입학식 02-26. 2027-03 이후는 미게시",
+  "source_url": "https://www.inu.ac.kr/inu/651/subview.do",
+  "source_title": "인천대학교 학사일정(월별 보기, year/month 조회)",
+  "source_updated_at": null,
+  "checked_at": "2026-11-06",
+  "applicable_cohort": "전체",
+  "applicable_department": "전체",
+  "applicable_year": "2027학년도 1학기 준비",
+  "conditions": [],
+  "exceptions": [
+   "3월 이후 일정 데이터 없음(2026-11-06 기준)",
+   "변동 가능"
+  ],
+  "evidence_quote": "2027.01.27(Wed) ~ 2027.01.29(Fri) 부/복수/연계전공 신청",
+  "evidence_location": "학사일정 월별 보기 2027-01~03",
+  "status": "verified",
+  "game_use": "겨울방학 전과·복수전공 신청 이벤트"
+ },
+ {
+  "id": "CMP-01",
+  "category": "campus_life",
+  "title": "기숙사 3개 동·수용 2,676명",
+  "fact": "제1(2009-03 개관, 2024 리모델링) 546명, 제2(BTL, 2018-03) 1,130명, 제3(BTL, 2020-08) 1,000명, 합계 2,676명",
+  "source_url": "https://www.inu.ac.kr/inu/644/subview.do",
+  "source_title": "인천대학교 대학생활 > 기숙사",
+  "source_updated_at": "2026-04-03",
+  "checked_at": "2026-11-06",
+  "applicable_cohort": "전체",
+  "applicable_department": "전체",
+  "applicable_year": "게시본 2026-04-03 수정(\"현재\" 표현)",
+  "conditions": [],
+  "exceptions": [
+   "제3기숙사는 표상 여 인원만 기재(남 \"-\")",
+   "배정 기준·선발 일정은 생활원 공지"
+  ],
+  "evidence_quote": "현재는 2,676명이 기숙사에서 생활을 하고 있습니다.",
+  "evidence_location": "기숙사 > 소개 문단·호실 및 수용인원 표",
+  "status": "verified",
+  "game_use": "기숙사 합격/탈락 사건 배경"
+ },
+ {
+  "id": "CMP-02",
+  "category": "campus_life",
+  "title": "중앙동아리 분과·목록",
+  "fact": "공식 동아리 페이지에 6개 분과 49개 동아리 게시: 교양학술 8, 문화 11, 봉사 4, 종교 5, 체육 12, 취미·전시 9",
+  "source_url": "https://www.inu.ac.kr/inu/11707/subview.do",
+  "source_title": "인천대학교 학생활동 > 동아리",
+  "source_updated_at": "2026-10-27",
+  "checked_at": "2026-11-06",
+  "applicable_cohort": "전체",
+  "applicable_department": "전체",
+  "applicable_year": "게시본 2026-10-27 수정",
+  "conditions": [],
+  "exceptions": [
+   "모집 시기·인원은 게시 안 됨"
+  ],
+  "evidence_quote": "교양학술 분과 동아리 / 문화 분과 동아리 / 봉사 분과 동아리 / 종교 분과 동아리 / 체육 분과 동아리 / 취미·전시 분과 동아리",
+  "evidence_location": "동아리 페이지 분과별 목록(HTML li 항목 직접 계수)",
+  "status": "conflicting",
+  "game_use": "동아리 선택 이벤트(기존 51개 주장과 불일치, 동아리명은 실명 대신 분과만 사용 권장)"
+ },
+ {
+  "id": "CMP-03",
+  "category": "campus_life",
+  "title": "셔틀·통학버스",
+  "fact": "통학 부천-송내(2대 07:35·08:50), 안산-시흥(1대 07:20); 셔틀 등교 인천대입구역-정문-공과대-생활원 08:30~10:20(3대), 하교 18:00·18:15·18:30; 생활원-사범대-정보기술대 순환 08:30~18:00",
+  "source_url": "https://www.inu.ac.kr/inu/1476/subview.do",
+  "source_title": "인천대학교 캠퍼스 안내 > 찾아오시는길 > 셔틀버스",
+  "source_updated_at": "2026-04-06",
+  "checked_at": "2026-11-06",
+  "applicable_cohort": "전체",
+  "applicable_department": "전체",
+  "applicable_year": "게시본 2026-04-06 수정",
+  "conditions": [],
+  "exceptions": [
+   "세부 내용은 매학기 공지 참조",
+   "방학·학기별 변동 가능"
+  ],
+  "evidence_quote": "세부 내용은 매학기 홈페이지 내 공지사항 참조",
+  "evidence_location": "셔틀버스 > 통학 및 셔틀버스 표",
+  "status": "conditional",
+  "game_use": "\"셔틀 줄 vs 걷기\" 선택(시간표 수치는 학기별 재확인)"
+ },
+ {
+  "id": "STA-01",
+  "category": "statistics",
+  "title": "2025 학부 재학·휴학생 수",
+  "fact": "2025년(조사기준일 4월 1일) 학부 재학생 11,247명(남 6,282·여 4,965), 휴학생 4,013명(남 3,204·여 809)",
+  "source_url": "https://www.inu.ac.kr/inu/949/subview.do",
+  "source_title": "인천대학교 대학현황 > 대학 주요현황",
+  "source_updated_at": "2026-07-29",
+  "checked_at": "2026-11-06",
+  "applicable_cohort": "전체",
+  "applicable_department": "학부",
+  "applicable_year": "2025-04-01 기준(2026 수치 미게시)",
+  "conditions": [],
+  "exceptions": [
+   "2026년 수치는 페이지에 없음"
+  ],
+  "evidence_quote": "학생현황 조사 기준일 : 매년 4월 1일 / 2025 재학생 남 6,282 여 4,965 / 휴학생 남 3,204 여 809",
+  "evidence_location": "대학 주요현황 > 학생현황 2025 학부열",
+  "status": "verified",
+  "game_use": "엔딩 맥락 통계(연도 병기 필수)"
+ },
+ {
+  "id": "SCH-01",
+  "category": "scholarship",
+  "title": "교내장학금 신청 시기 구조",
+  "fact": "감면 장학금은 1학기 1월·2학기 7월 신청/추천, 지급 장학금은 학기 중(3·4·5월 / 9·10·11월) 종류별 신청",
+  "source_url": "https://www.inu.ac.kr/inu/840/subview.do",
+  "source_title": "인천대학교 학생지원 > 장학금",
+  "source_updated_at": "2026-06-29",
+  "checked_at": "2026-11-06",
+  "applicable_cohort": "전체",
+  "applicable_department": "전체",
+  "applicable_year": "게시본 2026-06-29 수정",
+  "conditions": [
+   "해당 신청/추천기간 내에만 신청"
+  ],
+  "exceptions": [
+   "세부 일정 조정 가능, 공지사항 > 장학금 확인"
+  ],
+  "evidence_quote": "세부 일정은 조정될 수 있으며, 해당 장학금 신청/추천기간 내에만 신청 가능",
+  "evidence_location": "장학금 > 교내장학금별 신청기간 표",
+  "status": "verified",
+  "game_use": "방학 중 장학금 신청 놓침 사건"
+ },
+ {
+  "id": "SCH-02",
+  "category": "scholarship",
+  "title": "우수신입생 장학금 유지조건",
+  "fact": "2026-2학기 기준표: 수시 우수신입생(자기추천·교과·지역균형 최초합격자 계열별 상위) 등록금 전액 1년, 재학 중 직전학기 평점 3.5 이상",
+  "source_url": "https://www.inu.ac.kr/inu/840/subview.do",
+  "source_title": "인천대학교 학생지원 > 장학금",
+  "source_updated_at": "2026-06-29",
+  "checked_at": "2026-11-06",
+  "applicable_cohort": "수시 최초합격 우수신입생",
+  "applicable_department": "계열별 선정(학과당 최대 1명)",
+  "applicable_year": "2026-2학기 지급기준",
+  "conditions": [
+   "직전학기 평점 3.5 이상"
+  ],
+  "exceptions": [
+   "세부사항 내부 방침"
+  ],
+  "evidence_quote": "재학 중에는 직전학기 평점평균 3.5 이상인 자",
+  "evidence_location": "장학금 > 2026-2학기 교내장학금 종류 > 우수신입생 장학금 표",
+  "status": "conditional",
+  "game_use": "신입생 장학금 유지 압박(대상자 극소수, 일반화 금지)"
+ },
+ {
+  "id": "SUP-01",
+  "category": "student_support",
+  "title": "대학생활지원과 통합 창구",
+  "fact": "대학생활지원과 사이트가 대학생활상담센터(개인·위기상담), INU인권센터, 사회봉사센터, 장애학생지원센터를 묶어 안내하고 종합상담(심리/인권) 신청을 제공",
+  "source_url": "https://www.inu.ac.kr/sites/service/index.do",
+  "source_title": "인천대학교 대학생활지원과(대학생활상담센터·INU인권센터·장애학생지원센터)",
+  "source_updated_at": null,
+  "checked_at": "2026-11-06",
+  "applicable_cohort": "전체",
+  "applicable_department": "전체",
+  "applicable_year": "2026-11-06 열람",
+  "conditions": [],
+  "exceptions": [
+   "개인 연락처는 수집하지 않음(기관 링크만)"
+  ],
+  "evidence_quote": "종합상담신청(심리상담/인권상담)",
+  "evidence_location": "service 사이트 메뉴·하단 링크",
+  "status": "verified",
+  "game_use": "번아웃 사건 엔딩의 공식 링크"
+ },
+ {
+  "id": "SUP-02",
+  "category": "student_support",
+  "title": "상담센터 공개 프로그램(2026-11)",
+  "fact": "대학생활상담센터 2026-11 공지: 마음안심버스(2026-11-11 14~16시), \"불안해도 괜찮아\" 집단상담, MBTI 완전정복 특강",
+  "source_url": "https://www.inu.ac.kr/sites/service/index.do",
+  "source_title": "인천대학교 대학생활지원과(대학생활상담센터·INU인권센터·장애학생지원센터)",
+  "source_updated_at": null,
+  "checked_at": "2026-11-06",
+  "applicable_cohort": "전체",
+  "applicable_department": "전체",
+  "applicable_year": "2026-11 공지",
+  "conditions": [],
+  "exceptions": [
+   "신청 방법·정원은 개별 공지"
+  ],
+  "evidence_quote": "[대학생활상담센터] 11월 마음안심버스 행사 안내 (11/11(수) 14시~16시]",
+  "evidence_location": "service 사이트 공지사항 최근글",
+  "status": "verified",
+  "game_use": "9~10주차 번아웃 사건 실제 프로그램 예시"
+ },
+ {
+  "id": "SUP-03",
+  "category": "student_support",
+  "title": "STARinU 비교과 목록 접근",
+  "fact": "STARinU 루트 접속 시 로그인 페이지로 이동 — 비교과 목록은 비로그인 공개 확인 불가. 단 교환 공고에서 버디·유학생 코디네이터 프로그램 수료증을 STARinU에서 발급한다고 명시",
+  "source_url": "https://starinu.inu.ac.kr/",
+  "source_title": "STARinU",
+  "source_updated_at": null,
+  "checked_at": "2026-11-06",
+  "applicable_cohort": "전체",
+  "applicable_department": "전체",
+  "applicable_year": "2026-11-06 열람",
+  "conditions": [],
+  "exceptions": [
+   "목록·개수는 미확인"
+  ],
+  "evidence_quote": "STARinU 사이트 수료증 발급 후 제출",
+  "evidence_location": "starinu.inu.ac.kr → /common/user/login.do 리다이렉트; 428830 공고 가산점 표",
+  "status": "conditional",
+  "game_use": "\"비교과 신청\" 링크만 제공, 목록 하드코딩 금지"
+ },
+ {
+  "id": "UNV-01",
+  "category": "regulation",
+  "title": "학칙·학칙시행세칙 원문 조문",
+  "fact": "학사안내가 인용한 학칙 제23·42·50·51조, 시행세칙 제11·21·23·60조 본문 및 최종 개정일",
+  "source_url": "https://rule.inu.ac.kr/rule/index.do",
+  "source_title": null,
+  "source_updated_at": null,
+  "checked_at": "2026-11-06",
+  "applicable_cohort": null,
+  "applicable_department": null,
+  "applicable_year": null,
+  "conditions": [],
+  "exceptions": [],
+  "evidence_quote": null,
+  "evidence_location": "규정 검색이 JS 로딩, rule 8037/8050·lawSearchView 2회 시도 실패",
+  "status": "unverified",
+  "game_use": "사용 보류(원문 확인 전 사실 카드 금지)"
+ },
+ {
+  "id": "UNV-02",
+  "category": "graduation",
+  "title": "정보기술대학 학과의 공학계열 분류·학과별 졸업요건",
+  "fact": "2026학번 학과별 전공 이수학점·필수과목·영어졸업인증 기준",
+  "source_url": null,
+  "source_title": null,
+  "source_updated_at": null,
+  "checked_at": "2026-11-06",
+  "applicable_cohort": null,
+  "applicable_department": null,
+  "applicable_year": null,
+  "conditions": [],
+  "exceptions": [],
+  "evidence_quote": null,
+  "evidence_location": "학과 원문 미확보(전공 담당 작업 중단)",
+  "status": "unverified",
+  "game_use": "사용 보류(원문 확인 전 사실 카드 금지)"
+ },
+ {
+  "id": "UNV-03",
+  "category": "graduation",
+  "title": "영어졸업인증 기준점수",
+  "fact": "학교 공통 기준·면제 조건",
+  "source_url": null,
+  "source_title": null,
+  "source_updated_at": null,
+  "checked_at": "2026-11-06",
+  "applicable_cohort": null,
+  "applicable_department": null,
+  "applicable_year": null,
+  "conditions": [],
+  "exceptions": [],
+  "evidence_quote": null,
+  "evidence_location": "원문 미확보",
+  "status": "unverified",
+  "game_use": "사용 보류(원문 확인 전 사실 카드 금지)"
+ },
+ {
+  "id": "UNV-04",
+  "category": "academic_warning",
+  "title": "학사경고 면제 프로그램 명칭·신청 시기",
+  "fact": "시행세칙 제60조의 학내 프로그램 실체",
+  "source_url": null,
+  "source_title": null,
+  "source_updated_at": null,
+  "checked_at": "2026-11-06",
+  "applicable_cohort": null,
+  "applicable_department": null,
+  "applicable_year": null,
+  "conditions": [],
+  "exceptions": [],
+  "evidence_quote": null,
+  "evidence_location": "원문 미확보",
+  "status": "unverified",
+  "game_use": "사용 보류(원문 확인 전 사실 카드 금지)"
+ },
+ {
+  "id": "UNV-05",
+  "category": "campus_life",
+  "title": "2026 축제명·학생회 구조",
+  "fact": "기존 주장(총학생회-단과대 13단위 등)",
+  "source_url": null,
+  "source_title": null,
+  "source_updated_at": null,
+  "checked_at": "2026-11-06",
+  "applicable_cohort": null,
+  "applicable_department": null,
+  "applicable_year": null,
+  "conditions": [],
+  "exceptions": [],
+  "evidence_quote": null,
+  "evidence_location": "원문 미확보",
+  "status": "unverified",
+  "game_use": "사용 보류(원문 확인 전 사실 카드 금지)"
+ }
+]

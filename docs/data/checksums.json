@@ -1,0 +1,18 @@
+{
+  ".gitattributes": "48303e13e7210505c6f71f9206a889674e8c488767995e49045bc17bb4778b4b",
+  "data/approved-rules.json": "a5338d955b09046ec0b16f3a9625b7955c763aae07dc722e474e6078745f932f",
+  "data/facts.json": "86794d4f09fd8599ec1f1e1d802f6f29b1997b422289138541f5eaab42904545",
+  "data/overlap-candidates.json": "a36c20eff5ff82e4076dc083f101da852aef16441fd75b697ae440c7c0bc48f9",
+  "data/review-queue.json": "ae15b8ed282101ac91231880e4cf084e1ec100e6bf696522026703f016923a28",
+  "data/sources.json": "5e3ff7cb568b0072a23bda0932b7695a731d9cdad92cde79c7b60056b32a3227",
+  "examples/game-event.example.json": "8fed6dbf5ffecc0f402e48410c0e9541a22d0024033a5e7e51f8e457c7ca318c",
+  "facts.schema.json": "b4ca2dc8aec802348f36096e1c5a354f3076e1bf3d3008ec64374a227d915e37",
+  "HANDOFF.md": "dfc7146d5b1703858088fe41020608a8cc2e5d5f9052157d074ba87187bbdfb4",
+  "manifest.json": "b147b037f143a3a7dd32ab5a08447505903a7bd5c336f8f9e7891a6c72c051a4",
+  "raw/inu-data-common.json": "a97f0636545839330405b30b1d7ff16e9568d4c0eb29de546ed73d8f432bcac1",
+  "raw/inu-data-it.json": "6ca0cb52f7208fbecf51bb53be51ee18e45b81d64b8e9285ffc6bf4240d08bbf",
+  "README.md": "e9212a2c49cffc95b00ce999406c5cbf19c4f50c14b4de6fd4a2c3f82dbecdfb",
+  "reports/inu-data-common-audit.md": "7d2d40f8f01ad81e10f096eafa120bdc5c7381b4ea488fb8a613611f69636365",
+  "reports/inu-data-it-audit.md": "75f3f622e2bad227f20acdeab1813234970f78da699bfdec8629b4159ecfd9dd",
+  "validate.py": "646ea5c685054b9112bdc9fb7a188f04d30f6da0a5b1bd8e38462cb7e24f8724"
+}

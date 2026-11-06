@@ -1,0 +1,28 @@
+{
+  "id": "example.research-opportunity",
+  "is_example": true,
+  "publish_enabled": false,
+  "title": "관심 있는 연구실 공고를 찾아볼까?",
+  "fact_ids": [
+    "inu.it.cse-research-menu"
+  ],
+  "choices": [
+    {
+      "id": "explore",
+      "label": "공식 모집 공고를 찾아본다",
+      "fictional_effects": {
+        "time": -1,
+        "research_interest": 1
+      }
+    },
+    {
+      "id": "later",
+      "label": "이번 학기는 다른 활동에 집중한다",
+      "fictional_effects": {
+        "time": 0
+      }
+    }
+  ],
+  "eligibility_rule_ids": [],
+  "note": "시간·관심 수치는 가상 게임 설계 예시. 실제 선발 자격·합격확률을 의미하지 않음."
+}

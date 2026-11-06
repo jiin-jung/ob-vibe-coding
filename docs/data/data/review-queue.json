@@ -1,0 +1,524 @@
+[
+  {
+    "fact_id": "inu.common.REG-01",
+    "status": "verified",
+    "title": "학기당 기준 신청학점",
+    "reason": "원문·범위·예외와 중복/충돌을 담당자가 검토한 뒤 공개 및 실행 여부 결정"
+  },
+  {
+    "fact_id": "inu.common.REG-02",
+    "status": "verified",
+    "title": "성적우수자 추가 신청학점",
+    "reason": "원문·범위·예외와 중복/충돌을 담당자가 검토한 뒤 공개 및 실행 여부 결정"
+  },
+  {
+    "fact_id": "inu.common.REG-03",
+    "status": "verified",
+    "title": "최종학년·8학기 경과자 신청학점",
+    "reason": "원문·범위·예외와 중복/충돌을 담당자가 검토한 뒤 공개 및 실행 여부 결정"
+  },
+  {
+    "fact_id": "inu.common.REG-04",
+    "status": "verified",
+    "title": "사이버강좌(OCU) 한도",
+    "reason": "원문·범위·예외와 중복/충돌을 담당자가 검토한 뒤 공개 및 실행 여부 결정"
+  },
+  {
+    "fact_id": "inu.common.REG-05",
+    "status": "verified",
+    "title": "수강신청 변경·유의사항",
+    "reason": "원문·범위·예외와 중복/충돌을 담당자가 검토한 뒤 공개 및 실행 여부 결정"
+  },
+  {
+    "fact_id": "inu.common.GRD-01",
+    "status": "verified",
+    "title": "성적 산출 비율",
+    "reason": "원문·범위·예외와 중복/충돌을 담당자가 검토한 뒤 공개 및 실행 여부 결정"
+  },
+  {
+    "fact_id": "inu.common.GRD-02",
+    "status": "verified",
+    "title": "상대평가 등급 비율",
+    "reason": "원문·범위·예외와 중복/충돌을 담당자가 검토한 뒤 공개 및 실행 여부 결정"
+  },
+  {
+    "fact_id": "inu.common.GRD-03",
+    "status": "verified",
+    "title": "절대평가 가능 교과목",
+    "reason": "원문·범위·예외와 중복/충돌을 담당자가 검토한 뒤 공개 및 실행 여부 결정"
+  },
+  {
+    "fact_id": "inu.common.GRD-04",
+    "status": "verified",
+    "title": "P/F 평가 교과목",
+    "reason": "원문·범위·예외와 중복/충돌을 담당자가 검토한 뒤 공개 및 실행 여부 결정"
+  },
+  {
+    "fact_id": "inu.common.GRD-05",
+    "status": "verified",
+    "title": "결시자 특례",
+    "reason": "원문·범위·예외와 중복/충돌을 담당자가 검토한 뒤 공개 및 실행 여부 결정"
+  },
+  {
+    "fact_id": "inu.common.GRD-06",
+    "status": "verified",
+    "title": "성적 열람 조건",
+    "reason": "원문·범위·예외와 중복/충돌을 담당자가 검토한 뒤 공개 및 실행 여부 결정"
+  },
+  {
+    "fact_id": "inu.common.ACW-01",
+    "status": "verified",
+    "title": "학사경고 기준",
+    "reason": "원문·범위·예외와 중복/충돌을 담당자가 검토한 뒤 공개 및 실행 여부 결정"
+  },
+  {
+    "fact_id": "inu.common.ACW-02",
+    "status": "verified",
+    "title": "학사경고 3회 제적",
+    "reason": "원문·범위·예외와 중복/충돌을 담당자가 검토한 뒤 공개 및 실행 여부 결정"
+  },
+  {
+    "fact_id": "inu.common.ACW-03",
+    "status": "verified",
+    "title": "학사경고 1회 면제 프로그램",
+    "reason": "원문·범위·예외와 중복/충돌을 담당자가 검토한 뒤 공개 및 실행 여부 결정"
+  },
+  {
+    "fact_id": "inu.common.DIS-01",
+    "status": "verified",
+    "title": "미복학·미등록 제적",
+    "reason": "원문·범위·예외와 중복/충돌을 담당자가 검토한 뒤 공개 및 실행 여부 결정"
+  },
+  {
+    "fact_id": "inu.common.DIS-02",
+    "status": "verified",
+    "title": "재학연한 초과 제적",
+    "reason": "원문·범위·예외와 중복/충돌을 담당자가 검토한 뒤 공개 및 실행 여부 결정"
+  },
+  {
+    "fact_id": "inu.common.DIS-03",
+    "status": "verified",
+    "title": "첫 학기 자퇴·제적자 재입학 불가",
+    "reason": "원문·범위·예외와 중복/충돌을 담당자가 검토한 뒤 공개 및 실행 여부 결정"
+  },
+  {
+    "fact_id": "inu.common.LOA-01",
+    "status": "verified",
+    "title": "일반휴학 기본",
+    "reason": "원문·범위·예외와 중복/충돌을 담당자가 검토한 뒤 공개 및 실행 여부 결정"
+  },
+  {
+    "fact_id": "inu.common.LOA-02",
+    "status": "verified",
+    "title": "신입생 첫 2학기 일반휴학 제한",
+    "reason": "원문·범위·예외와 중복/충돌을 담당자가 검토한 뒤 공개 및 실행 여부 결정"
+  },
+  {
+    "fact_id": "inu.common.LOA-03",
+    "status": "verified",
+    "title": "휴학연기",
+    "reason": "원문·범위·예외와 중복/충돌을 담당자가 검토한 뒤 공개 및 실행 여부 결정"
+  },
+  {
+    "fact_id": "inu.common.LOA-04",
+    "status": "verified",
+    "title": "입대휴학",
+    "reason": "원문·범위·예외와 중복/충돌을 담당자가 검토한 뒤 공개 및 실행 여부 결정"
+  },
+  {
+    "fact_id": "inu.common.LOA-05",
+    "status": "verified",
+    "title": "질병휴학",
+    "reason": "원문·범위·예외와 중복/충돌을 담당자가 검토한 뒤 공개 및 실행 여부 결정"
+  },
+  {
+    "fact_id": "inu.common.LOA-06",
+    "status": "verified",
+    "title": "육아휴학",
+    "reason": "원문·범위·예외와 중복/충돌을 담당자가 검토한 뒤 공개 및 실행 여부 결정"
+  },
+  {
+    "fact_id": "inu.common.LOA-07",
+    "status": "verified",
+    "title": "창업휴학",
+    "reason": "원문·범위·예외와 중복/충돌을 담당자가 검토한 뒤 공개 및 실행 여부 결정"
+  },
+  {
+    "fact_id": "inu.common.GRA-01",
+    "status": "verified",
+    "title": "졸업소요학점(학교 공통)",
+    "reason": "원문·범위·예외와 중복/충돌을 담당자가 검토한 뒤 공개 및 실행 여부 결정"
+  },
+  {
+    "fact_id": "inu.common.GRA-02",
+    "status": "verified",
+    "title": "졸업자격 구성",
+    "reason": "원문·범위·예외와 중복/충돌을 담당자가 검토한 뒤 공개 및 실행 여부 결정"
+  },
+  {
+    "fact_id": "inu.common.GRA-03",
+    "status": "conditional",
+    "title": "교양 졸업학점 범위",
+    "reason": "원문·범위·예외와 중복/충돌을 담당자가 검토한 뒤 공개 및 실행 여부 결정"
+  },
+  {
+    "fact_id": "inu.common.GRA-04",
+    "status": "verified",
+    "title": "2026학번 기초교양",
+    "reason": "원문·범위·예외와 중복/충돌을 담당자가 검토한 뒤 공개 및 실행 여부 결정"
+  },
+  {
+    "fact_id": "inu.common.GRA-05",
+    "status": "verified",
+    "title": "핵심교양 이수",
+    "reason": "원문·범위·예외와 중복/충돌을 담당자가 검토한 뒤 공개 및 실행 여부 결정"
+  },
+  {
+    "fact_id": "inu.common.GRA-06",
+    "status": "conditional",
+    "title": "전공 졸업학점(계열별)",
+    "reason": "원문·범위·예외와 중복/충돌을 담당자가 검토한 뒤 공개 및 실행 여부 결정"
+  },
+  {
+    "fact_id": "inu.common.GRA-07",
+    "status": "verified",
+    "title": "조기졸업",
+    "reason": "원문·범위·예외와 중복/충돌을 담당자가 검토한 뒤 공개 및 실행 여부 결정"
+  },
+  {
+    "fact_id": "inu.common.GRA-08",
+    "status": "verified",
+    "title": "학년별 수료학점",
+    "reason": "원문·범위·예외와 중복/충돌을 담당자가 검토한 뒤 공개 및 실행 여부 결정"
+  },
+  {
+    "fact_id": "inu.common.GRA-09",
+    "status": "verified",
+    "title": "졸업사정 불합격 처리",
+    "reason": "원문·범위·예외와 중복/충돌을 담당자가 검토한 뒤 공개 및 실행 여부 결정"
+  },
+  {
+    "fact_id": "inu.common.MAJ-01",
+    "status": "verified",
+    "title": "부·복수전공 신청자격·시기",
+    "reason": "원문·범위·예외와 중복/충돌을 담당자가 검토한 뒤 공개 및 실행 여부 결정"
+  },
+  {
+    "fact_id": "inu.common.MAJ-02",
+    "status": "verified",
+    "title": "복수전공 이수학점",
+    "reason": "원문·범위·예외와 중복/충돌을 담당자가 검토한 뒤 공개 및 실행 여부 결정"
+  },
+  {
+    "fact_id": "inu.common.MAJ-03",
+    "status": "verified",
+    "title": "부전공 이수학점",
+    "reason": "원문·범위·예외와 중복/충돌을 담당자가 검토한 뒤 공개 및 실행 여부 결정"
+  },
+  {
+    "fact_id": "inu.common.MAJ-04",
+    "status": "verified",
+    "title": "복수전공 포기·전환",
+    "reason": "원문·범위·예외와 중복/충돌을 담당자가 검토한 뒤 공개 및 실행 여부 결정"
+  },
+  {
+    "fact_id": "inu.common.EXC-03",
+    "status": "conditional",
+    "title": "파견 후 잔여학기·8학기 파견",
+    "reason": "원문·범위·예외와 중복/충돌을 담당자가 검토한 뒤 공개 및 실행 여부 결정"
+  },
+  {
+    "fact_id": "inu.common.EXC-05",
+    "status": "conditional",
+    "title": "모집·파견 시기",
+    "reason": "원문·범위·예외와 중복/충돌을 담당자가 검토한 뒤 공개 및 실행 여부 결정"
+  },
+  {
+    "fact_id": "inu.common.EXC-06",
+    "status": "conditional",
+    "title": "선발기준",
+    "reason": "원문·범위·예외와 중복/충돌을 담당자가 검토한 뒤 공개 및 실행 여부 결정"
+  },
+  {
+    "fact_id": "inu.common.EXC-08",
+    "status": "conditional",
+    "title": "연간 선발 예상인원",
+    "reason": "원문·범위·예외와 중복/충돌을 담당자가 검토한 뒤 공개 및 실행 여부 결정"
+  },
+  {
+    "fact_id": "inu.common.EXC-09",
+    "status": "verified",
+    "title": "2027-1 파견 교환학생 모집 일정",
+    "reason": "원문·범위·예외와 중복/충돌을 담당자가 검토한 뒤 공개 및 실행 여부 결정"
+  },
+  {
+    "fact_id": "inu.common.EXC-10",
+    "status": "verified",
+    "title": "2027-1 공고 지원자격",
+    "reason": "원문·범위·예외와 중복/충돌을 담당자가 검토한 뒤 공개 및 실행 여부 결정"
+  },
+  {
+    "fact_id": "inu.common.EXC-11",
+    "status": "verified",
+    "title": "8차 학기 파견 제한",
+    "reason": "원문·범위·예외와 중복/충돌을 담당자가 검토한 뒤 공개 및 실행 여부 결정"
+  },
+  {
+    "fact_id": "inu.common.EXC-12",
+    "status": "verified",
+    "title": "휴학생 지원·파견학기 휴학 불이익",
+    "reason": "원문·범위·예외와 중복/충돌을 담당자가 검토한 뒤 공개 및 실행 여부 결정"
+  },
+  {
+    "fact_id": "inu.common.EXC-13",
+    "status": "verified",
+    "title": "재지원·타대학 학점 인정 한도",
+    "reason": "원문·범위·예외와 중복/충돌을 담당자가 검토한 뒤 공개 및 실행 여부 결정"
+  },
+  {
+    "fact_id": "inu.common.EXC-14",
+    "status": "verified",
+    "title": "파견 지원금(2027-1 공고)",
+    "reason": "원문·범위·예외와 중복/충돌을 담당자가 검토한 뒤 공개 및 실행 여부 결정"
+  },
+  {
+    "fact_id": "inu.common.EXC-15",
+    "status": "verified",
+    "title": "추가 모집 공고 존재",
+    "reason": "원문·범위·예외와 중복/충돌을 담당자가 검토한 뒤 공개 및 실행 여부 결정"
+  },
+  {
+    "fact_id": "inu.common.CAL-01",
+    "status": "verified",
+    "title": "2026-2학기 주요 학사일정",
+    "reason": "원문·범위·예외와 중복/충돌을 담당자가 검토한 뒤 공개 및 실행 여부 결정"
+  },
+  {
+    "fact_id": "inu.common.CAL-02",
+    "status": "verified",
+    "title": "2027-1학기 준비 일정(공개분)",
+    "reason": "원문·범위·예외와 중복/충돌을 담당자가 검토한 뒤 공개 및 실행 여부 결정"
+  },
+  {
+    "fact_id": "inu.common.CMP-01",
+    "status": "verified",
+    "title": "기숙사 3개 동·수용 2,676명",
+    "reason": "원문·범위·예외와 중복/충돌을 담당자가 검토한 뒤 공개 및 실행 여부 결정"
+  },
+  {
+    "fact_id": "inu.common.CMP-02",
+    "status": "conflicting",
+    "title": "중앙동아리 분과·목록",
+    "reason": "원문·범위·예외와 중복/충돌을 담당자가 검토한 뒤 공개 및 실행 여부 결정"
+  },
+  {
+    "fact_id": "inu.common.CMP-03",
+    "status": "conditional",
+    "title": "셔틀·통학버스",
+    "reason": "원문·범위·예외와 중복/충돌을 담당자가 검토한 뒤 공개 및 실행 여부 결정"
+  },
+  {
+    "fact_id": "inu.common.STA-01",
+    "status": "verified",
+    "title": "2025 학부 재학·휴학생 수",
+    "reason": "원문·범위·예외와 중복/충돌을 담당자가 검토한 뒤 공개 및 실행 여부 결정"
+  },
+  {
+    "fact_id": "inu.common.SCH-01",
+    "status": "verified",
+    "title": "교내장학금 신청 시기 구조",
+    "reason": "원문·범위·예외와 중복/충돌을 담당자가 검토한 뒤 공개 및 실행 여부 결정"
+  },
+  {
+    "fact_id": "inu.common.SCH-02",
+    "status": "conditional",
+    "title": "우수신입생 장학금 유지조건",
+    "reason": "원문·범위·예외와 중복/충돌을 담당자가 검토한 뒤 공개 및 실행 여부 결정"
+  },
+  {
+    "fact_id": "inu.common.SUP-01",
+    "status": "verified",
+    "title": "대학생활지원과 통합 창구",
+    "reason": "원문·범위·예외와 중복/충돌을 담당자가 검토한 뒤 공개 및 실행 여부 결정"
+  },
+  {
+    "fact_id": "inu.common.SUP-02",
+    "status": "verified",
+    "title": "상담센터 공개 프로그램(2026-11)",
+    "reason": "원문·범위·예외와 중복/충돌을 담당자가 검토한 뒤 공개 및 실행 여부 결정"
+  },
+  {
+    "fact_id": "inu.common.SUP-03",
+    "status": "conditional",
+    "title": "STARinU 비교과 목록 접근",
+    "reason": "원문·범위·예외와 중복/충돌을 담당자가 검토한 뒤 공개 및 실행 여부 결정"
+  },
+  {
+    "fact_id": "inu.common.UNV-01",
+    "status": "unverified",
+    "title": "학칙·학칙시행세칙 원문 조문",
+    "reason": "원문·범위·예외와 중복/충돌을 담당자가 검토한 뒤 공개 및 실행 여부 결정"
+  },
+  {
+    "fact_id": "inu.common.UNV-02",
+    "status": "unverified",
+    "title": "정보기술대학 학과의 공학계열 분류·학과별 졸업요건",
+    "reason": "원문·범위·예외와 중복/충돌을 담당자가 검토한 뒤 공개 및 실행 여부 결정"
+  },
+  {
+    "fact_id": "inu.common.UNV-03",
+    "status": "unverified",
+    "title": "영어졸업인증 기준점수",
+    "reason": "원문·범위·예외와 중복/충돌을 담당자가 검토한 뒤 공개 및 실행 여부 결정"
+  },
+  {
+    "fact_id": "inu.common.UNV-04",
+    "status": "unverified",
+    "title": "학사경고 면제 프로그램 명칭·신청 시기",
+    "reason": "원문·범위·예외와 중복/충돌을 담당자가 검토한 뒤 공개 및 실행 여부 결정"
+  },
+  {
+    "fact_id": "inu.common.UNV-05",
+    "status": "unverified",
+    "title": "2026 축제명·학생회 구조",
+    "reason": "원문·범위·예외와 중복/충돌을 담당자가 검토한 뒤 공개 및 실행 여부 결정"
+  },
+  {
+    "fact_id": "inu.it.exchange-definition",
+    "status": "verified",
+    "title": "교환학생 제도",
+    "reason": "원문·범위·예외와 중복/충돌을 담당자가 검토한 뒤 공개 및 실행 여부 결정"
+  },
+  {
+    "fact_id": "inu.it.exchange-completion",
+    "status": "conditional",
+    "title": "교환학생 지원 학기 요건",
+    "reason": "원문·범위·예외와 중복/충돌을 담당자가 검토한 뒤 공개 및 실행 여부 결정"
+  },
+  {
+    "fact_id": "inu.it.exchange-gpa",
+    "status": "conditional",
+    "title": "교환학생 평점 요건",
+    "reason": "원문·범위·예외와 중복/충돌을 담당자가 검토한 뒤 공개 및 실행 여부 결정"
+  },
+  {
+    "fact_id": "inu.it.exchange-dept-approval",
+    "status": "conditional",
+    "title": "교환학생 학과 허가",
+    "reason": "원문·범위·예외와 중복/충돌을 담당자가 검토한 뒤 공개 및 실행 여부 결정"
+  },
+  {
+    "fact_id": "inu.it.exchange-language",
+    "status": "conditional",
+    "title": "교환학생 어학요건",
+    "reason": "원문·범위·예외와 중복/충돌을 담당자가 검토한 뒤 공개 및 실행 여부 결정"
+  },
+  {
+    "fact_id": "inu.it.exchange-residency-after",
+    "status": "conditional",
+    "title": "파견 후 본교 수학 잔여기간",
+    "reason": "원문·범위·예외와 중복/충돌을 담당자가 검토한 뒤 공개 및 실행 여부 결정"
+  },
+  {
+    "fact_id": "inu.it.exchange-season",
+    "status": "conditional",
+    "title": "교환학생 모집 시기",
+    "reason": "원문·범위·예외와 중복/충돌을 담당자가 검토한 뒤 공개 및 실행 여부 결정"
+  },
+  {
+    "fact_id": "inu.it.exchange-selection",
+    "status": "conditional",
+    "title": "교환학생 선발 평가",
+    "reason": "원문·범위·예외와 중복/충돌을 담당자가 검토한 뒤 공개 및 실행 여부 결정"
+  },
+  {
+    "fact_id": "inu.it.exchange-graduation-check",
+    "status": "verified",
+    "title": "교환 전 졸업요건 검토",
+    "reason": "원문·범위·예외와 중복/충돌을 담당자가 검토한 뒤 공개 및 실행 여부 결정"
+  },
+  {
+    "fact_id": "inu.it.exchange-course-credit",
+    "status": "conditional",
+    "title": "교환 학점 인정의 전공 여부",
+    "reason": "원문·범위·예외와 중복/충돌을 담당자가 검토한 뒤 공개 및 실행 여부 결정"
+  },
+  {
+    "fact_id": "inu.it.it-college-label",
+    "status": "conditional",
+    "title": "단과대학 병기 명칭",
+    "reason": "원문·범위·예외와 중복/충돌을 담당자가 검토한 뒤 공개 및 실행 여부 결정"
+  },
+  {
+    "fact_id": "inu.it.cse-course-menu",
+    "status": "verified",
+    "title": "컴퓨터공학부 교육과정 메뉴",
+    "reason": "원문·범위·예외와 중복/충돌을 담당자가 검토한 뒤 공개 및 실행 여부 결정"
+  },
+  {
+    "fact_id": "inu.it.cse-research-menu",
+    "status": "verified",
+    "title": "컴퓨터공학부 연구 메뉴",
+    "reason": "원문·범위·예외와 중복/충돌을 담당자가 검토한 뒤 공개 및 실행 여부 결정"
+  },
+  {
+    "fact_id": "inu.it.cse-course-notice-2026-2",
+    "status": "conditional",
+    "title": "컴퓨터공학부 2026-2 수업시간 유의",
+    "reason": "원문·범위·예외와 중복/충돌을 담당자가 검토한 뒤 공개 및 실행 여부 결정"
+  },
+  {
+    "fact_id": "inu.it.inurf-current-criteria",
+    "status": "unverified",
+    "title": "INURF 최신 자격·모집조건",
+    "reason": "원문·범위·예외와 중복/충돌을 담당자가 검토한 뒤 공개 및 실행 여부 결정"
+  },
+  {
+    "fact_id": "inu.it.it-lab-counts",
+    "status": "unverified",
+    "title": "학과별 연구실 수 13/12/8",
+    "reason": "원문·범위·예외와 중복/충돌을 담당자가 검토한 뒤 공개 및 실행 여부 결정"
+  },
+  {
+    "fact_id": "inu.it.it-student-count",
+    "status": "unverified",
+    "title": "정보기술대학 학생 1,065명 주장",
+    "reason": "원문·범위·예외와 중복/충돌을 담당자가 검토한 뒤 공개 및 실행 여부 결정"
+  },
+  {
+    "fact_id": "inu.it.2027-reorg-date",
+    "status": "conditional",
+    "title": "정보기술대학 개편 적용시점",
+    "reason": "원문·범위·예외와 중복/충돌을 담당자가 검토한 뒤 공개 및 실행 여부 결정"
+  },
+  {
+    "fact_id": "inu.it.2027-department-names",
+    "status": "conditional",
+    "title": "2027학년도 정보기술대학 모집단위 변경",
+    "reason": "원문·범위·예외와 중복/충돌을 담당자가 검토한 뒤 공개 및 실행 여부 결정"
+  },
+  {
+    "fact_id": "inu.it.cse-curriculum-visible",
+    "status": "conditional",
+    "title": "컴퓨터공학부 교육과정 과목 예시",
+    "reason": "원문·범위·예외와 중복/충돌을 담당자가 검토한 뒤 공개 및 실행 여부 결정"
+  },
+  {
+    "fact_id": "inu.it.ese-old-curriculum",
+    "status": "conditional",
+    "title": "임베디드 계열 2026년까지 교육과정 표",
+    "reason": "원문·범위·예외와 중복/충돌을 담당자가 검토한 뒤 공개 및 실행 여부 결정"
+  },
+  {
+    "fact_id": "inu.it.ese-graduation-requirements",
+    "status": "conditional",
+    "title": "인공지능시스템공학과 졸업요건 안내",
+    "reason": "원문·범위·예외와 중복/충돌을 담당자가 검토한 뒤 공개 및 실행 여부 결정"
+  },
+  {
+    "fact_id": "inu.it.ite-curriculum-course-set",
+    "status": "conditional",
+    "title": "정보통신 계열 교육과정 과목군",
+    "reason": "원문·범위·예외와 중복/충돌을 담당자가 검토한 뒤 공개 및 실행 여부 결정"
+  }
+]

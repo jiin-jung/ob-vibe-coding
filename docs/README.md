@@ -2,6 +2,7 @@
 
 | 문서 | 내용 |
 | --- | --- |
+| [data/HANDOFF.md](data/HANDOFF.md) | 백엔드 전달용 인천대 조사 데이터, 출처, 적용 조건과 검증 상태 |
 | [TOPIC.md](TOPIC.md) | 대회 주제 |
 | [RULES.md](RULES.md) | 대회 규칙 |
 | [JUDGING_CRITERIA.md](JUDGING_CRITERIA.md) | 심사 기준과 적합도 |
